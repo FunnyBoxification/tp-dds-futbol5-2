@@ -11,6 +11,12 @@
   		<div class="form-group">
   			<label> Criterio </label>
   			<select class="form-control"> 
+  				<option>Por nombre </option>
+  				<option>Por fecha de nacimiento</option>
+  				<option></option>
+  				<option></option>
+  				<option></option>
+  				
   			</select>
   		</div>
   		<button type="submit" class="btn btn-default">Buscar</button>  	

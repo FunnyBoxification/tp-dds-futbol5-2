@@ -32,4 +32,12 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	def LinkedList<Socio> buscarPorPromedioLastMatchHasta(Double promedio) {
 //		hacer
 	}
+	
+	def LinkedList<Socio> buscarSinInfracciones() {
+		this.getByCriterio([ Socio socio | socio.infracciones.isEmpty])
+	}
+	
+	def LinkedList<Socio> buscarConInfracciones() {
+		this.getByCriterio( [ Socio socio | !socio.infracciones.isEmpty])
+	}
 }
