@@ -122,6 +122,7 @@ class Administrador {
  		
  	}
  	
+		
 }
  	//confirmarpartido(viejo,Hascerdivision(Ponercriterio(asdasd)))
  	

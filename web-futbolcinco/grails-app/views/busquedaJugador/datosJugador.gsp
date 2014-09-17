@@ -1,6 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="layout" content="main"/>
 </head>
 <body>
 <h2>Datos del jugador</h2>
@@ -8,19 +10,16 @@
 <label for="exampleInputEmail1"> Nombre:</label>
 <input class="form-control" id="disabledInput" name="jugador.nombre" value="${jugador?.nombre}" disabled>
 <br /><br />
-<label for="exampleInputEmail1">Apodo:</label>
-<input class="form-control" id="disabledInput"name="jugador.apodo" value="${jugador?.apodo}"  disabled>
-<br /><br />
 <label for="exampleInputEmail1">Handicap:</label>
 <input class="form-control" id="disabledInput"name="jugador.handicap" value="${jugador?.handicap}"  disabled>
 <br /><br />
 <label for="exampleInputEmail1">Promedio del ultimo partido:</label>
-<input class="form-control" id="disabledInput" name="jugador.promUltPartido" value="${jugador?.promUltPartido}" disabled>
+<input class="form-control" id="disabledInput" name="jugador.promUltPartido" value="${jugador}" disabled>
 <br /><br />
 <label for="exampleInputEmail1">Promedio de todos los partidos que jugo:</label>
-<input class="form-control" id="disabledInput"name="jugador.promUltNPartidos" value="${jugador?.promUltNPartidos}"  disabled>
+<input class="form-control" id="disabledInput"name="jugador.promUltNPartidos" value="${jugador}"  disabled>
 <br /><br />
-<label for="exampleInputEmail1">fecha de nacimiento:</label>
+<label for="exampleInputEmail1">Edad:</label>
 <input class="form-control" id="disabledInput"name="jugador.edad" value="${jugador?.edad}"  disabled>
 <br /><br />
 <label for="exampleInputEmail1">Grilla de Amigos:</label>
@@ -28,7 +27,7 @@
 <label for="exampleInputEmail1">Grilla de Infracciones:</label>
 <br /><br />
 <label for="exampleInputEmail1">Cantidad de partidos que jugo:</label>
-<input class="form-control" id="disabledInput" name="jugador.cantPartidosJugados" value="${jugador?.cantPartidosJugados}"  disabled>
+<input class="form-control" id="disabledInput" name="jugador.cantPartidosJugados" value="${jugador?.misPartidos.size}"  disabled>
 <br /><br /><br />
 
  <button type="button" class="btn btn-default btn-lg">VOLVER</button>

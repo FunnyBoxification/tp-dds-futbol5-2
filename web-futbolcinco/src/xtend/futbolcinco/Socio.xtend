@@ -16,6 +16,7 @@ import Exceptions.PartidoCerradoException
 import futbolcinco.homes.PartidosDelSistema
 
 class Socio {
+	@Property String id
 	@Property String nombre
 	@Property Integer edad
 	@Property String casilla

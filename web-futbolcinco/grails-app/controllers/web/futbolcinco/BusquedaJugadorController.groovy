@@ -1,5 +1,7 @@
 package web.futbolcinco
 
+import futbolcinco.Administrador
+import futbolcinco.Socio
 import futbolcinco.homes.JugadoresDenegadosDelSistema
 import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
@@ -42,6 +44,10 @@ class BusquedaJugadorController {
 		[] 		
 	}
 	
+	def datosJugador(String id){
+		def j = buscarSocioPorId(id)
+		[jugador: j]
+	}
 	/*************************************************************************************/
 	def buscarPorNombre(params) {
 		def nombre = params.paramBusqueda
@@ -53,5 +59,11 @@ class BusquedaJugadorController {
 						handicap:socio.handicap,
 						edad:socio.edad ] as JSON 
 		}
+	}
+	
+	def private buscarSocioPorId(String id){
+		def Socio s = new Socio("Juan", 21, "mail@baba.com", new Administrador("random@admin.com"));
+		s.setHandicap(6)
+		s
 	}
 }
