@@ -1,17 +1,23 @@
 package web.futbolcinco
 
 import futbolcinco.homes.JugadoresDenegadosDelSistema
+import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
 
 class BusquedaJugadorController {
 	
-	SociosDelSistema sociosDAO = new SociosDelSistema() //Deberian ser un singletonnnn todos los homes
+	SociosDelSistema sociosDAO = SociosDelSistema.instance()
+	PartidosDelSistema partidosDAO = PartidosDelSistema.instance()
 
-    def index() { 
-		redirect(action:"generarEquipos")
+	def index() {
+		redirect(action: "busquedaJugador", params: params)
 	}
 	
-	def generarEquipos(){
+	def busquedaJugador() {
 		
+	}
+	
+	def getPorEdad() {
+		sociosDAO.buscarPorEdad(0)
 	}
 }

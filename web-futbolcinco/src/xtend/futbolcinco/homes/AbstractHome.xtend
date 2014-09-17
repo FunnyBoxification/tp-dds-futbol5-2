@@ -3,8 +3,8 @@ package futbolcinco.homes
 import java.util.LinkedList
 
 class AbstractHome <T> {
-	LinkedList<T> lista
-	
+	private LinkedList<T> lista
+		
 	new(){
 		lista = new LinkedList<T>
 	}

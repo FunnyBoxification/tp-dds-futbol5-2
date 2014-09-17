@@ -7,23 +7,50 @@
 </head>
 <body>
   <div class="body">
-  	<form role="form">
+  	<div class="form-horizontal">
   		<div class="form-group">
   			<label> Criterio </label>
-  			<select class="form-control"> 
-  				<option>Por nombre </option>
-  				<option>Por fecha de nacimiento</option>
-  				<option></option>
-  				<option></option>
-  				<option></option>
-  				
+  			<select class="form-control" id="comboCriterios"> 
+  				<option value="getPorNombre">Por nombre </option>
+  				<option value="getPorEdad">Por edad menor a</option>
+  				<option value="getHandicapDesde">Por handicap desde</option>
+  				<option value="getHandicapHasta">Por handicap hasta</option>
+  				<option value="getPromDesde">Por promedio Desde</option>
+  				<option value="getPromHasta">Por Promedio Hasta</option>
+  				<option value="getConInfraciones">Con infracciones</option>
+  				<option value="getSinInfracciones">Sin infracciones</option>
+  				<option value="getTodos"> Todos</option>	
   			</select>
   		</div>
-  		<button type="submit" class="btn btn-default">Buscar</button>  	
-  	</form>
+  		<input type="text" id="nombre" hidden>
+  		<input type="text" id="edad" hidden>
+  		<input type="text" id="handicapDesde" hidden>
+  		<input type="text" id="handicapHasta" hidden>
+  		<input type="text" id="getPromDesde" hidden>
+  		<input type="text" id="DetPromHasta" hidden>
+  		<input type="text" id="conInfraccion" hidden>
+  		<input type="text" id="sinInfraccion" hidden>
+  		<input type="text" id="todos" hidden>
+  		
+  		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
+  		  	
+  	</div>
   	
-  	<div>
-  		Aca meter los resultados de la busqueda
+  	<div class="col-md-12" id="resultadoBusqueda" name="resultadoBusqueda">
+  		<b>Resultados de la bu&acute;squeda</b> <br/>
+  		<table class="table table-striped table-bordered table-hover table-condensed">
+				<thead>
+				<!--  
+					<g:sortableColumn property="nombre" title="Nombre" />
+					<g:sortableColumn property="ubicacionMateria" title="Handicap"/>
+					<g:sortableColumn property="promedio" title = "Promedio"/>
+				</thead> -->
+				<tbody>
+					<!--  Meter data here con ajax -->
+				</tbody>
+			</table>
+  		
+  	
   	</div>
   
   </div>
