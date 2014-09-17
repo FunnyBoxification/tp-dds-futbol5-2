@@ -9,6 +9,14 @@ function confirmarEquipos(){
 	alert("intento de confirmar equipos")
 }
 
+function habilitarCheckBox(){
+		document.getElementById('check').style.display="block"
+}
+
+function deshabilitarCheckBox(){
+		document.getElementById('check').style.display="none"
+}
+
 function solicitarEquipos(){
 	$.ajax({
 		url:"solicitarEquipos",
@@ -39,11 +47,25 @@ function solicitarEquipos(){
   			
   		<Label>Criterio de Ordenamiento</Label>			
   		<select class="form-control" id="criterioOrden"> 
-  			<option>Handicap</option>
-  			<option>Promedio calificaciones ultimo partido</option>
-  			<option>Criterio Mixto</option>
-			<option>Promedio ualificaciones ultimos n partidos</option>
+  			<option onclick="javascript:deshabilitarCheckBox()">Handicap</option>
+  			<option onclick="javascript:deshabilitarCheckBox()">Promedio calificaciones ultimo partido</option>
+  			<option onclick="javascript:habilitarCheckBox()">Criterio Mixto</option>
+			<option onclick="javascript:deshabilitarCheckBox()">Promedio calificaciones ultimos n partidos</option>
+			<option onclick="javascript:deshabilitarCheckBox()" selected>---</option>
 		</select>
+		<div class="checkbox" id="check" style="display: none">
+   			<label>
+     			 <input type="checkbox"> Handicap
+    		</label>
+    		</br>
+    		<label>
+     			 <input type="checkbox"> Promedio calificaciones ultimo partido
+    		</label>
+    		</br>
+    		<label>
+     			 <input type="checkbox"> Promedio calificaciones ultimos n partidos
+    		</label>
+		</div>
  				
   		<button type="button" class="btn btn-primary btn-lg" onclick="javascript:solicitarEquipos()">Generar Equipos</button>	
   	</div>
