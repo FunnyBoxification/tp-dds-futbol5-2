@@ -46,6 +46,8 @@ class BusquedaJugadorController {
 	def buscarPorNombre(params) {
 		def nombre = params.paramBusqueda
 		//tendria que hacer un render de esto??????
+		//Mepa que es totally al pedou mandarlo como JSON, le paso
+		//la lista, scriptlet y a la mierda
 		sociosDAO.buscarPorNombre(nombre).collect { 
 			socio -> [  nombre:socio.nombre,
 						handicap:socio.handicap,
