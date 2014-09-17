@@ -22,7 +22,8 @@ $(document).ready(function() {
 					data : { paramBusqueda : $("#textBusqueda").val() } ,
 					update : "resultadoBusqueda",
 					success : function(data) {
-						//hacer algo..
+						$("#resultadoBusqueda").html(data)
+						//hacer algo.. -> creo que no hace falta hacer nada, lo puse para que lo haga el controller
 					}
 				}		
 		);
