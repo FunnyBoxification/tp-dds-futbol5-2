@@ -29,7 +29,6 @@ function solicitarEquipos(){
 <body>
   <div class="body">
  	<input type="hidden" name="idPartido" />
-  	<input name="partido.admin" value="${partido.admin.casilla }" />
   	<div class="form-group">
   		<label>Criterio Seleccion</label>
   		<select class="form-control" id="criterioSeleccion"> 
