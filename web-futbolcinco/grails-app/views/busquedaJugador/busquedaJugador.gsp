@@ -11,17 +11,21 @@
   		<div class="form-group">
   			<label> Criterio </label>
   			<select class="form-control" id="comboCriterios"> 
-  				<option value="getPorNombre">Por nombre </option>
-  				<option value="getPorEdad">Por edad menor a</option>
-  				<option value="getHandicapDesde">Por handicap desde</option>
-  				<option value="getHandicapHasta">Por handicap hasta</option>
-  				<option value="getPromDesde">Por promedio Desde</option>
-  				<option value="getPromHasta">Por Promedio Hasta</option>
-  				<option value="getConInfraciones">Con infracciones</option>
-  				<option value="getSinInfracciones">Sin infracciones</option>
-  				<option value="getTodos"> Todos</option>	
+  				<option value="porNombre">Por nombre </option>
+  				<option value="porEdad">Por edad menor a</option>
+  				<option value="porHandicapDesde">Por handicap desde</option>
+  				<option value="porHandicapHasta">Por handicap hasta</option>
+  				<option value="porPromDesde">Por promedio Desde</option>
+  				<option value="porPromHasta">Por Promedio Hasta</option>
+  				<option value="conInfraciones">Con infracciones</option>
+  				<option value="sinInfracciones">Sin infracciones</option>
+  				<option value="todos"> Todos</option>	
   			</select>
   		</div>
+  		
+  		<div id="optionSelected">
+  		</div> 		
+  		<!--  FEO FEO FEO
   		<input type="text" id="nombre" placeholder="Ingrese nombre" >
   		<input type="text" id="edad" hidden>
   		<input type="text" id="handicapDesde" hidden>
@@ -30,6 +34,7 @@
   		<input type="text" id="promHasta" hidden>
  		
   		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
+  		--> 
   		  	
   	</div>
   	

@@ -13,6 +13,16 @@ class BusquedaJugadorController {
 		redirect(action: "busquedaJugador", params: params)
 	}
 	
+	def porNombre() {
+		def label = "Nombre"
+		render ( template:"porNombre", model:[label:label])
+	}
+	
+	def porEdad() {
+		def label = "Edad"
+		render(template:"porNombre", model:[label:label])
+	}
+	
 	def busquedaJugador() {
 		[] 		
 	}

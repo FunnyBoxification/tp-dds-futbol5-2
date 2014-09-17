@@ -7,8 +7,10 @@ $(document).ready(function() {
 		$.ajax(
 				{
 					url : $("#comboCriterios").val(),
+					update : "opcionSelected",
 					success : function(data) {
-						response(data);
+						$("#optionSelected").html(data);
+						//response(data);
 					}
 				});
 	});
@@ -16,10 +18,11 @@ $(document).ready(function() {
 	$("#botonBuscar").click( function(event) {
 		$.ajax( 
 				{
+					url : "buscar" + $("#comboCriterios").val,
 					data : { paramBusqueda : $("#textBusqueda").val() } ,
 					update : "resultadoBusqueda",
 					success : function(data) {
-						
+						//hacer algo..
 					}
 				}		
 		);
