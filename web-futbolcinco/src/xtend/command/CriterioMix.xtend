@@ -14,9 +14,13 @@ class CriterioMix extends Criterio {
 	}
 	
 	override aplicarCriterio(FichaInscripcion inscripto) {
-		criterios.forEach [ criterio | criterio.aplicarCriterio(inscripto)
+		for(Criterio criterio : criterios) { 
+			criterio.aplicarCriterio(inscripto)
 			ponderacionFinal = ponderacionFinal + inscripto.ponderacion
-		]
+		}
+//		criterios.forEach [ criterio | criterio.aplicarCriterio(inscripto)
+//			ponderacionFinal = ponderacionFinal + inscripto.ponderacion
+//		]
 		inscripto.ponderacion = ponderacionFinal
 		ponderacionFinal = 0 as double // No me dejaba con variable local asi que la hice de instancia :/
 	}

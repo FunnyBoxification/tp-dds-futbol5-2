@@ -7,9 +7,17 @@ class PartidosDelSistema {
 	@Property ClasesDePartidos partidosListosParaJugar 
 	@Property ClasesDePartidos partidosArmandose
 	
-	new(){
+	private static PartidosDelSistema instance
+	
+	new(){//puse public
 		partidosJugados = new ClasesDePartidos
 		partidosListosParaJugar = new ClasesDePartidos
 		partidosArmandose = new ClasesDePartidos
+	}
+	
+	def static instance() {
+		if(instance == null) 
+			return new PartidosDelSistema
+		else return instance
 	}
 }

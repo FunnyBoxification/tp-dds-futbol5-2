@@ -5,6 +5,14 @@ import java.util.LinkedList
 
 class SociosDelSistema extends AbstractHome<Socio> {
 	
+	private static SociosDelSistema instance
+	
+	def static instance() {
+		if(instance == null) 
+			return new SociosDelSistema
+		else return instance
+	}
+	
 	def LinkedList<Socio> buscarPorNombre(String nombre) {
 		val criteria = [ Socio socio | socio.nombre.startsWith(nombre)]
 		return this.getByCriterio(criteria)
