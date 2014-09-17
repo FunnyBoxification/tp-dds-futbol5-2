@@ -7,5 +7,11 @@ class BusquedaJugadorController {
 	
 	SociosDelSistema sociosDAO = new SociosDelSistema() //Deberian ser un singletonnnn todos los homes
 
-    def index() { }
+    def index() { 
+		redirect(action:"generarEquipos")
+	}
+	
+	def generarEquipos(){
+		
+	}
 }
