@@ -7,29 +7,31 @@
 
 <label for="exampleInputEmail1"> Nombre:</label>
 <input class="form-control" id="disabledInput" name="jugador.nombre" value="${jugador?.nombre}" disabled>
-<br />
+<br /><br />
 <label for="exampleInputEmail1">Apodo:</label>
 <input class="form-control" id="disabledInput"name="jugador.apodo" value="${jugador?.apodo}"  disabled>
-<br />
+<br /><br />
 <label for="exampleInputEmail1">Handicap:</label>
 <input class="form-control" id="disabledInput"name="jugador.handicap" value="${jugador?.handicap}"  disabled>
-<br />
+<br /><br />
 <label for="exampleInputEmail1">Promedio del ultimo partido:</label>
 <input class="form-control" id="disabledInput" name="jugador.promUltPartido" value="${jugador?.promUltPartido}" disabled>
-<br />
+<br /><br />
 <label for="exampleInputEmail1">Promedio de todos los partidos que jugo:</label>
 <input class="form-control" id="disabledInput"name="jugador.promUltNPartidos" value="${jugador?.promUltNPartidos}"  disabled>
-<br />
+<br /><br />
 <label for="exampleInputEmail1">fecha de nacimiento:</label>
 <input class="form-control" id="disabledInput"name="jugador.edad" value="${jugador?.edad}"  disabled>
-<br />
-<label for="exampleInputEmail1">Amigos:</label>
-<br />
-<label for="exampleInputEmail1">Infracciones:</label>
-<br />
+<br /><br />
+<label for="exampleInputEmail1">Grilla de Amigos:</label>
+<br /><br />
+<label for="exampleInputEmail1">Grilla de Infracciones:</label>
+<br /><br />
 <label for="exampleInputEmail1">Cantidad de partidos que jugo:</label>
 <input class="form-control" id="disabledInput" name="jugador.cantPartidosJugados" value="${jugador?.cantPartidosJugados}"  disabled>
-<br />
+<br /><br /><br />
+
+ <button type="button" class="btn btn-default btn-lg">VOLVER</button>
 
 
 
