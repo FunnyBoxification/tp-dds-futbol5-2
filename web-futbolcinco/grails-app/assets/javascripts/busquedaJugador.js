@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("#comboCriterios").change( function(event) {
 		$.ajax(
 				{
-					url : $("#comboCriterios").val(),
+					url : getUrl($("#comboCriterios").val()),
 					update : "opcionSelected",
 					success : function(data) {
 						$("#optionSelected").html(data);
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	$("#botonBuscar").click( function(event) {
 		$.ajax( 
 				{
-					url : "buscar" + $("#comboCriterios").val,
+					url : getUrl("buscar" + $("#comboCriterios").val),
 					data : { paramBusqueda : $("#textBusqueda").val() } ,
 					update : "resultadoBusqueda",
 					success : function(data) {
@@ -29,6 +29,11 @@ $(document).ready(function() {
 	});
 	
 };
+
+
+function getUrl(action) {
+	return app.linkBusqueda + "/" + action;
+}
 
 
 

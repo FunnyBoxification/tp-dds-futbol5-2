@@ -24,7 +24,10 @@
   		</div>
   		
   		<div id="optionSelected">
-  		</div> 		
+  		</div>
+  		
+  		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
+  		 		
   		<!--  FEO FEO FEO
   		<input type="text" id="nombre" placeholder="Ingrese nombre" >
   		<input type="text" id="edad" hidden>
@@ -33,7 +36,7 @@
   		<input type="text" id="promDesde" hidden>
   		<input type="text" id="promHasta" hidden>
  		
-  		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
+  		
   		--> 
   		  	
   	</div>
