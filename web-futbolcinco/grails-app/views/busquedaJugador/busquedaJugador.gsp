@@ -22,16 +22,13 @@
   				<option value="getTodos"> Todos</option>	
   			</select>
   		</div>
-  		<input type="text" id="nombre" hidden>
+  		<input type="text" id="nombre" placeholder="Ingrese nombre" >
   		<input type="text" id="edad" hidden>
   		<input type="text" id="handicapDesde" hidden>
   		<input type="text" id="handicapHasta" hidden>
-  		<input type="text" id="getPromDesde" hidden>
-  		<input type="text" id="DetPromHasta" hidden>
-  		<input type="text" id="conInfraccion" hidden>
-  		<input type="text" id="sinInfraccion" hidden>
-  		<input type="text" id="todos" hidden>
-  		
+  		<input type="text" id="promDesde" hidden>
+  		<input type="text" id="promHasta" hidden>
+ 		
   		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
   		  	
   	</div>

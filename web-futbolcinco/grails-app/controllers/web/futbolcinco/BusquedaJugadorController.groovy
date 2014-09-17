@@ -14,7 +14,7 @@ class BusquedaJugadorController {
 	}
 	
 	def busquedaJugador() {
-		
+		[] 		
 	}
 	
 	def getPorEdad() {
