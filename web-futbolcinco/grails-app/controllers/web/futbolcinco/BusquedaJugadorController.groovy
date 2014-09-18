@@ -56,8 +56,8 @@ class BusquedaJugadorController {
 		[] 		
 	}
 	
-	def datosJugador(String nombre){
-		def j = buscarSocioPorId(nombre)
+	def datosJugador(params){
+		def j = sociosDAO.buscarPorId(params.nombre)
 		[jugador: j]
 	}
 	/*************************************************************************************/

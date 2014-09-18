@@ -9,7 +9,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	def buscarPorId(String id) {
 		val criteria = [ Socio socio | socio.nombre.equals(id)]
-		return this.getByCriterio(criteria).first
+		return this.getByCriterio(criteria).get(0)
 	}
 	
 	def static instance() {
