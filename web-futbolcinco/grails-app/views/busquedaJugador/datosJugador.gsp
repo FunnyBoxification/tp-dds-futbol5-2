@@ -3,6 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="layout" content="main"/>
+<script type="text/javascript">
+function volver(){
+	window.history.back();
+}
+</script>
 </head>
 <body>
 <h2>Datos del jugador</h2>
@@ -30,7 +35,7 @@
 <input class="form-control" id="disabledInput" name="jugador.cantPartidosJugados" value="${jugador?.misPartidos.size}"  disabled>
 <br /><br /><br />
 
- <button type="button" class="btn btn-default btn-lg">VOLVER</button>
+ <button type="button" class="btn btn-default btn-lg" onclick="javascript:volver()">VOLVER</button>
 
 
 

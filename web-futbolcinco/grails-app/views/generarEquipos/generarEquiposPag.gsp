@@ -42,6 +42,7 @@ function solicitarEquipos(){
   		<select class="form-control" id="criterioSeleccion"> 
   			<option>Par/Impar</option>
   			<option>1,4,5,8,9</option>
+  			<option selected>---</option>
   		</select>
   		<br/>	
   			
@@ -51,7 +52,7 @@ function solicitarEquipos(){
   			<option onclick="javascript:deshabilitarCheckBox()">Promedio calificaciones ultimo partido</option>
   			<option onclick="javascript:habilitarCheckBox()">Criterio Mixto</option>
 			<option onclick="javascript:deshabilitarCheckBox()">Promedio calificaciones ultimos n partidos</option>
-			<option onclick="javascript:deshabilitarCheckBox()" selected>---</option>
+			<option selected onclick="javascript:deshabilitarCheckBox()" >---</option>
 		</select>
 		<div class="checkbox" id="check" style="display: none">
    			<label>
@@ -66,7 +67,7 @@ function solicitarEquipos(){
      			 <input type="checkbox"> Promedio calificaciones ultimos n partidos
     		</label>
 		</div>
- 				
+ 		<br />		
   		<button type="button" class="btn btn-primary btn-lg" onclick="javascript:solicitarEquipos()">Generar Equipos</button>	
   	</div>
 

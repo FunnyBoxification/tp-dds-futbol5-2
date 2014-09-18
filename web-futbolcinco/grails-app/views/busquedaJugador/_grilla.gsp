@@ -8,7 +8,8 @@
 				</thead>
 				<tbody>
 					<g:each in="${socios}" var="socio">
-						<tr class="info">
+						
+						<tr id ="hola" class="info">
 							<td class="col-md-2">
 								<g:link controller="busquedaJugador" action="datosJugador" id="${socio.id}" >${socio.nombre}</g:link>
 							</td>
