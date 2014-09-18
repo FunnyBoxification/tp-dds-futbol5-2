@@ -17,7 +17,7 @@
   				<option value="porHandicapHasta">Por handicap hasta</option>
   				<option value="porPromDesde">Por promedio Desde</option>
   				<option value="porPromHasta">Por Promedio Hasta</option>
-  				<option value="conInfraciones">Con infracciones</option>
+  				<option value="conInfracciones">Con infracciones</option>
   				<option value="sinInfracciones">Sin infracciones</option>
   				<option value="todos"> Todos</option>	
   			</select>
@@ -28,34 +28,12 @@
   		
   		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
   		 		
-  		<!--  FEO FEO FEO
-  		<input type="text" id="nombre" placeholder="Ingrese nombre" >
-  		<input type="text" id="edad" hidden>
-  		<input type="text" id="handicapDesde" hidden>
-  		<input type="text" id="handicapHasta" hidden>
-  		<input type="text" id="promDesde" hidden>
-  		<input type="text" id="promHasta" hidden>
- 		
-  		
-  		--> 
-  		  	
-  	</div>
+ 	</div>
   	
-  	<div class="col-md-12" id="resultadoBusqueda" name="resultadoBusqueda">
-  		<b>Resultados de la bu&acute;squeda</b> <br/>
-  		<table class="table table-striped table-bordered table-hover table-condensed">
-				<thead>
-				<!--  
-					<g:sortableColumn property="nombre" title="Nombre" />
-					<g:sortableColumn property="ubicacionMateria" title="Handicap"/>
-					<g:sortableColumn property="promedio" title = "Promedio"/>
-				</thead> -->
-				<tbody>
-					<!--  Meter data here con ajax -->
-				</tbody>
-			</table>
-  		
-  	
+  	<div class="col-md-12" >
+  		<b>Resultados de la b&uacute;squeda</b> 
+  		<div id="resultadoBusqueda">
+  		</div>
   	</div>
   
   </div>

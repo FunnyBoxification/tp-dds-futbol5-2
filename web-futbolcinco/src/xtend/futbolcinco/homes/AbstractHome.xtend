@@ -10,7 +10,13 @@ class AbstractHome <T> {
 	}
 	
 	def LinkedList<T> getByCriterio((T)=>boolean criterio) {
-		lista.filter [elem | criterio.apply(elem)] as LinkedList<T>
+		var listita = new LinkedList<T>
+		for(T elem : lista) {
+			if(criterio.apply(elem))
+				listita.add(elem)
+		}
+		return listita
+		//lista.filter [elem | criterio.apply(elem)] // as LinkedList<T>
 	}
 	
 	def T damePrimero((T)=>boolean criterio) {

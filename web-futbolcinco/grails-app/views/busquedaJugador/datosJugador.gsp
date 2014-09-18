@@ -19,15 +19,16 @@ function volver(){
 <input class="form-control" id="disabledInput"name="jugador.handicap" value="${jugador?.handicap}"  disabled>
 <br /><br />
 <label for="exampleInputEmail1">Promedio del ultimo partido:</label>
-<input class="form-control" id="disabledInput" name="jugador.promUltPartido" value="${jugador}" disabled>
+<input class="form-control" id="disabledInput" name="jugador.promUltPartido" value="${jugador.promedio}" disabled>
 <br /><br />
 <label for="exampleInputEmail1">Promedio de todos los partidos que jugo:</label>
-<input class="form-control" id="disabledInput"name="jugador.promUltNPartidos" value="${jugador}"  disabled>
+<input class="form-control" id="disabledInput"name="jugador.promUltNPartidos" value="${jugador.promedio}"  disabled>
 <br /><br />
 <label for="exampleInputEmail1">Edad:</label>
 <input class="form-control" id="disabledInput"name="jugador.edad" value="${jugador?.edad}"  disabled>
 <br /><br />
 <label for="exampleInputEmail1">Grilla de Amigos:</label>
+ <g:render template="grilla" model="['socios': jugador.amigos, 'i':i]"></g:render>
 <br /><br />
 <label for="exampleInputEmail1">Grilla de Infracciones:</label>
 <br /><br />

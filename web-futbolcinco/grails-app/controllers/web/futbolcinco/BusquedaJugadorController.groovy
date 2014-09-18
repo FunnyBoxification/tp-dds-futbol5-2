@@ -19,22 +19,34 @@ class BusquedaJugadorController {
 	/******************************************************************************/
 	def porNombre() {
 		def label = "Nombre:"
-		render ( template:"porNombre", model:[label:label])
+		render ( template:"porNombre", model:[label:label, mostrar:true])
 	}
 	
 	def porEdad() {
 		def label = "Edad:"
-		render(template:"porNombre", model:[label:label])
+		render(template:"porNombre", model:[label:label,mostrar:true])
 	}
 	
 	def porHandicapDesde() {
 		def label = "Handicap desde: "
-		render(template:"porNombre",model:[label:label])
+		render(template:"porNombre",model:[label:label, mostrar:true])
 	}
 	
 	def porHandicapHasta() {
 		def label = "Handicap hasta:"
-		render(template:"porNombre",model:[label:label])
+		render(template:"porNombre",model:[label:label,mostrar:true])
+	}
+	
+	def conInfracciones() {
+		render(template:"porNombre",model:[label:"",mostrar:false])
+	}
+	
+	def sinInfracciones() {
+		render(template:"porNombre",model:[label:"",mostrar:false])
+	}
+	
+	def todos() {
+		render(template:"porNombre",model:[label:"",mostrar:false])
 	}
 	
 	//terminar
@@ -44,13 +56,13 @@ class BusquedaJugadorController {
 		[] 		
 	}
 	
-	def datosJugador(String id){
-		def j = buscarSocioPorId(id)
+	def datosJugador(String nombre){
+		def j = buscarSocioPorId(nombre)
 		[jugador: j]
 	}
 	/*************************************************************************************/
 	/*************************** MODALIDADES DE BUSQUEDA *********************************/
-	def buscarPorNombre(params) {
+	def buscarporNombre(params) {
 		def nombre = params.paramBusqueda
 		//tendria que hacer un render de esto??????
 		//Mepa que es totally al pedou mandarlo como JSON, le paso
@@ -67,27 +79,27 @@ class BusquedaJugadorController {
 		render ( template:"grilla", model:[socios:socios] )
 	}
 	
-	def buscarPorEdad(params) {
+	def buscarporEdad(params) {
 		def socios = sociosDAO.buscarPorEdad(new Integer(params.paramBusqueda))
 		render ( template:"grilla", model:[socios:socios])
 	}
 	
-	def buscarPorHandicapDesde(params) {
+	def buscarporHandicapDesde(params) {
 		def socios = sociosDAO.buscarPorHandicapDesde(new Integer(params.paramBusqueda))
 		render (template:"grilla", model:[socios:socios])
 	}
 	
-	def buscarPorHandicapHasta(params) {
+	def buscarporHandicapHasta(params) {
 		def socios = sociosDAO.buscarPorHandicapHasta(new Integer(params.paramBusqueda))
 		render (template:"grilla",model:[socios:socios])
 	}
 	
-	def buscarConInfracciones() {
+	def buscarconInfracciones() {
 		def socios = sociosDAO.buscarConInfracciones()
 		render(template:"grilla",model:[socios:socios])
 	}
 	
-	def buscarSinInfracciones() {
+	def buscarsinInfracciones() {
 		def socios = sociosDAO.buscarSinInfracciones()
 		render(template:"grilla",model:[socios:socios])
 	}

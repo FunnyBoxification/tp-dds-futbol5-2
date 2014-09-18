@@ -141,4 +141,18 @@ class Socio {
 	def void agregarACalificacionesHechas(Partido partido, Socio unSocio, Socio otroSocio, Integer nota, String opinion) {
 		unSocio.calificacionesHechas.add(new Calificacion(partido,unSocio,otroSocio,nota,opinion))
 	}
+
+
+
+//////////////ObtenerPromedios
+
+	def getPromedio(){
+		 var a = 0.0
+		 if(misCalificaciones.isEmpty())
+		 	return 0.0
+		 for(Calificacion calificacion : misCalificaciones)	 {
+		 	a += calificacion.puntaje
+		 }
+		 return a/misCalificaciones.size()
+	}
 }

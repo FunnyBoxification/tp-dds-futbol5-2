@@ -7,9 +7,16 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	private static SociosDelSistema instance
 	
+	def buscarPorId(String id) {
+		val criteria = [ Socio socio | socio.nombre.equals(id)]
+		return this.getByCriterio(criteria).first
+	}
+	
 	def static instance() {
-		if(instance == null) 
-			return new SociosDelSistema
+		if(instance == null) { 
+			instance = new SociosDelSistema
+			return instance
+		}
 		else return instance
 	}
 	
