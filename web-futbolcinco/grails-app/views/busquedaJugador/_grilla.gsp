@@ -10,7 +10,7 @@
 					<g:each in="${socios}" var="socio">
 						<tr class="info" style="${socio.handicap >=8 ? "background-color:#99CCFF;" : "" }">
 							<td class="col-md-3">
-								<g:link controller="busquedaJugador" action="datosJugador" params = "{nombre:socio.nombre}">${socio.nombre}</g:link>
+								<g:link controller="busquedaJugador" action="datosJugador" id = "${socio.nombre}">${socio.nombre}</g:link>
 							</td>
 							<td class="col-md-3">
 								${socio.edad }
