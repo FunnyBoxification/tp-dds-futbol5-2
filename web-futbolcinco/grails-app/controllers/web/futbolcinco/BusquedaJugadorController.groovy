@@ -64,17 +64,6 @@ class BusquedaJugadorController {
 	/*************************** MODALIDADES DE BUSQUEDA *********************************/
 	def buscarporNombre(params) {
 		def nombre = params.paramBusqueda
-		//tendria que hacer un render de esto??????
-		//Mepa que es totally al pedou mandarlo como JSON, le paso
-		//la lista, scriptlet y a la mierda
-		
-//		sociosDAO.buscarPorNombre(nombre).collect { 
-//			socio -> [  nombre:socio.nombre,
-//						handicap:socio.handicap,
-//						edad:socio.edad ] as JSON 
-//		}
-		
-		//otra opcion que creo que es mas copada
 		def socios = sociosDAO.buscarPorNombre(nombre)
 		render ( template:"grilla", model:[socios:socios] )
 	}
@@ -104,11 +93,19 @@ class BusquedaJugadorController {
 		render(template:"grilla",model:[socios:socios])
 	}
 	
-	/********************************************************************************************/
-	
-	def private buscarSocioPorId(String id){
-		def Socio s = new Socio("Juan", 21, "mail@baba.com", new Administrador("random@admin.com"));
-		s.setHandicap(6)
-		s
+	def buscartodos() { 
+		def socios = sociosDAO.elements()
+		render(template:"grilla",model:[socios:socios])
 	}
+	
+	def buscarporPromDesde() {
+		
+	}
+	
+	def buscarporPromHasta() {
+		
+	}
+	
+	/********************************************************************************************/
+
 }

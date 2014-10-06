@@ -9,6 +9,7 @@
   <div class="body">
   	<div class="form-horizontal">
   		<div class="form-group">
+  		<br>
   			<label> Criterio </label>
   			<select class="form-control" id="comboCriterios"> 
   				<option value="porNombre">Por nombre </option>
@@ -22,15 +23,14 @@
   				<option value="todos"> Todos</option>	
   			</select>
   		</div>
-  		
   		<div id="optionSelected">
   		</div>
   		
-  		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>
-  		 		
+  		<button id="botonBuscar" type="button" class="btn btn-default">Buscar</button>		 		
  	</div>
   	
   	<div class="col-md-12" >
+  		<br>
   		<b>Resultados de la b&uacute;squeda</b> 
   		<div id="resultadoBusqueda">
   		</div>

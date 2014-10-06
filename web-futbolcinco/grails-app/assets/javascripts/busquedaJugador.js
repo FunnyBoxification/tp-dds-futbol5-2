@@ -23,7 +23,6 @@ $(document).ready(function() {
 					update : "resultadoBusqueda",
 					success : function(data) {
 						$("#resultadoBusqueda").html(data);
-						//hacer algo.. -> creo que no hace falta hacer nada, lo puse para que lo haga el controller
 					}
 				}		
 		);
