@@ -10,7 +10,6 @@ $(document).ready(function() {
 					update : "opcionSelected",
 					success : function(data) {
 						$("#optionSelected").html(data);
-						//response(data);
 					}
 				});
 	});

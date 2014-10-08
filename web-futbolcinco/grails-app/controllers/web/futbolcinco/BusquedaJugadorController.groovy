@@ -11,6 +11,8 @@ class BusquedaJugadorController {
 	
 	SociosDelSistema sociosDAO = SociosDelSistema.instance()
 	PartidosDelSistema partidosDAO = PartidosDelSistema.instance()
+	
+	//TODO: Agregar validaciones desde un js con spans con display none que se muestran si se escribe algo mal.
 
 	def index() {
 		redirect(action: "busquedaJugador", params: params)
@@ -49,6 +51,14 @@ class BusquedaJugadorController {
 		render(template:"porNombre",model:[label:"",mostrar:false])
 	}
 	
+	def porPromDesde() { 
+		render(template:"porNombre",model:[label:"Promedio desde:",mostrar:true])
+	}
+	
+	def porPromHasta() {
+		render(template:"porNombre",model:[label:"Promedio hasta:",mostrar:true])
+	}
+	
 	//terminar
 	/************************************************************************************/
 	
@@ -64,23 +74,39 @@ class BusquedaJugadorController {
 	/*************************** MODALIDADES DE BUSQUEDA *********************************/
 	def buscarporNombre(params) {
 		def nombre = params.paramBusqueda
+		if(nombre.matches())
 		def socios = sociosDAO.buscarPorNombre(nombre)
 		render ( template:"grilla", model:[socios:socios] )
 	}
 	
 	def buscarporEdad(params) {
-		def socios = sociosDAO.buscarPorEdad(new Integer(params.paramBusqueda))
-		render ( template:"grilla", model:[socios:socios])
+		try {
+			def socios = sociosDAO.buscarPorEdad(new Integer(params.paramBusqueda))
+			render ( template:"grilla", model:[socios:socios])
+		}
+		catch(NumberFormatException) {
+			render(template:"errorSpan",model:[errorMessage:"Debe ingresar un numero para la edad"])
+		}
 	}
 	
 	def buscarporHandicapDesde(params) {
-		def socios = sociosDAO.buscarPorHandicapDesde(new Integer(params.paramBusqueda))
-		render (template:"grilla", model:[socios:socios])
+		try {
+			def socios = sociosDAO.buscarPorHandicapDesde(new Integer(params.paramBusqueda))
+			render (template:"grilla", model:[socios:socios])
+		}
+		catch(NumberFormatException) {
+			render(template:"errorSpan",model:[errorMessage:"Debe ingresar un numero para el handicap"])
+		}
 	}
 	
 	def buscarporHandicapHasta(params) {
-		def socios = sociosDAO.buscarPorHandicapHasta(new Integer(params.paramBusqueda))
-		render (template:"grilla",model:[socios:socios])
+		try {
+			def socios = sociosDAO.buscarPorHandicapHasta(new Integer(params.paramBusqueda))
+			render (template:"grilla",model:[socios:socios])
+		}
+		catch(NumberFormatException) {
+			render(template:"errorSpan",model:[errorMessage:"Debe ingresar un numero para el handicap"])
+		}
 	}
 	
 	def buscarconInfracciones() {
@@ -99,11 +125,11 @@ class BusquedaJugadorController {
 	}
 	
 	def buscarporPromDesde() {
-		
+		render(template:"errorSpan",model:[errorMessage:"Funcionalidad no implementada"])
 	}
 	
 	def buscarporPromHasta() {
-		
+		render(template:"errorSpan",model:[errorMessage:"Funcionalidad no implementada"])
 	}
 	
 	/********************************************************************************************/
