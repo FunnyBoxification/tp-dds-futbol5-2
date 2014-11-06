@@ -15,14 +15,34 @@ import java.util.Calendar
 import org.eclipse.xtend.lib.Property
 import strategy.ModoDivision
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.Column
 
 @Entity 
 class Administrador {
+	
+	@Id
+	@GeneratedValue
+	@Property Long id
+	
+	@Column
 	@Property String casilla
+	
+	/******************************************************************************************
+	 * 
+	 * 					QUE MIERDA HACEMOS CON ESTO
+	 */
+	
 	@Property PartidosDelSistema homePartidos
+	
 	@Property AbstractHome<JugadorDenegado> homeJugadoresDenegados
+	
 	@Property AbstractHome<JugadorPropuesto> homeJugadoresPropuestos
+	
 	@Property AbstractHome<Socio> homeSocios
+	
+	/*********************************************************************************************** */
 	
 	new(String mail){
 		this.casilla = mail
