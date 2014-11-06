@@ -31,7 +31,7 @@ class Administrador {
 	
 	/******************************************************************************************
 	 * 
-	 * 					QUE MIERDA HACEMOS CON ESTO
+	 * 					TODO:QUE MIERDA HACEMOS CON ESTO
 	 */
 	
 	@Property PartidosDelSistema homePartidos
