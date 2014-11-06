@@ -1,6 +1,15 @@
 package futbolcinco.homes
 
+import futbolcinco.Administrador
+import futbolcinco.Calificacion
+import futbolcinco.FichaInscripcion
+import futbolcinco.Infraccion
+import futbolcinco.Partido
+import futbolcinco.Socio
 import java.util.LinkedList
+import org.hibernate.HibernateException
+import org.hibernate.SessionFactory
+import org.hibernate.cfg.AnnotationConfiguration
 
 class AbstractHome <T> {
 	private LinkedList<T> lista
@@ -8,6 +17,18 @@ class AbstractHome <T> {
 	new(){
 		lista = new LinkedList<T>
 	}
+	
+	//Ver como agregar los no socios
+	public static final SessionFactory sessionFactory = new AnnotationConfiguration()
+															.configure()
+															.addAnnotatedClass(Socio)
+															.addAnnotatedClass(Administrador)
+															.addAnnotatedClass(Partido)
+															.addAnnotatedClass(FichaInscripcion)
+															.addAnnotatedClass(Infraccion)
+															.addAnnotatedClass(Calificacion)
+															.buildSessionFactory()
+		
 	
 	def LinkedList<T> getByCriterio((T)=>boolean criterio) {
 		var listita = new LinkedList<T>
@@ -24,11 +45,35 @@ class AbstractHome <T> {
 	}
 	
 	def void agregar(T elem) {
-		lista.add(elem)
+		val session = sessionFactory.openSession
+		try {
+			session.beginTransaction
+			session.saveOrUpdate(elem)
+			session.getTransaction.commit
+		} 
+		catch (HibernateException e) {
+			session.getTransaction.rollback
+		} 
+		finally {
+			session.close
+		}
+			//lista.add(elem)
 	}
 	
 	def void sacar(T elem) {
-		lista.remove(elem)
+		val session = sessionFactory.openSession
+		try {
+			session.beginTransaction
+			session.delete(elem)
+			session.getTransaction.commit
+		} 
+		catch (HibernateException e) {
+			session.getTransaction.rollback
+		} 
+		finally {
+			session.close
+		}
+		//lista.remove(elem)
 	}
 	
 	def LinkedList<T> elements() {

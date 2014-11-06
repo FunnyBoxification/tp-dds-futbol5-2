@@ -14,19 +14,43 @@ import Exceptions.PartidoNoJugadoException
 import Exceptions.PuntuacionIncorrectaException
 import Exceptions.PartidoCerradoException
 import futbolcinco.homes.PartidosDelSistema
+import javax.persistence.Entity
+import javax.persistence.Table
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.Column
 
+@Entity
+@Table (name="Socios") 
 class Socio {
-	@Property String id
+	@Id
+	@GeneratedValue
+	@Property Long id
+	
+	@Column
 	@Property String nombre
+	
+	@Column
 	@Property Integer edad
+	
+	@Column
 	@Property String casilla
+	
 	@Property Set<Partido> inscripciones
+	
 	@Property Set<Socio> amigos
+	
 	@Property LinkedList<Infraccion> infracciones
-	@Property LinkedList<Calificacion> misCalificaciones	
+	
+	@Property LinkedList<Calificacion> misCalificaciones
+		
 	@Property HashSet<Calificacion> calificacionesHechas
+	
+	@Column
 	@Property Integer handicap
+	
 	@Property LinkedList<Partido> misPartidos
+	
 	@Property PartidosDelSistema homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
 	
 	new (String nombre,Integer anios,String mail,Administrador admin){

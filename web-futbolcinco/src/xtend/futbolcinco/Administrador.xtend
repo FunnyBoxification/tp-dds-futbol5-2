@@ -14,7 +14,9 @@ import futbolcinco.homes.SociosDelSistema
 import java.util.Calendar
 import org.eclipse.xtend.lib.Property
 import strategy.ModoDivision
+import javax.persistence.Entity
 
+@Entity 
 class Administrador {
 	@Property String casilla
 	@Property PartidosDelSistema homePartidos
