@@ -11,7 +11,9 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	def buscarPorId(String id) {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio).add(Restrictions.eq("id",id));
-		return criteria.uniqueResult  as Socio;
+		val result = criteria.uniqueResult  as Socio;
+		session.close
+		return result
 		/*
 		val criteria = [ Socio socio | socio.nombre.equals(id)]
 		return this.getByCriterio(criteria).get(0)*/
@@ -26,23 +28,52 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	}
 	
 	def LinkedList<Socio> buscarPorNombre(String nombre) {
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.eq("nombre",nombre))		
+		val result = criteria.list() as LinkedList<Socio>
+		session.close
+		return result
+		/* 
 		val criteria = [ Socio socio | socio.nombre.startsWith(nombre)]
 		return this.getByCriterio(criteria)
+		*/
 	}
 	
 	def LinkedList<Socio> buscarPorEdad(Integer edad) {
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.le("edad",edad))
+		val result = criteria.list() as LinkedList<Socio>
+		session.close
+		return result
+		/*
 		val criteria = [ Socio socio | socio.edad <= edad]
 		return this.getByCriterio(criteria)
+		*/
 	}
 	
 	def LinkedList<Socio> buscarPorHandicapDesde(Integer handicap) {
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.ge("handicap",handicap))
+		val result = criteria.list() as LinkedList<Socio>
+		session.close
+		return result
+		/*
 		val criteria = [ Socio socio | socio.handicap >= handicap]
 		return this.getByCriterio(criteria)
+		*/
 	}
 	
 	def LinkedList<Socio> buscarPorHandicapHasta(Integer handicap) {
+		
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.le("handicap",handicap))
+		val result = criteria.list() as LinkedList<Socio>
+		session.close
+		return result
+		/*
 		val criteria = [ Socio socio | socio.handicap <= handicap]
 		return this.getByCriterio(criteria)
+		*/
 	}
 	
 	def LinkedList<Socio> buscarPorPromedioLastMatchDesde(Double promedio) {
@@ -54,7 +85,15 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	}
 	
 	def LinkedList<Socio> buscarSinInfracciones() {
+		
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.isNull("infracciones")) //CHEQUEAR
+		val result = criteria.list() as LinkedList<Socio>
+		session.close
+		return result
+		/*
 		this.getByCriterio([ Socio socio | socio.infracciones.isEmpty])
+		*/
 	}
 	
 	def LinkedList<Socio> buscarConInfracciones() {
