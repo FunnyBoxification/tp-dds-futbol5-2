@@ -2,14 +2,19 @@ package futbolcinco.homes
 
 import futbolcinco.Socio
 import java.util.LinkedList
+import org.hibernate.criterion.Restrictions
 
 class SociosDelSistema extends AbstractHome<Socio> {
 	
 	private static SociosDelSistema instance
 	
 	def buscarPorId(String id) {
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.eq("id",id));
+		return criteria.uniqueResult  as Socio;
+		/*
 		val criteria = [ Socio socio | socio.nombre.equals(id)]
-		return this.getByCriterio(criteria).get(0)
+		return this.getByCriterio(criteria).get(0)*/
 	}
 	
 	def static instance() {
