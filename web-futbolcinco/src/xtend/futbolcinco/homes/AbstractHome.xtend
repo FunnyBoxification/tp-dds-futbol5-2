@@ -4,6 +4,8 @@ import futbolcinco.Administrador
 import futbolcinco.Calificacion
 import futbolcinco.FichaInscripcion
 import futbolcinco.Infraccion
+import futbolcinco.JugadorDenegado
+import futbolcinco.JugadorPropuesto
 import futbolcinco.Partido
 import futbolcinco.Socio
 import java.util.LinkedList
@@ -27,6 +29,8 @@ abstract class AbstractHome <T> {
 															.addAnnotatedClass(FichaInscripcion)
 															.addAnnotatedClass(Infraccion)
 															.addAnnotatedClass(Calificacion)
+															.addAnnotatedClass(JugadorPropuesto)
+															.addAnnotatedClass(JugadorDenegado)
 															.buildSessionFactory()
 		
 	
