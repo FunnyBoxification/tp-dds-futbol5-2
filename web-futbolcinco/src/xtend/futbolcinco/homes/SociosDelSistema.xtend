@@ -55,4 +55,13 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	def LinkedList<Socio> buscarConInfracciones() {
 		this.getByCriterio( [ Socio socio | !socio.infracciones.isEmpty])
 	}
+	
+	override elements() {
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio)
+		val result = criteria.list() as LinkedList<Socio>
+		session.close
+		return result
+	}
+	
 }

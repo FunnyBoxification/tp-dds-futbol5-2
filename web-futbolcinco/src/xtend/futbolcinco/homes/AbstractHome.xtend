@@ -11,7 +11,7 @@ import org.hibernate.HibernateException
 import org.hibernate.SessionFactory
 import org.hibernate.cfg.AnnotationConfiguration
 
-class AbstractHome <T> {
+abstract class AbstractHome <T> {
 	private LinkedList<T> lista
 		
 	new(){
@@ -76,9 +76,14 @@ class AbstractHome <T> {
 		//lista.remove(elem)
 	}
 	
-	def LinkedList<T> elements() {
-		lista
-	}
+	def LinkedList<T> elements() /*{ ---> No se puede pasar un generic a createCriteria asi que hay que sobrescribir el metodo en cada home
+	 * 									  se puede hacer que se le pueda pasar un generic pero es un re bardo asi que ni da
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(T)
+		return criteria.list() as LinkedList<T>
+		session.close
+		//lista
+	}*/
 	
 	def boolean contiene(T elem){
 		lista.contains(elem)

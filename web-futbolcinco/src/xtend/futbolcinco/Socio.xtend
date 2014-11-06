@@ -19,6 +19,10 @@ import javax.persistence.Table
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Column
+import javax.persistence.OneToMany
+import javax.persistence.CascadeType
+import javax.persistence.FetchType
+import javax.persistence.ManyToMany
 
 @Entity
 @Table (name="Socios") 
@@ -36,23 +40,41 @@ class Socio {
 	@Column
 	@Property String casilla
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //meterlo al getter no funcionan los @Property en collections
 	@Property Set<Partido> inscripciones
 	
+	//No va a funcar supositoriamente
+	@ManyToMany(fetch = FetchType.LAZY) //Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
 	@Property Set<Socio> amigos
 	
+	@OneToMany(fetch = FetchType.LAZY)
 	@Property LinkedList<Infraccion> infracciones
 	
+	//////////////////////////////////////////////////////////////////////////
+	/*
+	 * 	Estaria bueno que alguno me diga como piensan mapear esta negrada
+	 */
 	@Property LinkedList<Calificacion> misCalificaciones
 		
 	@Property HashSet<Calificacion> calificacionesHechas
 	
+	//////////////////////////////////////////////////////////////////////////
+	
 	@Column
 	@Property Integer handicap
 	
+	// Ya existia la lista de partidos!! El que lo hizo que lo cambie pls, borren y donde se use cambienla por partidos
 	@Property LinkedList<Partido> misPartidos
 	
+	
+	//what
 	@Property PartidosDelSistema homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
 	
+	
+	// Hibernate necesita un constructor vacio
+	new() {
+		
+	}
 	new (String nombre,Integer anios,String mail,Administrador admin){
 		this.nombre = nombre
 		this.edad = anios
