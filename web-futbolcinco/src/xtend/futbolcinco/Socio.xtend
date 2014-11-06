@@ -40,13 +40,14 @@ class Socio {
 	@Column
 	@Property String casilla
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //meterlo al getter no funcionan los @Property en collections
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //TODO:meterlo al getter no funcionan los @Property en collections
 	@Property Set<Partido> inscripciones
 	
 	//No va a funcar supositoriamente
-	@ManyToMany(fetch = FetchType.LAZY) //Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
+	@ManyToMany(fetch = FetchType.LAZY) //TODO:Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
 	@Property Set<Socio> amigos
 	
+	//TODO:La infraccion debe conocer al socio para poder hacer el mapeo ManyToOne, hay que corregir eso y setear el socio donde corresponda
 	@OneToMany(fetch = FetchType.LAZY)
 	@Property LinkedList<Infraccion> infracciones
 	
@@ -63,7 +64,7 @@ class Socio {
 	@Column
 	@Property Integer handicap
 	
-	// Ya existia la lista de partidos!! El que lo hizo que lo cambie pls, borren y donde se use cambienla por partidos
+	//TODO: Ya existia la lista de partidos!! El que lo hizo que lo cambie pls, borren y donde se use cambienla por partidos
 	@Property LinkedList<Partido> misPartidos
 	
 	
