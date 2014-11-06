@@ -18,6 +18,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Column
+import javax.persistence.Transient
 
 @Entity 
 class Administrador {
@@ -31,15 +32,19 @@ class Administrador {
 	
 	/******************************************************************************************
 	 * 
-	 * 					TODO:QUE MIERDA HACEMOS CON ESTO
+	 * 					
 	 */
 	
+	@Transient
 	@Property PartidosDelSistema homePartidos
 	
+	@Transient
 	@Property AbstractHome<JugadorDenegado> homeJugadoresDenegados
-	
+
+	@Transient	
 	@Property AbstractHome<JugadorPropuesto> homeJugadoresPropuestos
 	
+	@Transient
 	@Property AbstractHome<Socio> homeSocios
 	
 	/*********************************************************************************************** */

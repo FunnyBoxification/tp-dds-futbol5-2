@@ -1,23 +1,34 @@
 package futbolcinco
 
-
 import java.util.ArrayList
-import java.util.List
-import observers.ModificacionObserver
-import java.util.Set
 import java.util.HashSet
-
+import java.util.List
+import javax.persistence.Transient
+import observers.ModificacionObserver
 
 class Partido {
+	
 	@Property Integer dia
+	
 	@Property Integer hora
+	
 	@Property List<FichaInscripcion> inscriptos
+	
 	@Property Administrador admin
+	
+	@Transient
 	@Property List<ModificacionObserver> inscripcionObservers
+	
+	@Transient
 	@Property List<ModificacionObserver> desInscripcionObservers
+	
+	@Transient
 	@Property List<ModificacionObserver> remplazoObservers
+	
 	@Property HashSet<Calificacion> calificaciones
+	
 	@Property HashSet<FichaInscripcion> equipo1
+	
 	@Property HashSet<FichaInscripcion> equipo2
 	
 	new (Integer dia, Integer hora, Administrador admin) {
