@@ -3,9 +3,18 @@ package futbolcinco
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.OneToMany
+import javax.persistence.SecondaryTable
+import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
+import org.hibernate.annotations.Where
 
+@Entity 
+@Table (name="partidos")
+@SecondaryTable(name="partidos_inscripciones") //Para los equipos
 class Partido {
 	
 	@Property Integer dia
@@ -26,10 +35,19 @@ class Partido {
 	@Property List<ModificacionObserver> remplazoObservers
 	
 	@Property HashSet<Calificacion> calificaciones
-	
+	/********************************************************************/
+	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
+	@Column (table="partidos_inscripciones")
+	@OneToMany
+	@Where(clause="equipo = 1")
 	@Property HashSet<FichaInscripcion> equipo1
 	
+	@Column (table="partidos_inscripciones")
+	@OneToMany
+	@Where(clause="equipo = 2")
 	@Property HashSet<FichaInscripcion> equipo2
+	
+	/************************************************************************/
 	
 	new (Integer dia, Integer hora, Administrador admin) {
 		this.dia = dia
