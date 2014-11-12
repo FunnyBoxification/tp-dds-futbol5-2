@@ -34,6 +34,8 @@ abstract class AbstractHome <T> {
 															.buildSessionFactory()
 		
 	
+	//TODO:Cambiar los getByCriterio por su version Hibernate
+	@Deprecated 
 	def LinkedList<T> getByCriterio((T)=>boolean criterio) {
 		var listita = new LinkedList<T>
 		for(T elem : lista) {
@@ -44,6 +46,7 @@ abstract class AbstractHome <T> {
 		//lista.filter [elem | criterio.apply(elem)] // as LinkedList<T>
 	}
 	
+	@Deprecated
 	def T damePrimero((T)=>boolean criterio) {
 		lista.findFirst [elem | criterio.apply(elem)]
 	}
@@ -89,9 +92,8 @@ abstract class AbstractHome <T> {
 		//lista
 	}*/
 	
-	def boolean contiene(T elem){
-		lista.contains(elem)
-	}
+	//Search by example
+	def boolean contiene(T elem)
 	
 	def size(){
 		lista.size

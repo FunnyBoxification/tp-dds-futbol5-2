@@ -108,4 +108,14 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		return result
 	}
 	
+	override contiene(Socio socio) {
+		val session = sessionFactory.openSession
+		//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
+		val criteria = session.createCriteria(Socio).add(
+			Restrictions.eq("id",socio.id)
+		)
+		val result = criteria.uniqueResult as Socio 
+		return result != null
+	}
+	
 }
