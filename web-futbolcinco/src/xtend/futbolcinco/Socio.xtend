@@ -48,12 +48,16 @@ class Socio {
 	//No va a funcar supositoriamente
 	@ManyToMany(fetch = FetchType.LAZY) //TODO:Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
 	@JoinTable( name = "amistades", 
-		joinColumns=@JoinColumn(name="id_socio", referencedColumnName="id"),
-		inverseJoinColumns= @JoinColumn(name="id_amistad", referencedColumnName="id"))
+		joinColumns=@JoinColumn(name="id_socio"), //, referencedColumnName="id"),
+		inverseJoinColumns= @JoinColumn(name="id_amistad")) //, referencedColumnName="id"))
 	@Property Set<Socio> amigos
 	
-	/*@ManyToMany(fetch = FetchType.LAZY)
-	Set<Socio> amigoDe*/
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable( name= "amistades", 
+		joinColumns=@JoinColumn(name="id_amistad"), //, referencedColumnName="id")
+		inverseJoinColumns=@JoinColumn(name="id_socio")
+	)
+	Set<Socio> amigoDe
 	
 	//TODO:La infraccion debe conocer al socio para poder hacer el mapeo ManyToOne, hay que corregir eso y setear el socio donde corresponda
 	@OneToMany(fetch = FetchType.LAZY)

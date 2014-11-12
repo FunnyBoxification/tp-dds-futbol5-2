@@ -48,7 +48,9 @@ class Partido {
 	@Property HashSet<FichaInscripcion> equipo2
 	
 	/************************************************************************/
-	
+	new() {
+		
+	}
 	new (Integer dia, Integer hora, Administrador admin) {
 		this.dia = dia
 		this.hora = hora

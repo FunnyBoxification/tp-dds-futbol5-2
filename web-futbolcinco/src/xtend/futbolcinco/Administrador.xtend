@@ -48,7 +48,9 @@ class Administrador {
 	@Property AbstractHome<Socio> homeSocios
 	
 	/*********************************************************************************************** */
-	
+	new() {
+		
+	}
 	new(String mail){
 		this.casilla = mail
 		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
