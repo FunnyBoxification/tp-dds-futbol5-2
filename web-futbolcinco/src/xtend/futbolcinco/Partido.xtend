@@ -5,24 +5,30 @@ import java.util.HashSet
 import java.util.List
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.OneToMany
-import javax.persistence.SecondaryTable
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
-import org.hibernate.annotations.Where
 
 @Entity 
 @Table (name="partidos")
-@SecondaryTable(name="partidos_inscripciones") //Para los equipos
 class Partido {
 	
+	@Id
+	@GeneratedValue
+	@Property Long id
+	
+	@Column
 	@Property Integer dia
 	
+	@Column
 	@Property Integer hora
 	
+	@Transient
 	@Property List<FichaInscripcion> inscriptos
 	
+	@Transient
 	@Property Administrador admin
 	
 	@Transient
@@ -34,23 +40,15 @@ class Partido {
 	@Transient
 	@Property List<ModificacionObserver> remplazoObservers
 	
+	@Transient
 	@Property HashSet<Calificacion> calificaciones
-	/********************************************************************/
-	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
-	@Column (table="partidos_inscripciones")
-	@OneToMany
-	@Where(clause="equipo = 1")
+	
+	@Transient
 	@Property HashSet<FichaInscripcion> equipo1
 	
-	@Column (table="partidos_inscripciones")
-	@OneToMany
-	@Where(clause="equipo = 2")
+	@Transient
 	@Property HashSet<FichaInscripcion> equipo2
 	
-	/************************************************************************/
-	new() {
-		
-	}
 	new (Integer dia, Integer hora, Administrador admin) {
 		this.dia = dia
 		this.hora = hora

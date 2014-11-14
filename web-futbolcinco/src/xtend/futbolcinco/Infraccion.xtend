@@ -1,9 +1,9 @@
 package futbolcinco
 
-import javax.persistence.GeneratedValue
-import javax.persistence.Entity
-import javax.persistence.Id
 import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
 public class Infraccion {
@@ -22,6 +22,6 @@ public class Infraccion {
 	@Property String motivo
 	
 	new(){
-		
+
 	}
 }

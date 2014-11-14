@@ -12,15 +12,14 @@ import futbolcinco.homes.JugadoresPropuestosDelSistema
 import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
 import java.util.Calendar
-import org.eclipse.xtend.lib.Property
-import strategy.ModoDivision
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
-import javax.persistence.Column
 import javax.persistence.Transient
+import strategy.ModoDivision
 
-@Entity 
+@Entity
 class Administrador {
 	
 	@Id
@@ -30,27 +29,18 @@ class Administrador {
 	@Column
 	@Property String casilla
 	
-	/******************************************************************************************
-	 * 
-	 * 					
-	 */
-	
 	@Transient
 	@Property PartidosDelSistema homePartidos
 	
 	@Transient
 	@Property AbstractHome<JugadorDenegado> homeJugadoresDenegados
-
-	@Transient	
+	
+	@Transient
 	@Property AbstractHome<JugadorPropuesto> homeJugadoresPropuestos
 	
 	@Transient
 	@Property AbstractHome<Socio> homeSocios
 	
-	/*********************************************************************************************** */
-	new() {
-		
-	}
 	new(String mail){
 		this.casilla = mail
 		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema

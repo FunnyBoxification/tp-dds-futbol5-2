@@ -1,26 +1,34 @@
 package futbolcinco
 
+import javax.persistence.Column
+import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToOne
+import javax.persistence.Table
+import javax.persistence.Transient
 
+@Entity
+@Table (name="calificacion")
 class Calificacion {
-	
 	@Id
 	@GeneratedValue
 	@Property Long id
 	
-	//TODO:asd
-	@OneToOne (fetch=FetchType.LAZY)
+	@Transient
 	@Property Partido partido
 	
-	
+	@Transient
 	@Property Socio calificador
 	
+	@Transient
 	@Property Socio calificado
 	
+	@Column
 	@Property Integer puntaje
+	
+	@Column
 	@Property String opinion
 	
 	

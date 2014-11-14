@@ -1,32 +1,63 @@
 package futbolcinco
 
-import java.util.LinkedList
-import java.util.Set
-import java.util.HashSet
-import Exceptions.PartidoCompletoException
-import futbolcinco.JugadorPropuesto
-
-import Exceptions.NoInscriptoExceptionimport Exceptions.CalificacionRepetidaException
-import Exceptions.CalificadorNoJugoEnElPartidoException
+import Exceptions.CalificacionRepetidaException
 import Exceptions.CalificadoNoJugoEnElPartidoException
+import Exceptions.CalificadorNoJugoEnElPartidoException
+import Exceptions.NoInscriptoException
 import Exceptions.NoSePuedeCalificarASiMismoException
+import Exceptions.PartidoCerradoException
+import Exceptions.PartidoCompletoException
 import Exceptions.PartidoNoJugadoException
 import Exceptions.PuntuacionIncorrectaException
-import Exceptions.PartidoCerradoException
 import futbolcinco.homes.PartidosDelSistema
+import java.util.HashSet
+import java.util.LinkedList
+import java.util.Set
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.Table
+import javax.persistence.Transient
 
+@Entity
+@Table (name="Socios") 
 class Socio {
-	@Property String id
+	@Id
+	@GeneratedValue
+	@Property Long id
+	
+	@Column
 	@Property String nombre
+	
+	@Column
 	@Property Integer edad
+	
+	@Column
 	@Property String casilla
+	
+	@Transient
 	@Property Set<Partido> inscripciones
+	
+	@Transient
 	@Property Set<Socio> amigos
+	
+	@Transient
 	@Property LinkedList<Infraccion> infracciones
+	
+	@Transient
 	@Property LinkedList<Calificacion> misCalificaciones	
+	
+	@Transient
 	@Property HashSet<Calificacion> calificacionesHechas
+	
+	@Column
 	@Property Integer handicap
+	
+	@Transient
 	@Property LinkedList<Partido> misPartidos
+	
+	@Transient
 	@Property PartidosDelSistema homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
 	
 	new (String nombre,Integer anios,String mail,Administrador admin){
