@@ -1,21 +1,27 @@
 package futbolcinco
 
-import javax.persistence.Entity
 import javax.persistence.GeneratedValue
+import javax.persistence.Entity
 import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.Column
 
 @Entity
-@Table(name="infracciones")
-class Infraccion {
+public class Infraccion {
 	
 	@Id
 	@GeneratedValue
 	@Property Long id
 	
-	@Property Integer desde
+	@Column
+	@Property Integer desde;
 	
+	@Column
 	@Property Integer hasta
 	
+	@Column
 	@Property String motivo
+	
+	new(){
+		
+	}
 }
