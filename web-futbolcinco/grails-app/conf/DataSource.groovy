@@ -10,7 +10,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost:5432/dds_test"
+            url = "jdbc:mysql://localhost:5432/entrega9"
         }
     }
 }
