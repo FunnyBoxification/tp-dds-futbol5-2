@@ -2,6 +2,7 @@ package futbolcinco.homes
 
 import futbolcinco.Partido
 import java.util.LinkedList
+import org.hibernate.criterion.Restrictions
 
 class ClasesDePartidos extends AbstractHome<Partido>  {
 	
@@ -12,6 +13,16 @@ class ClasesDePartidos extends AbstractHome<Partido>  {
 		val result = criteria.list() as LinkedList<Partido>
 		session.close
 		return result
+	}
+	
+	override contiene(Partido partido) {
+		val session = sessionFactory.openSession
+		//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
+		val criteria = session.createCriteria(Partido).add(
+			Restrictions.eq("id",partido.id)
+		)
+		val result = criteria.uniqueResult as Partido 
+		return result != null
 	}
 	
 }

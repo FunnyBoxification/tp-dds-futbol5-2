@@ -1,6 +1,13 @@
 package futbolcinco
 
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+
 class JugadorPropuesto {
+	
+	@Id
+	@GeneratedValue
+	@Property Long id
 
 	@Property String nombre
 	@Property Integer edad

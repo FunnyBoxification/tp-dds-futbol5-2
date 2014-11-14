@@ -4,27 +4,29 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hbm2ddl.auto">update</property> <!-- acordarse de sacar los triggers -->
+		<property name="hbm2ddl.auto">create-drop</property> <!-- acordarse de sacar los triggers -->
 		<property name="hibernate.dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="hibernate.connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost/entrega8 <!-- cambiarlo por un nombre mas descriptivo -->
+			jdbc:mysql://localhost:3306/entrega8 
 		</property>
 		<property name="hibernate.connection.username">
 			root
 		</property>
-		<!-- <property name="hibernate.connection.password">
-			laura
-		</property>
-		-->
-
 		<property name="show_sql">true</property>
-
+		
+		<mapping class="futbolcinco.Administrador.java"></mapping>
+		<mapping class="futbolcinco.Socior"></mapping>
+		<mapping class="futbolcinco.Partido"></mapping>
+		<mapping class="futbolcinco.FichaInscripcion"></mapping>
+		<mapping class="futbolcinco.Infraccion"></mapping>
+		<mapping class="futbolcinco.JugadorDenegado"></mapping>
+		<mapping class="futbolcinco.JugadorPropuesto"></mapping>
+		
 	</session-factory>
 	
 </hibernate-configuration>

@@ -11,11 +11,16 @@ import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
 import org.hibernate.annotations.Where
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity 
 @Table (name="partidos")
 @SecondaryTable(name="partidos_inscripciones") //Para los equipos
 class Partido {
+	@Id
+	@GeneratedValue
+	@Property Long id
 	
 	@Property Integer dia
 	

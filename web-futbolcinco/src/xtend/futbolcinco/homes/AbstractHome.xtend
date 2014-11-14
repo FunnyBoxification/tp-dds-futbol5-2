@@ -1,17 +1,9 @@
 package futbolcinco.homes
 
-import futbolcinco.Administrador
-import futbolcinco.Calificacion
-import futbolcinco.FichaInscripcion
-import futbolcinco.Infraccion
-import futbolcinco.JugadorDenegado
-import futbolcinco.JugadorPropuesto
-import futbolcinco.Partido
-import futbolcinco.Socio
+import futbolcinco.hibernate.util.HibernateUtil
 import java.util.LinkedList
 import org.hibernate.HibernateException
 import org.hibernate.SessionFactory
-import org.hibernate.cfg.AnnotationConfiguration
 
 abstract class AbstractHome <T> {
 	private LinkedList<T> lista
@@ -20,18 +12,7 @@ abstract class AbstractHome <T> {
 		lista = new LinkedList<T>
 	}
 	
-	//Ver como agregar los no socios
-	public static final SessionFactory sessionFactory = new AnnotationConfiguration()
-															.configure()
-															.addAnnotatedClass(Socio)
-															.addAnnotatedClass(Administrador)
-															.addAnnotatedClass(Partido)
-															.addAnnotatedClass(FichaInscripcion)
-															.addAnnotatedClass(Infraccion)
-															.addAnnotatedClass(Calificacion)
-															.addAnnotatedClass(JugadorPropuesto)
-															.addAnnotatedClass(JugadorDenegado)
-															.buildSessionFactory()
+	public static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory()
 		
 	
 	//TODO:Cambiar los getByCriterio por su version Hibernate
@@ -83,14 +64,7 @@ abstract class AbstractHome <T> {
 		//lista.remove(elem)
 	}
 	
-	def LinkedList<T> elements() /*{ ---> No se puede pasar un generic a createCriteria asi que hay que sobrescribir el metodo en cada home
-	 * 									  se puede hacer que se le pueda pasar un generic pero es un re bardo asi que ni da
-		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(T)
-		return criteria.list() as LinkedList<T>
-		session.close
-		//lista
-	}*/
+	def LinkedList<T> elements() 
 	
 	//Search by example
 	def boolean contiene(T elem)
