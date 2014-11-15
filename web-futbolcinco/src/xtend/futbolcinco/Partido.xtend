@@ -30,7 +30,7 @@ class Partido {
 	@Property Integer hora
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	@Property List<FichaInscripcion> inscriptos
+	List<FichaInscripcion> inscriptos
 	
 	@ManyToOne
 	@Property Administrador admin
@@ -44,18 +44,19 @@ class Partido {
 	@Transient
 	@Property List<ModificacionObserver> remplazoObservers
 	
+	@Transient //Por ahora
 	@Property Set<Calificacion> calificaciones
 	/********************************************************************/
 	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
 	@Column (table="partidos_inscripciones")
 	@OneToMany(fetch = FetchType.LAZY)
 	@Where(clause="equipo = 1")
-	@Property Set<FichaInscripcion> equipo1
+	Set<FichaInscripcion> equipo1
 	
 	@Column (table="partidos_inscripciones")
 	@OneToMany(fetch = FetchType.LAZY)
 	@Where(clause="equipo = 2")
-	@Property Set<FichaInscripcion> equipo2
+	Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/
 	new() {
@@ -73,6 +74,30 @@ class Partido {
 		calificaciones = new HashSet<Calificacion>
 		equipo1 = new HashSet<FichaInscripcion>
 		equipo2 = new HashSet<FichaInscripcion>
+	}
+	
+	def Set<FichaInscripcion> getEquipo1() {
+		equipo1
+	}
+	
+	def void setEquipo1(Set<FichaInscripcion> equi) {
+		equipo1 = equi
+	}
+	
+	def Set<FichaInscripcion> getEquipo2() {
+		equipo1
+	}
+	
+	def void setEquipo2(Set<FichaInscripcion> equi) {
+		equipo1 = equi
+	}
+	
+	def List<FichaInscripcion> getInscriptos() {
+		return inscriptos
+	}
+	
+	def void setInscriptos(List<FichaInscripcion> lista) {
+		inscriptos = lista
 	}
 	
 	def void agregarInscripcionObserver(ModificacionObserver inscripcionObserver){

@@ -1,7 +1,8 @@
 package command
 
 import futbolcinco.FichaInscripcion
-
+import java.util.LinkedList
+import futbolcinco.Calificacion
 
 class CalificacionesUltimoPartido extends Criterio{
 
@@ -11,7 +12,7 @@ class CalificacionesUltimoPartido extends Criterio{
 		inscripcion.ponderacion = 5.5
 	} else{
 		var copiaCalificaciones = conseguirFichaUltimoPartido(inscripcion).calificaciones
-		this.ponderaSegunCalificaciones(copiaCalificaciones,copiaCalificaciones.size,inscripcion)		
+		this.ponderaSegunCalificaciones(copiaCalificaciones as LinkedList<Calificacion>,copiaCalificaciones.size,inscripcion)		
 		
 		/*
 		if(copiaCalificaciones.size == 0){
