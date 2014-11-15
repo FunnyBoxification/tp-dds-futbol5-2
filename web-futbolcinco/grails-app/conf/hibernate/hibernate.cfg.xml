@@ -4,7 +4,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hbm2ddl.auto">create-drop</property> <!-- acordarse de sacar los triggers -->
+		<property name="hbm2ddl.auto">update</property> <!-- acordarse de sacar los triggers -->
 		<property name="hibernate.dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>

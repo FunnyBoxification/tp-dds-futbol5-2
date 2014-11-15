@@ -3,16 +3,19 @@ package futbolcinco
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
+import java.util.Set
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import javax.persistence.OneToMany
 import javax.persistence.SecondaryTable
 import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
 import org.hibernate.annotations.Where
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.ManyToOne
+import javax.persistence.FetchType
 
 @Entity 
 @Table (name="partidos")
@@ -26,8 +29,10 @@ class Partido {
 	
 	@Property Integer hora
 	
+	@OneToMany(fetch = FetchType.LAZY)
 	@Property List<FichaInscripcion> inscriptos
 	
+	@ManyToOne
 	@Property Administrador admin
 	
 	@Transient
@@ -39,18 +44,18 @@ class Partido {
 	@Transient
 	@Property List<ModificacionObserver> remplazoObservers
 	
-	@Property HashSet<Calificacion> calificaciones
+	@Property Set<Calificacion> calificaciones
 	/********************************************************************/
 	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
 	@Column (table="partidos_inscripciones")
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	@Where(clause="equipo = 1")
-	@Property HashSet<FichaInscripcion> equipo1
+	@Property Set<FichaInscripcion> equipo1
 	
 	@Column (table="partidos_inscripciones")
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	@Where(clause="equipo = 2")
-	@Property HashSet<FichaInscripcion> equipo2
+	@Property Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/
 	new() {

@@ -1,13 +1,20 @@
 package futbolcinco
 
 import java.util.LinkedList
-import org.eclipse.xtend.lib.Property
+import java.util.List
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
+@Entity
 class FichaInscripcion {
+	@Id
+	@GeneratedValue
+	@Property Long id
 	@Property Socio inscripto
 	@Property ModoInscripcion modoInscripcion
 	@Property Condicion condicion
-	@Property LinkedList<Calificacion> calificaciones	
+	@Property List<Calificacion> calificaciones	
 	@Property double ponderacion
 	//@Property int handicap
 	

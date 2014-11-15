@@ -12,6 +12,7 @@ import Exceptions.PuntuacionIncorrectaException
 import futbolcinco.homes.PartidosDelSistema
 import java.util.HashSet
 import java.util.LinkedList
+import java.util.List
 import java.util.Set
 import javax.persistence.CascadeType
 import javax.persistence.Column
@@ -19,12 +20,12 @@ import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
 import javax.persistence.OneToMany
 import javax.persistence.Table
 import javax.persistence.Transient
-import javax.persistence.JoinTable
-import javax.persistence.JoinColumn
 
 @Entity
 @Table (name="Socios") 
@@ -61,7 +62,7 @@ class Socio {
 	
 	//TODO:La infraccion debe conocer al socio para poder hacer el mapeo ManyToOne, hay que corregir eso y setear el socio donde corresponda
 	@OneToMany(fetch = FetchType.LAZY)
-	@Property LinkedList<Infraccion> infracciones
+	@Property List<Infraccion> infracciones
 	
 	//////////////////////////////////////////////////////////////////////////
 	/*
