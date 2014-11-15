@@ -19,8 +19,8 @@
 		</property>
 		<property name="show_sql">true</property>
 		
-		<mapping class="futbolcinco.Administrador.java"></mapping>
-		<mapping class="futbolcinco.Socior"></mapping>
+		<mapping class="futbolcinco.Administrador"></mapping>
+		<mapping class="futbolcinco.Socio"></mapping>
 		<mapping class="futbolcinco.Partido"></mapping>
 		<mapping class="futbolcinco.FichaInscripcion"></mapping>
 		<mapping class="futbolcinco.Infraccion"></mapping>

@@ -97,7 +97,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	}
 	
 	def LinkedList<Socio> buscarConInfracciones() {
-		this.getByCriterio( [ Socio socio | !socio.infracciones.isEmpty])
+		//this.getByCriterio( [ Socio socio | !socio.infracciones.isEmpty])
 	}
 	
 	override elements() {
