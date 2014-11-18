@@ -1,7 +1,10 @@
 package futbolcinco
 
+import javax.persistence.Entity
+import javax.persistence.DiscriminatorValue
 
-
+@Entity
+@DiscriminatorValue("EST")
 class InscripcionEstandar implements ModoInscripcion {
 	
 	

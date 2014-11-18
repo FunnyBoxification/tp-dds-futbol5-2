@@ -1,7 +1,11 @@
 package futbolcinco
 
 import Exceptions.PartidoCompletoException
+import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
 
+@Entity
+@DiscriminatorValue("SOL")
 class InscripcionSolidaria implements ModoInscripcion {
 	
 	

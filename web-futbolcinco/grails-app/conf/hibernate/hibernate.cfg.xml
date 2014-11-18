@@ -26,6 +26,10 @@
 		<mapping class="futbolcinco.Infraccion"></mapping>
 		<mapping class="futbolcinco.JugadorDenegado"></mapping>
 		<mapping class="futbolcinco.JugadorPropuesto"></mapping>
+		<mapping class="futbolcinco.ModoInscriocion"/>
+		<mapping class="futbolcinco.InscripcionEstandar"/>
+		<mapping class="futbolcinco.InscripcionSolidaria"/>
+		<mapping class="futbolcinco.InscripcionCondicional"/>
 		
 	</session-factory>
 	

@@ -5,16 +5,29 @@ import java.util.List
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.ManyToOne
+import javax.persistence.Table
+import javax.persistence.Transient
 
 @Entity
+@Table(name = "inscripciones")
 class FichaInscripcion {
 	@Id
 	@GeneratedValue
 	@Property Long id
-	@Property Socio inscripto
+	
+	@ManyToOne
+	Socio inscripto
+	
+	
 	@Property ModoInscripcion modoInscripcion
+	
+	@Transient
 	@Property Condicion condicion
+	
+	@Transient //por ahora 
 	@Property List<Calificacion> calificaciones	
+	
 	@Property double ponderacion
 	//@Property int handicap
 	
@@ -30,5 +43,13 @@ class FichaInscripcion {
 		this.modoInscripcion = modo
 		this.condicion = null
 		this.calificaciones = new LinkedList<Calificacion>
+	}
+	
+	def Socio getInscripto() {
+		inscripto
+	}
+	
+	def void setInscripto(Socio socio) {
+		inscripto = socio
 	}
 }

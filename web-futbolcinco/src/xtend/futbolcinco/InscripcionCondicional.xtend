@@ -1,7 +1,11 @@
 package futbolcinco
 
 import Exceptions.PartidoCompletoException
+import javax.persistence.Entity
+import javax.persistence.DiscriminatorValue
 
+@Entity
+@DiscriminatorValue("COND")
 class InscripcionCondicional implements ModoInscripcion {
 	
 	
