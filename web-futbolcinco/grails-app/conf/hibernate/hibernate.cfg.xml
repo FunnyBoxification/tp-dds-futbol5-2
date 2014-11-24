@@ -4,7 +4,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hbm2ddl.auto">update</property> <!-- acordarse de sacar los triggers -->
+		<property name="hbm2ddl.auto">create-drop</property> <!-- acordarse de sacar los triggers -->
 		<property name="hibernate.dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
@@ -12,7 +12,7 @@
 			com.mysql.jdbc.Driver
 		</property>
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost:3306/entrega8 
+			jdbc:mysql://localhost:3306/entrega9
 		</property>
 		<property name="hibernate.connection.username">
 			root
