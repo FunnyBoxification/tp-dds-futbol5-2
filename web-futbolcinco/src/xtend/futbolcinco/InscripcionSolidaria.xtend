@@ -4,7 +4,7 @@ import Exceptions.PartidoCompletoException
 import javax.persistence.DiscriminatorValue
 
 @DiscriminatorValue("SOL")
-class InscripcionSolidaria implements ModoInscripcion {
+class InscripcionSolidaria extends ModoInscripcion {
 	
 	
 	override void inscribirA(Socio interesado, Partido partido, (Partido)=>boolean condicion) {		

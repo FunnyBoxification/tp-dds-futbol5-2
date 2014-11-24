@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue
 
 @Entity
 @DiscriminatorValue("COND")
-class InscripcionCondicional implements ModoInscripcion {
+class InscripcionCondicional extends ModoInscripcion {
 	
 	
 	

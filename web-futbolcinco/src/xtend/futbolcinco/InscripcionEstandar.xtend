@@ -5,7 +5,7 @@ import javax.persistence.DiscriminatorValue
 
 @Entity
 @DiscriminatorValue("EST")
-class InscripcionEstandar implements ModoInscripcion {
+class InscripcionEstandar extends ModoInscripcion {
 	
 	
 	override void inscribirA(Socio interesado, Partido partido, (Partido)=>boolean condicion) {		
