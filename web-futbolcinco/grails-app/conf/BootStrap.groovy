@@ -1,11 +1,14 @@
 import futbolcinco.Administrador
 import futbolcinco.Socio
 import futbolcinco.homes.SociosDelSistema
+import futbolcinco.homes.AdministradoresDelSistema
 
 class BootStrap {
 
     def init = { servletContext ->
 		def admin = new Administrador("pepe")
+		AdministradoresDelSistema.instance.agregar(admin)	
+		
 		def socioH = new Socio("martin",18,"marty@piola.com",admin)
 		def amigo = new Socio("pepe",18,"marty@piola.com",admin)
 		socioH.handicap = 9
