@@ -2,10 +2,12 @@ package futbolcinco
 
 import java.util.LinkedList
 import java.util.List
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
+import javax.persistence.OneToOne
 import javax.persistence.Table
 import javax.persistence.Transient
 
@@ -19,7 +21,7 @@ class FichaInscripcion {
 	@ManyToOne
 	Socio inscripto
 	
-	
+	@OneToOne //Es una negrada lo se
 	@Property ModoInscripcion modoInscripcion
 	
 	@Transient
@@ -28,6 +30,7 @@ class FichaInscripcion {
 	@Transient //por ahora 
 	@Property List<Calificacion> calificaciones	
 	
+	@Column
 	@Property double ponderacion
 	//@Property int handicap
 	

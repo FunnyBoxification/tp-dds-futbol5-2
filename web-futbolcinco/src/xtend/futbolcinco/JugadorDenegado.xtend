@@ -1,9 +1,7 @@
 package futbolcinco
 
 class JugadorDenegado extends JugadorPropuesto {
-	//@Property String nombre
-	//@Property Integer edad
-	//@Property String casilla
+
 	@Property String motivo
 	@Property int fecha
 

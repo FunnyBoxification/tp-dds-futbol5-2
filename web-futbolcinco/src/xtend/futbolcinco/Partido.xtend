@@ -18,8 +18,8 @@ import javax.persistence.ManyToOne
 import javax.persistence.FetchType
 
 @Entity 
-@Table (name="partidos")
-@SecondaryTable(name="partidos_inscripciones") //Para los equipos
+//@Table (name="partidos")
+//@SecondaryTable(name="partidos_inscripciones") //Para los equipos
 class Partido {
 	@Id
 	@GeneratedValue
@@ -48,14 +48,14 @@ class Partido {
 	@Property Set<Calificacion> calificaciones
 	/********************************************************************/
 	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
-	@Column (table="partidos_inscripciones")
+	@Column //(table="partidos_inscripciones")
 	@OneToMany(fetch = FetchType.LAZY)
-	@Where(clause="equipo = 1")
+	//@Where(clause="equipo = 1") -> SE SACO ESTO PORQUE VOY A DEJAR QUE HIBERNATE ME ARME LAS TABLAS Y A LA MIERDA
 	Set<FichaInscripcion> equipo1
 	
-	@Column (table="partidos_inscripciones")
+	@Column //(table="partidos_inscripciones")
 	@OneToMany(fetch = FetchType.LAZY)
-	@Where(clause="equipo = 2")
+	//@Where(clause="equipo = 2") -> IDEM EQUIPO 1
 	Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/
