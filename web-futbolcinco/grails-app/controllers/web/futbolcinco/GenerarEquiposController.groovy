@@ -15,12 +15,17 @@ import futbolcinco.FichaInscripcion
 import futbolcinco.InscripcionEstandar
 import futbolcinco.Partido
 import futbolcinco.Socio
+import futbolcinco.homes.AdministradoresDelSistema
+import futbolcinco.homes.SociosDelSistema
 
 class GenerarEquiposController {
 	
 	def static Administrador admin
 	def static Map mapaModosDivision
 	def static Map mapaCriteriosOrden
+	
+	SociosDelSistema sociosDAO = SociosDelSistema.instance
+	AdministradoresDelSistema adminsDAO = AdministradoresDelSistema.instance
 	
     def index() { 
 		redirect(action:"generarEquiposPag")
