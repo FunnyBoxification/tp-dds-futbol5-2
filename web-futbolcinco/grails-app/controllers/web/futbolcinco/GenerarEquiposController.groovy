@@ -29,7 +29,7 @@ class GenerarEquiposController {
 	
     def index() { 
 		redirect(action:"generarEquiposPag")
-		admin = new Administrador("mail@prueba.com")
+		admin = adminsDAO.instance.getByMail("admin@admin.com")
 		initEnviroment();
 	}
 	

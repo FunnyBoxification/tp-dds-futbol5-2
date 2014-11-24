@@ -8,6 +8,14 @@ class AdministradoresDelSistema extends AbstractHome<Administrador> {
 	
 	private static AdministradoresDelSistema instance
 	
+	def getByMail(String casilla) {
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Administrador).add(Restrictions.eq("casilla",casilla))
+		val result = criteria.uniqueResult
+		return result
+		
+	}
+	
 	override elements() {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Administrador)
