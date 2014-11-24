@@ -8,6 +8,14 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	private static SociosDelSistema instance
 	
+	def static instance() {
+		if(instance == null) { 
+			instance = new SociosDelSistema
+			return instance
+		}
+		else return instance
+	}
+	
 	def buscarPorId(String id) {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio).add(Restrictions.eq("id",id));
@@ -17,14 +25,6 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		/*
 		val criteria = [ Socio socio | socio.nombre.equals(id)]
 		return this.getByCriterio(criteria).get(0)*/
-	}
-	
-	def static instance() {
-		if(instance == null) { 
-			instance = new SociosDelSistema
-			return instance
-		}
-		else return instance
 	}
 	
 	def LinkedList<Socio> buscarPorNombre(String nombre) {

@@ -6,6 +6,16 @@ import org.hibernate.criterion.Restrictions
 
 class JugadoresPropuestosDelSistema extends AbstractHome<JugadorPropuesto> {
 	
+	private static JugadoresPropuestosDelSistema instance
+	
+	def static instance() {
+		if(instance == null) { 
+			instance = new JugadoresPropuestosDelSistema
+			return instance
+		}
+		else return instance
+	}
+	
 	override elements() {
 		val session = sessionFactory.openSession
 		session.beginTransaction

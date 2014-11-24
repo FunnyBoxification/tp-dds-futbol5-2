@@ -30,6 +30,8 @@ class GenerarEquiposController {
     def index() { 
 		redirect(action:"generarEquiposPag")
 		admin = adminsDAO.instance.getByMail("admin@admin.com")
+		admin.setHomeSocios(sociosDAO)
+		//falta setear mas homes para el admin
 		initEnviroment();
 	}
 	

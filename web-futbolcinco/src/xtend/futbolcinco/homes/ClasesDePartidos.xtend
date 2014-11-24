@@ -6,6 +6,16 @@ import org.hibernate.criterion.Restrictions
 
 class ClasesDePartidos extends AbstractHome<Partido>  {
 	
+	private static ClasesDePartidos instance
+	
+	def static instance() {
+		if(instance == null) { 
+			instance = new ClasesDePartidos
+			return instance
+		}
+		else return instance
+	}
+	
 	override elements() {
 		val session = sessionFactory.openSession
 		session.beginTransaction

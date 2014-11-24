@@ -8,6 +8,9 @@ class AdministradoresDelSistema extends AbstractHome<Administrador> {
 	
 	private static AdministradoresDelSistema instance
 	
+	/**
+	 * Falta que cuando obtenga el admin le setee los homes que usa
+	 */
 	def getByMail(String casilla) {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Administrador).add(Restrictions.eq("casilla",casilla))
