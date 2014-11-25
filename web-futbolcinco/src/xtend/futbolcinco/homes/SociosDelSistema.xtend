@@ -18,7 +18,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	def buscarPorId(String id) {
 		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(Socio).add(Restrictions.eq("id",id));
+		val criteria = session.createCriteria(Socio).add(Restrictions.eq("_id",id));
 		val result = criteria.uniqueResult  as Socio;
 		session.close
 		return result
@@ -29,7 +29,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	def LinkedList<Socio> buscarPorNombre(String nombre) {
 		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(Socio).add(Restrictions.eq("nombre",nombre))		
+		val criteria = session.createCriteria(Socio).add(Restrictions.eq("_nombre",nombre))		
 		val result = criteria.list() as LinkedList<Socio>
 		session.close
 		return result
@@ -41,7 +41,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	def LinkedList<Socio> buscarPorEdad(Integer edad) {
 		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(Socio).add(Restrictions.le("edad",edad))
+		val criteria = session.createCriteria(Socio).add(Restrictions.le("_edad",edad))
 		val result = criteria.list() as LinkedList<Socio>
 		session.close
 		return result
@@ -53,7 +53,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	
 	def LinkedList<Socio> buscarPorHandicapDesde(Integer handicap) {
 		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(Socio).add(Restrictions.ge("handicap",handicap))
+		val criteria = session.createCriteria(Socio).add(Restrictions.ge("_handicap",handicap))
 		val result = criteria.list() as LinkedList<Socio>
 		session.close
 		return result
@@ -66,7 +66,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 	def LinkedList<Socio> buscarPorHandicapHasta(Integer handicap) {
 		
 		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(Socio).add(Restrictions.le("handicap",handicap))
+		val criteria = session.createCriteria(Socio).add(Restrictions.le("_handicap",handicap))
 		val result = criteria.list() as LinkedList<Socio>
 		session.close
 		return result
@@ -112,7 +112,7 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		val session = sessionFactory.openSession
 		//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
 		val criteria = session.createCriteria(Socio).add(
-			Restrictions.eq("id",socio.id)
+			Restrictions.eq("_id",socio.id)
 		)
 		val result = criteria.uniqueResult as Socio 
 		return result != null

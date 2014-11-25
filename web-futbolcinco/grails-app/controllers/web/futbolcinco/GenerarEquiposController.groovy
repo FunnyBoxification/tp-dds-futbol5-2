@@ -16,6 +16,7 @@ import futbolcinco.InscripcionEstandar
 import futbolcinco.Partido
 import futbolcinco.Socio
 import futbolcinco.homes.AdministradoresDelSistema
+import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
 
 class GenerarEquiposController {
@@ -24,13 +25,15 @@ class GenerarEquiposController {
 	def static Map mapaModosDivision
 	def static Map mapaCriteriosOrden
 	
-	SociosDelSistema sociosDAO = SociosDelSistema.instance
-	AdministradoresDelSistema adminsDAO = AdministradoresDelSistema.instance
+	SociosDelSistema sociosDAO = SociosDelSistema.instance()
+	AdministradoresDelSistema adminsDAO = AdministradoresDelSistema.instance()
 	
     def index() { 
 		redirect(action:"generarEquiposPag")
-		admin = adminsDAO.instance.getByMail("admin@admin.com")
+		admin = adminsDAO.getByMail("admin@admin.com")
 		admin.setHomeSocios(sociosDAO)
+		//admin.setHomeJugadoresDenegados(JugadoresPropuestosDelSistema.instance)
+		admin.setHomePartidos(PartidosDelSistema.instance())
 		//falta setear mas homes para el admin
 		initEnviroment();
 	}

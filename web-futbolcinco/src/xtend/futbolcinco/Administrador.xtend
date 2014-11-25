@@ -56,7 +56,7 @@ class Administrador {
 		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
 		this.homeJugadoresDenegados = new JugadoresDenegadosDelSistema
 		this.homePartidos = new PartidosDelSistema
-		this.homeSocios = new SociosDelSistema
+		this.homeSocios = SociosDelSistema.instance
 	}
 	
 	def Partido organizarPartido(Integer dia, Integer hora) {

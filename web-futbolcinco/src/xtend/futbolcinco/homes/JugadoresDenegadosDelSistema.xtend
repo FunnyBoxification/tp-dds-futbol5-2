@@ -29,7 +29,7 @@ class JugadoresDenegadosDelSistema extends AbstractHome<JugadorDenegado>{
 		val session = sessionFactory.openSession
 		//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
 		val criteria = session.createCriteria(JugadorDenegado).add(
-			Restrictions.eq("id",jugador.id)
+			Restrictions.eq("_id",jugador.id)
 		)
 		val result = criteria.uniqueResult as JugadorDenegado 
 		return result != null

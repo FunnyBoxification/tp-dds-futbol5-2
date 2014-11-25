@@ -29,7 +29,7 @@ class ClasesDePartidos extends AbstractHome<Partido>  {
 		val session = sessionFactory.openSession
 		//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
 		val criteria = session.createCriteria(Partido).add(
-			Restrictions.eq("id",partido.id)
+			Restrictions.eq("_id",partido.id)
 		)
 		val result = criteria.uniqueResult as Partido 
 		return result != null
