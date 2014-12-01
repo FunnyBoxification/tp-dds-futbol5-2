@@ -74,19 +74,19 @@ class BusquedaJugadorController {
 	/*************************** MODALIDADES DE BUSQUEDA *********************************/
 	def buscarporNombre(params) {
 		def nombre = params.paramBusqueda
-		if(nombre.matches())
 		def socios = sociosDAO.buscarPorNombre(nombre)
 		render ( template:"grilla", model:[socios:socios] )
 	}
 	
 	def buscarporEdad(params) {
-		try {
-			def socios = sociosDAO.buscarPorEdad(new Integer(params.paramBusqueda))
+//		try {
+			def edad = new Integer(params.paramBusqueda)
+			def socios = sociosDAO.buscarPorEdad(edad)
 			render ( template:"grilla", model:[socios:socios])
-		}
-		catch(NumberFormatException) {
+//		}
+		/*catch(NumberFormatException) {
 			render(template:"errorSpan",model:[errorMessage:"Debe ingresar un numero para la edad"])
-		}
+		}*/
 	}
 	
 	def buscarporHandicapDesde(params) {

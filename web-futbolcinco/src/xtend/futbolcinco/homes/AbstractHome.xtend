@@ -2,6 +2,7 @@ package futbolcinco.homes
 
 import futbolcinco.hibernate.util.HibernateUtil
 import java.util.LinkedList
+import java.util.List
 import org.hibernate.HibernateException
 import org.hibernate.SessionFactory
 
@@ -17,7 +18,7 @@ abstract class AbstractHome <T> {
 	
 	//TODO:Cambiar los getByCriterio por su version Hibernate
 	@Deprecated 
-	def LinkedList<T> getByCriterio((T)=>boolean criterio) {
+	def List<T> getByCriterio((T)=>boolean criterio) {
 		var listita = new LinkedList<T>
 		for(T elem : lista) {
 			if(criterio.apply(elem))
@@ -64,7 +65,7 @@ abstract class AbstractHome <T> {
 		//lista.remove(elem)
 	}
 	
-	def LinkedList<T> elements() 
+	def List<T> elements() 
 	
 	//Search by example
 	def boolean contiene(T elem)

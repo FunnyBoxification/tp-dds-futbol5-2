@@ -3,6 +3,7 @@ package futbolcinco.homes
 import futbolcinco.Socio
 import java.util.LinkedList
 import org.hibernate.criterion.Restrictions
+import java.util.List
 
 class SociosDelSistema extends AbstractHome<Socio> {
 	
@@ -27,10 +28,10 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		return this.getByCriterio(criteria).get(0)*/
 	}
 	
-	def LinkedList<Socio> buscarPorNombre(String nombre) {
+	def List<Socio> buscarPorNombre(String nombre) {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio).add(Restrictions.eq("_nombre",nombre))		
-		val result = criteria.list() as LinkedList<Socio>
+		val result = criteria.list()
 		session.close
 		return result
 		/* 
@@ -39,10 +40,12 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		*/
 	}
 	
-	def LinkedList<Socio> buscarPorEdad(Integer edad) {
+	def List<Socio> buscarPorEdad(Integer edad) {
 		val session = sessionFactory.openSession
+//		.createAlias("_materias", "materias")
+//				.add(Restrictions.eq("materias.id", materia.id))
 		val criteria = session.createCriteria(Socio).add(Restrictions.le("_edad",edad))
-		val result = criteria.list() as LinkedList<Socio>
+		val result = criteria.list()// as LinkedList<Socio>
 		session.close
 		return result
 		/*
@@ -51,10 +54,10 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		*/
 	}
 	
-	def LinkedList<Socio> buscarPorHandicapDesde(Integer handicap) {
+	def List<Socio> buscarPorHandicapDesde(Integer handicap) {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio).add(Restrictions.ge("_handicap",handicap))
-		val result = criteria.list() as LinkedList<Socio>
+		val result = criteria.list()
 		session.close
 		return result
 		/*
@@ -63,11 +66,11 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		*/
 	}
 	
-	def LinkedList<Socio> buscarPorHandicapHasta(Integer handicap) {
+	def List<Socio> buscarPorHandicapHasta(Integer handicap) {
 		
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio).add(Restrictions.le("_handicap",handicap))
-		val result = criteria.list() as LinkedList<Socio>
+		val result = criteria.list()
 		session.close
 		return result
 		/*
@@ -84,11 +87,11 @@ class SociosDelSistema extends AbstractHome<Socio> {
 //		hacer
 	}
 	
-	def LinkedList<Socio> buscarSinInfracciones() {
+	def List<Socio> buscarSinInfracciones() {
 		
 		val session = sessionFactory.openSession
-		val criteria = session.createCriteria(Socio).add(Restrictions.isNull("infracciones")) //CHEQUEAR
-		val result = criteria.list() as LinkedList<Socio>
+		val criteria = session.createCriteria(Socio).add(Restrictions.isEmpty("_infracciones")) //CHEQUEAR
+		val result = criteria.list() 
 		session.close
 		return result
 		/*
@@ -96,14 +99,14 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		*/
 	}
 	
-	def LinkedList<Socio> buscarConInfracciones() {
+	def List<Socio> buscarConInfracciones() {
 		//this.getByCriterio( [ Socio socio | !socio.infracciones.isEmpty])
 	}
 	
 	override elements() {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio)
-		val result = criteria.list() as LinkedList<Socio>
+		val result = criteria.list() 
 		session.close
 		return result
 	}
