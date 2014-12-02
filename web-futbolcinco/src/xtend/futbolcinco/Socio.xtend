@@ -47,7 +47,7 @@ class Socio {
 	@Property Set<Partido> inscripciones
 	
 	//No va a funcar supositoriamente
-	@ManyToMany(fetch = FetchType.LAZY) //TODO:Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
+	@ManyToMany(fetch = FetchType.EAGER) //TODO:Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
 	@JoinTable( name = "amistades", 
 		joinColumns=@JoinColumn(name="id_socio"), //, referencedColumnName="id"),
 		inverseJoinColumns= @JoinColumn(name="id_amistad")) //, referencedColumnName="id"))
