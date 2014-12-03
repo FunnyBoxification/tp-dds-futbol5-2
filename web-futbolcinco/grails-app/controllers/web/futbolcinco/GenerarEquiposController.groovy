@@ -34,8 +34,7 @@ class GenerarEquiposController {
 		admin.setHomeSocios(sociosDAO)
 		//admin.setHomeJugadoresDenegados(JugadoresPropuestosDelSistema.instance)
 		admin.setHomePartidos(PartidosDelSistema.instance())
-		//falta setear mas homes para el admin
-		initEnviroment();
+	
 	}
 	
 	def generarEquiposPag() {
@@ -81,8 +80,8 @@ class GenerarEquiposController {
 		admin._homePartidos.getPartidosArmandose().elements().get(0)
 	} 
 	
-	private initEnviroment(){
-		def partidito = admin.organizarPartido(10082014, 1830)
+	/*private initEnviroment(){
+	//	def partidito = admin.organizarPartido(10082014, 1830)
 		def modoEstandar = new InscripcionEstandar()
 		def i = 0 
     	while(i<10){
@@ -91,7 +90,7 @@ class GenerarEquiposController {
 			s.handicap = i 
     		s.inscribirseA(partidito,modoEstandar)
 			
-    	}
+    	}*/
 		
 		mapaModosDivision = new HashMap<String, ModoDivision>()
 		mapaModosDivision.put("Par/Impar", new DivisionParImpar())
