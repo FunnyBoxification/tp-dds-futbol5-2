@@ -4,7 +4,7 @@ import futbolcinco.Administrador
 import java.util.LinkedList
 import org.hibernate.criterion.Restrictions
 
-class AdministradoresDelSistema extends AbstractHome<Administrador> {
+class AdministradoresDelSistema extends AbstractHomeSQL<Administrador> {
 	
 	private static AdministradoresDelSistema instance
 	

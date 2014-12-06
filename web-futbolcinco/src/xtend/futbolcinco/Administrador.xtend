@@ -6,7 +6,6 @@ import Exceptions.PartidoNoListoException
 import Exceptions.PropuestoNoEncontradoException
 import Exceptions.SocioInexistenteException
 import command.Criterio
-import futbolcinco.homes.AbstractHome
 import futbolcinco.homes.JugadoresDenegadosDelSistema
 import futbolcinco.homes.JugadoresPropuestosDelSistema
 import futbolcinco.homes.PartidosDelSistema
@@ -19,6 +18,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Column
 import javax.persistence.Transient
+import futbolcinco.homes.AbstractHomeSQL
 
 @Entity 
 class Administrador {
@@ -39,13 +39,13 @@ class Administrador {
 	@Property PartidosDelSistema homePartidos
 	
 	@Transient
-	@Property AbstractHome<JugadorDenegado> homeJugadoresDenegados
+	@Property AbstractHomeSQL<JugadorDenegado> homeJugadoresDenegados
 
 	@Transient	
-	@Property AbstractHome<JugadorPropuesto> homeJugadoresPropuestos
+	@Property AbstractHomeSQL<JugadorPropuesto> homeJugadoresPropuestos
 	
 	@Transient
-	@Property AbstractHome<Socio> homeSocios
+	@Property AbstractHomeSQL<Socio> homeSocios
 	
 	/*********************************************************************************************** */
 	new() {

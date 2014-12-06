@@ -92,15 +92,15 @@ class GenerarEquiposController {
 			
     	}*/
 		
-		mapaModosDivision = new HashMap<String, ModoDivision>()
-		mapaModosDivision.put("Par/Impar", new DivisionParImpar())
-		mapaModosDivision.put("1,4,5,8,9", new DivisionEspecifica())
-		
-		mapaCriteriosOrden = new HashMap<String, Criterio>()
-		mapaCriteriosOrden.put("Handicap", new CriterioPorHandicap() )
-		mapaCriteriosOrden.put("Promedio calificaciones ultimo partido", new CalificacionesUltimoPartido())
-		mapaCriteriosOrden.put("Criterio Mixto", new CriterioMix())
-		mapaCriteriosOrden.put("Promedio calificaciones ultimos n partidos", new UltimasCalificaciones())
-	}
+//		mapaModosDivision = new HashMap<String, ModoDivision>()
+//		mapaModosDivision.put("Par/Impar", new DivisionParImpar())
+//		mapaModosDivision.put("1,4,5,8,9", new DivisionEspecifica())
+//		
+//		mapaCriteriosOrden = new HashMap<String, Criterio>()
+//		mapaCriteriosOrden.put("Handicap", new CriterioPorHandicap() )
+//		mapaCriteriosOrden.put("Promedio calificaciones ultimo partido", new CalificacionesUltimoPartido())
+//		mapaCriteriosOrden.put("Criterio Mixto", new CriterioMix())
+//		mapaCriteriosOrden.put("Promedio calificaciones ultimos n partidos", new UltimasCalificaciones())
+//	}
 	
 }

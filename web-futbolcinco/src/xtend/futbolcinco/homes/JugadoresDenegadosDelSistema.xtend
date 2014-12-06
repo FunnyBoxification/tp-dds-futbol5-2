@@ -4,7 +4,7 @@ import futbolcinco.JugadorDenegado
 import java.util.LinkedList
 import org.hibernate.criterion.Restrictions
 
-class JugadoresDenegadosDelSistema extends AbstractHome<JugadorDenegado>{
+class JugadoresDenegadosDelSistema extends AbstractHomeSQL<JugadorDenegado>{
 	
 	private static JugadoresDenegadosDelSistema instance
 	

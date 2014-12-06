@@ -5,7 +5,7 @@ import java.util.LinkedList
 import org.hibernate.criterion.Restrictions
 import java.util.List
 
-class SociosDelSistema extends AbstractHome<Socio> {
+class SociosDelSistema extends AbstractHomeSQL<Socio> {
 	
 	private static SociosDelSistema instance
 	
@@ -17,7 +17,8 @@ class SociosDelSistema extends AbstractHome<Socio> {
 		else return instance
 	}
 	
-	def buscarPorId(String id) {
+	def buscarPorId(String idStr) {
+		val id = new Long(idStr)
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(Socio).add(Restrictions.eq("_id",id));
 		val result = criteria.uniqueResult  as Socio;

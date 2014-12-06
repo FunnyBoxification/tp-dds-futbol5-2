@@ -4,7 +4,7 @@ import futbolcinco.Partido
 import java.util.LinkedList
 import org.hibernate.criterion.Restrictions
 
-class ClasesDePartidos extends AbstractHome<Partido>  {
+class ClasesDePartidos extends AbstractHomeSQL<Partido>  {
 	
 	private static ClasesDePartidos instance
 	
