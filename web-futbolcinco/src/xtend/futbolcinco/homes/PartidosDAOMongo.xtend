@@ -2,6 +2,7 @@ package futbolcinco.homes
 
 import com.mongodb.BasicDBObject
 import futbolcinco.Partido
+import java.util.ArrayList
 
 class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 	
@@ -17,11 +18,26 @@ class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 	}
 	
 	override contiene(Partido partido) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		val partidosCollection = db.getCollection("partidos")
+		var partidoDocument = new BasicDBObject()
+		partidoDocument.put("dia",partido.dia)
+		partidoDocument.put("hora",partido.hora)
+		partidoDocument.put("admin",partido.admin)
+		var partidoD =  partidosCollection.findOne(partidoDocument)
+		partidoD != null
 	}
 	
 	override elements() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		val partidosCollection = db.getCollection("partidos")
+		var cursor = partidosCollection.find()
+		var lista = new ArrayList<Partido>
+		while(cursor.hasNext()) {
+			val partidoDoc = cursor.next()
+			//TODO:Agregar fields
+			lista.add(new Partido())
+		}
+		lista
+		
 	}
 	
 	override sacar(Partido partido) {
