@@ -5,7 +5,7 @@ import com.mongodb.Mongo
 
 abstract class AbstractHomeMongo<T> implements AbstractHome<T> {
 	
-	DB db
+	protected DB db
 	
 	new() {
 		val mongo = new Mongo("localhost", 27017)

@@ -1,14 +1,15 @@
 package futbolcinco.homes
 
 import com.mongodb.BasicDBObject
-import com.mongodb.DB
 import futbolcinco.Administrador
 import futbolcinco.Socio
 import java.util.ArrayList
 
 class SociosDAOMongo extends AbstractHomeMongo<Socio> {
-	DB db
 	
+	new() {
+		super()
+	}
 	override agregar(Socio elem) {
 		val collectionSocios = db.getCollection("socios")
 		var socioDocument = new BasicDBObject()
