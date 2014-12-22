@@ -41,7 +41,12 @@ class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 	}
 	
 	override sacar(Partido partido) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		val collectionPartidos = db.getCollection("socios")
+		var partidoDocument = new BasicDBObject()
+		partidoDocument.put("nombre",partido.dia)
+		partidoDocument.put("edad",partido.hora)
+		partidoDocument.put("casilla",partido.admin)
+		collectionPartidos.findAndRemove(partidoDocument)
 	}
 	
 }
