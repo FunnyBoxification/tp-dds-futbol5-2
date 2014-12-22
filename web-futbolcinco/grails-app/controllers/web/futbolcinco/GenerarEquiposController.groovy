@@ -38,6 +38,10 @@ class GenerarEquiposController {
 	}
 	
 	def generarEquiposPag() {
+		admin = adminsDAO.getByMail("admin@admin.com")
+		admin.setHomeSocios(sociosDAO)
+		//admin.setHomeJugadoresDenegados(JugadoresPropuestosDelSistema.instance)
+		admin.setHomePartidos(PartidosDelSistema.instance())
 		Partido p = conseguirPartidoEnHome()
 		[partido:p]
 	}

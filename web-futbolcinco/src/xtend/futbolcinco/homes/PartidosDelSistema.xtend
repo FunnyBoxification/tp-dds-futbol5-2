@@ -1,7 +1,7 @@
 package futbolcinco.homes
 
 
-
+//TODO: Cuando se use mmongo hay que usar el otro home no el ClasesDePartidos
 class PartidosDelSistema {
 	@Property ClasesDePartidos partidosJugados
 	@Property ClasesDePartidos partidosListosParaJugar 

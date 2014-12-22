@@ -20,7 +20,7 @@ class ClasesDePartidos extends AbstractHomeSQL<Partido>  {
 		val session = sessionFactory.openSession
 		session.beginTransaction
 		val criteria = session.createCriteria(Partido)
-		val result = criteria.list() as LinkedList<Partido>
+		val result = criteria.list() //as LinkedList<Partido>
 		session.close
 		return result
 	}

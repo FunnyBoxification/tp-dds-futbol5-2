@@ -24,6 +24,8 @@ class BootStrap {
 		SociosDelSistema.instance().agregar(new Socio("marsdfstin",18,"marty@piola.com",administrador))
 		SociosDelSistema.instance().agregar(new Socio("martidfn",18,"marty@piola.com",administrador))
 		SociosDelSistema.instance().agregar(new Socio("martin1234",18,"marty@piola.com",administrador))
+		
+		def partidito = administrador.organizarPartido(10082014, 1830)
     }
     def destroy = {
     }
