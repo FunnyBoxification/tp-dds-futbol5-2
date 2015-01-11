@@ -4,7 +4,7 @@ import com.mongodb.BasicDBObject
 import futbolcinco.Partido
 import java.util.ArrayList
 
-class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
+class PartidosDAOMongo extends AbstractHomeMongo<Partido> implements ClasesDePartidos {
 	
 	override agregar(Partido partido) {
 		val partidosCollection = db.getCollection("partidos")
@@ -49,6 +49,10 @@ class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 		partidoDocument.put("edad",partido.hora)
 		partidoDocument.put("casilla",partido.admin)
 		collectionPartidos.findAndRemove(partidoDocument)
+	}
+
+	override size() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }

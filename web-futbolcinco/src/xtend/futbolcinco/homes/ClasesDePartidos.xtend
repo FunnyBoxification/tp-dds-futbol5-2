@@ -12,7 +12,7 @@ interface ClasesDePartidos {
 	def List<Partido> elements() 
 	
 	//Search by example
-	def boolean contiene(T elem)
+	def boolean contiene(Partido elem)
 	
 	def int size()
 	

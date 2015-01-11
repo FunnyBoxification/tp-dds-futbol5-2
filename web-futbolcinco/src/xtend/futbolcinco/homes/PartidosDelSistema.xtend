@@ -1,6 +1,5 @@
 package futbolcinco.homes
 
-
 //TODO: Cuando se use mmongo hay que usar el otro home no el ClasesDePartidos
 class PartidosDelSistema {
 	@Property ClasesDePartidos partidosJugados
@@ -9,15 +8,27 @@ class PartidosDelSistema {
 	
 	private static PartidosDelSistema instance
 	
-	new(){//puse public
-		partidosJugados = new ClasesDePartidosSQL
-		partidosListosParaJugar = new ClasesDePartidosSQL
-		partidosArmandose = new ClasesDePartidosSQL
+	new(boolean mongo){//puse public
+		if(!mongo)
+		{
+			partidosJugados = new ClasesDePartidosSQL
+			partidosListosParaJugar = new ClasesDePartidosSQL
+			partidosArmandose = new ClasesDePartidosSQL
+		}
+		else {
+			partidosJugados = new PartidosDAOMongo
+			partidosListosParaJugar = new PartidosDAOMongo
+			partidosArmandose = new PartidosDAOMongo
+		}
 	}
 	
-	def static instance() {
+	new() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	def static instance(boolean mongo) {
 		if(instance == null) 
-			return new PartidosDelSistema
+			return new PartidosDelSistema(mongo)
 		else return instance
 	}
 }
