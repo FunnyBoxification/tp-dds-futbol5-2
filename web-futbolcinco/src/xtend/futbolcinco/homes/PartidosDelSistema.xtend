@@ -31,4 +31,9 @@ class PartidosDelSistema {
 			return new PartidosDelSistema(mongo)
 		else return instance
 	}
+	
+	def static instance() {
+		if(instance != null)
+			instance
+	}
 }

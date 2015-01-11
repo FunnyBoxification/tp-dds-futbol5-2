@@ -55,7 +55,7 @@ class Administrador {
 		this.casilla = mail
 		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
 		this.homeJugadoresDenegados = new JugadoresDenegadosDelSistema
-		this.homePartidos = new PartidosDelSistema
+		this.homePartidos = PartidosDelSistema.instance
 		this.homeSocios = SociosDelSistema.instance
 	}
 	
