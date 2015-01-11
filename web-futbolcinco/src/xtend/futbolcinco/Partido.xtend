@@ -29,7 +29,7 @@ class Partido {
 	
 	@Property Integer hora
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	List<FichaInscripcion> inscriptos
 	
 	@ManyToOne

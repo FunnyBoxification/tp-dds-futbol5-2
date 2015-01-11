@@ -35,7 +35,8 @@ class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 		var lista = new ArrayList<Socio>
 		while(cursor.hasNext()) {
 			val jugadorDoc = cursor.next()
-			//TODO:Falta agregar el admin cuando se agrega un socio!!
+			//TODO:Esta mal, el admin no se guarda en el socio, sino que 
+			// uso el admin del sistema para guarda el home de partidos, cualquiera!!
 			lista.add(new Socio(jugadorDoc.get("nombre") as String, 
 				jugadorDoc.get("edad") as Integer, jugadorDoc.get("casilla") as String,
 				jugadorDoc.get("admin") as Administrador))

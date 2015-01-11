@@ -10,9 +10,9 @@ class PartidosDelSistema {
 	private static PartidosDelSistema instance
 	
 	new(){//puse public
-		partidosJugados = new ClasesDePartidos
-		partidosListosParaJugar = new ClasesDePartidos
-		partidosArmandose = new ClasesDePartidos
+		partidosJugados = new ClasesDePartidosSQL
+		partidosListosParaJugar = new ClasesDePartidosSQL
+		partidosArmandose = new ClasesDePartidosSQL
 	}
 	
 	def static instance() {

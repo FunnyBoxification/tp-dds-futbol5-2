@@ -1,38 +1,19 @@
 package futbolcinco.homes
 
 import futbolcinco.Partido
-import java.util.LinkedList
-import org.hibernate.criterion.Restrictions
+import java.util.List
 
-class ClasesDePartidos extends AbstractHomeSQL<Partido>  {
+interface ClasesDePartidos {
 	
-	private static ClasesDePartidos instance
+	def void agregar(Partido elem)
 	
-	def static instance() {
-		if(instance == null) { 
-			instance = new ClasesDePartidos
-			return instance
-		}
-		else return instance
-	}
+	def void sacar(Partido elem)
 	
-	override elements() {
-		val session = sessionFactory.openSession
-		session.beginTransaction
-		val criteria = session.createCriteria(Partido)
-		val result = criteria.list() //as LinkedList<Partido>
-		session.close
-		return result
-	}
+	def List<Partido> elements() 
 	
-	override contiene(Partido partido) {
-		val session = sessionFactory.openSession
-		//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
-		val criteria = session.createCriteria(Partido).add(
-			Restrictions.eq("_id",partido.id)
-		)
-		val result = criteria.uniqueResult as Partido 
-		return result != null
-	}
+	//Search by example
+	def boolean contiene(T elem)
+	
+	def int size()
 	
 }
