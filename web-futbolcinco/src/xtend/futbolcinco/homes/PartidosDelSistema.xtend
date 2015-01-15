@@ -22,9 +22,9 @@ class PartidosDelSistema {
 		}
 	}
 	
-	new() {
+	/*new() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+	}*/
 	
 	def static instance(boolean mongo) {
 		if(instance == null) 

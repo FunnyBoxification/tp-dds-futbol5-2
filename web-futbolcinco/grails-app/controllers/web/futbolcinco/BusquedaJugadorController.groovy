@@ -10,7 +10,9 @@ import grails.converters.JSON
 class BusquedaJugadorController {
 	
 	SociosDelSistema sociosDAO = SociosDelSistema.instance()
-	PartidosDelSistema partidosDAO = PartidosDelSistema.instance()
+	//TODO: Agregar los DAOS con MongoDB
+	// false => SQL , TRUE => MONGODB
+	PartidosDelSistema partidosDAO = PartidosDelSistema.instance(false)
 	
 	//TODO: Agregar validaciones desde un js con spans con display none que se muestran si se escribe algo mal.
 

@@ -27,6 +27,9 @@ class GenerarEquiposController {
 	
 	SociosDelSistema sociosDAO = SociosDelSistema.instance()
 	AdministradoresDelSistema adminsDAO = AdministradoresDelSistema.instance()
+	//TODO: Agregar los DAOS con MongoDB
+	// false => SQL , TRUE => MONGODB
+	PartidosDelSistema partidosDAO = PartidosDelSistema.instance(false)
 	
     def index() { 
 		redirect(action:"generarEquiposPag")
@@ -90,7 +93,14 @@ class GenerarEquiposController {
 	}
 	
 	private Partido conseguirPartidoEnHome(){
-		admin._homePartidos.getPartidosArmandose().elements().get(0)
+		if(admin == null) {
+			System.out.println("admin null")
+		}
+		if(admin.homePartidos == null) {
+			System.out.println("home partidos null")
+		}
+		partidosDAO.getPartidosArmandose().elements().get(0)
+		//admin.homePartidos.getPartidosArmandose().elements().get(0)
 	} 
 	
 	/*private initEnviroment(){
