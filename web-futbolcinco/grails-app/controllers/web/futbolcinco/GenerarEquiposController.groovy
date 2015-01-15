@@ -36,7 +36,7 @@ class GenerarEquiposController {
 		admin = adminsDAO.getByMail("admin@admin.com")
 		admin.setHomeSocios(sociosDAO)
 		//admin.setHomeJugadoresDenegados(JugadoresPropuestosDelSistema.instance)
-		admin.setHomePartidos(PartidosDelSistema.instance())
+//		admin.setHomePartidos(PartidosDelSistema.instance())
 	
 	}
 	
@@ -44,7 +44,7 @@ class GenerarEquiposController {
 		admin = adminsDAO.getByMail("admin@admin.com")
 		admin.setHomeSocios(sociosDAO)
 		//admin.setHomeJugadoresDenegados(JugadoresPropuestosDelSistema.instance)
-		admin.setHomePartidos(PartidosDelSistema.instance())
+		admin.setHomePartidos(PartidosDelSistema.instance(false))
 		Partido p = conseguirPartidoEnHome()
 		[partido:p]
 	}

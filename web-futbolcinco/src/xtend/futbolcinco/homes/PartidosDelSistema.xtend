@@ -9,17 +9,17 @@ class PartidosDelSistema {
 	private static PartidosDelSistema instance
 	
 	new(boolean mongo){//puse public
-		if(!mongo)
-		{
-			partidosJugados = new ClasesDePartidosSQL
-			partidosListosParaJugar = new ClasesDePartidosSQL
-			partidosArmandose = new ClasesDePartidosSQL
-		}
-		else {
-			partidosJugados = new PartidosDAOMongo
-			partidosListosParaJugar = new PartidosDAOMongo
-			partidosArmandose = new PartidosDAOMongo
-		}
+			if(!mongo)
+			{
+				partidosJugados = new ClasesDePartidosSQL
+				partidosListosParaJugar = new ClasesDePartidosSQL
+				partidosArmandose = new ClasesDePartidosSQL
+			}
+			else {
+				partidosJugados = new PartidosDAOMongo
+				partidosListosParaJugar = new PartidosDAOMongo
+				partidosArmandose = new PartidosDAOMongo
+			}
 	}
 	
 	/*new() {
