@@ -3,6 +3,7 @@ import futbolcinco.InscripcionEstandar
 import futbolcinco.ModoInscripcion
 import futbolcinco.Socio
 import futbolcinco.homes.AdministradoresDelSistema
+import futbolcinco.homes.ModoInscripcionHomeSQL
 import futbolcinco.homes.SociosDelSistema
 
 class BootStrap {
@@ -11,7 +12,9 @@ class BootStrap {
 		
 		Administrador administrador = new Administrador("admin@admin.com")
 		AdministradoresDelSistema.instance().agregarOActualizar(administrador)	
+		
 		ModoInscripcion modoEstandar = new InscripcionEstandar()
+		ModoInscripcionHomeSQL.instance().agregarOActualizar(modoEstandar)
 		
 		def socioH = new Socio("martin",18,"marty@piola.com",administrador)
 		def amigo = new Socio("pepe",18,"marty@piola.com",administrador)

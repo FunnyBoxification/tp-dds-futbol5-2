@@ -1,6 +1,7 @@
 package futbolcinco.homes
 
 import futbolcinco.ModoInscripcion
+import org.hibernate.criterion.Restrictions
 
 class ModoInscripcionHomeSQL extends AbstractHomeSQL<ModoInscripcion> {
 	
@@ -14,11 +15,21 @@ class ModoInscripcionHomeSQL extends AbstractHomeSQL<ModoInscripcion> {
 	}
 		
 		override elements() {
-			throw new UnsupportedOperationException("TODO: auto-generated method stub")
+			val session = sessionFactory.openSession
+		val criteria = session.createCriteria(ModoInscripcion)
+		val result = criteria.list() 
+		session.close
+		return result
 		}
 		
 		override contiene(ModoInscripcion elem) {
-			throw new UnsupportedOperationException("TODO: auto-generated method stub")
+			val session = sessionFactory.openSession
+			//Con buscar solo por id creo que es suficiente, no creo que haya que hacer un search by example muy profundo...
+			val criteria = session.createCriteria(ModoInscripcion).add(
+				Restrictions.eq("_id",elem.id)
+			)
+			val result = criteria.uniqueResult as ModoInscripcion 
+			return result != null
 		}
 	
 }
