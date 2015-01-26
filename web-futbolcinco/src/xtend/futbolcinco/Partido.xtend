@@ -46,13 +46,11 @@ class Partido {
 	@Transient //Por ahora
 	@Property Set<Calificacion> calificaciones
 	/********************************************************************/
-	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
-	@Column //(table="partidos_inscripciones")
-	@OneToMany(fetch = FetchType.EAGER)
+
+	@OneToMany(fetch = FetchType.LAZY)
 	Set<FichaInscripcion> equipo1
 	
-	@Column //(table="partidos_inscripciones")
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.LAZY)
 	Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/
