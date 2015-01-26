@@ -35,4 +35,5 @@ class ClasesDePartidosSQL extends AbstractHomeSQL<Partido> implements ClasesDePa
 		return result != null
 	}
 	
+	
 }

@@ -5,8 +5,16 @@ import futbolcinco.Partido
 import java.util.ArrayList
 
 class PartidosDAOMongo extends AbstractHomeMongo<Partido> implements ClasesDePartidos {
+	static PartidosDAOMongo instance
 	
-	override agregar(Partido partido) {
+	def static instance() {
+		if(instance == null) {
+			return new PartidosDAOMongo
+		}
+		else return instance
+	}
+	
+	override agregarOActualizar(Partido partido) {
 		val partidosCollection = db.getCollection("partidos")
 		var partidoDocument = new BasicDBObject()
 		partidoDocument.put("dia",partido.dia)

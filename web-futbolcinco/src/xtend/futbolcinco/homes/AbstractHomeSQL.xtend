@@ -33,7 +33,7 @@ abstract class AbstractHomeSQL <T> implements AbstractHome<T>{
 		lista.findFirst [elem | criterio.apply(elem)]
 	}
 	
-	override void agregar(T elem) {
+	override void agregarOActualizar(T elem) {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction

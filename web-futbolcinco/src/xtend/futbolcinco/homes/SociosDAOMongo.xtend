@@ -10,7 +10,7 @@ class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 	new() {
 		super()
 	}
-	override agregar(Socio elem) {
+	override agregarOActualizar(Socio elem) {
 		val collectionSocios = db.getCollection("socios")
 		var socioDocument = new BasicDBObject()
 		socioDocument.put("nombre",elem.nombre)

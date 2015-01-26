@@ -9,7 +9,7 @@ class AdministradoresDAOMongo extends AbstractHomeMongo<Administrador> {
 	new() {
 		super()
 	}
-	override agregar(Administrador elem) {
+	override agregarOActualizar(Administrador elem) {
 		val collectionAdmins = db.getCollection("admins")
 		var adminDocument = new BasicDBObject()
 		adminDocument.put("casilla",elem.casilla)

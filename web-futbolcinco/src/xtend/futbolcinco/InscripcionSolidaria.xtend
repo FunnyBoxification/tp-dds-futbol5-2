@@ -17,11 +17,11 @@ class InscripcionSolidaria extends ModoInscripcion {
 				partido.getInscriptos.remove(condicional)
 			}
 		
-			partido.getInscriptos.add(new FichaInscripcion(interesado,this,null))
+			partido.getInscriptos.add(new FichaInscripcion(interesado,this,null,partido))
 			partido.notificaInscripto(interesado)
 		}
 		else if(partido.getInscriptos.size < 10) { 
-			partido.getInscriptos.add(new FichaInscripcion(interesado,this,null))
+			partido.getInscriptos.add(new FichaInscripcion(interesado,this,null,partido))
 			partido.notificaInscripto(interesado)
 			
 		}

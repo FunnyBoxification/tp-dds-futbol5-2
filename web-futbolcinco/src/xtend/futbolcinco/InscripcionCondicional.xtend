@@ -19,7 +19,7 @@ class InscripcionCondicional extends ModoInscripcion {
 			//	throw new PartidoNoCumpleCondicionException
 			//}    Se saca por ahora
 		
-			partido.getInscriptos.add(new FichaInscripcion(interesado,this, new Condicion(condicion)))
+			partido.getInscriptos.add(new FichaInscripcion(interesado,this, new Condicion(condicion), partido))
 			partido.notificaInscripto(interesado)
 		}
 		else {

@@ -4,21 +4,20 @@ import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
 import java.util.Set
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
-import javax.persistence.SecondaryTable
 import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
-import org.hibernate.annotations.Where
-import javax.persistence.ManyToOne
-import javax.persistence.FetchType
 
 @Entity 
-//@Table (name="partidos")
+@Table (name="partidos")
 //@SecondaryTable(name="partidos_inscripciones") //Para los equipos
 class Partido {
 	@Id
@@ -29,7 +28,7 @@ class Partido {
 	
 	@Property Integer hora
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	List<FichaInscripcion> inscriptos
 	
 	@ManyToOne
@@ -49,13 +48,11 @@ class Partido {
 	/********************************************************************/
 	//					Fijarse como armar las annotations para que tome cada equipo correspondiente dependiendo su nro de equipo en la tabla
 	@Column //(table="partidos_inscripciones")
-	@OneToMany(fetch = FetchType.LAZY)
-	//@Where(clause="equipo = 1") -> SE SACO ESTO PORQUE VOY A DEJAR QUE HIBERNATE ME ARME LAS TABLAS Y A LA MIERDA
+	@OneToMany(fetch = FetchType.EAGER)
 	Set<FichaInscripcion> equipo1
 	
 	@Column //(table="partidos_inscripciones")
-	@OneToMany(fetch = FetchType.LAZY)
-	//@Where(clause="equipo = 2") -> IDEM EQUIPO 1
+	@OneToMany(fetch = FetchType.EAGER)
 	Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/

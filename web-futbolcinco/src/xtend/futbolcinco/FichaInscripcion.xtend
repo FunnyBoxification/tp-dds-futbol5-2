@@ -24,6 +24,9 @@ class FichaInscripcion {
 	@OneToOne //Es una negrada lo se
 	@Property ModoInscripcion modoInscripcion
 	
+	@ManyToOne 
+	@Property Partido partido
+	
 	@Transient
 	@Property Condicion condicion
 	
@@ -34,12 +37,13 @@ class FichaInscripcion {
 	@Property double ponderacion
 	//@Property int handicap
 	
-	new(Socio jugador, ModoInscripcion modo, Condicion condicion){
+	new(Socio jugador, ModoInscripcion modo, Condicion condicion, Partido partido){
 		this.inscripto = jugador
 		this.modoInscripcion = modo
 		this.condicion = condicion
 		this.calificaciones = new LinkedList<Calificacion>
 		this.ponderacion = 5.5
+		this.partido = partido
 	}
 	new(Socio jugador, ModoInscripcion modo){
 		this.inscripto = jugador

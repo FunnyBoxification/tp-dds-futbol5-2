@@ -144,7 +144,7 @@ class Socio {
 		if(!homePartidos.partidosArmandose.contiene(partido)){
 			throw new PartidoCerradoException
 		}
-		var ficha = new FichaInscripcion(remplazo,modoInscripcion,null)
+		var ficha = new FichaInscripcion(remplazo,modoInscripcion,null,partido)
 		partido.remplazame(this,ficha)
 	}
 	
@@ -161,7 +161,7 @@ class Socio {
 	/////////AñadirGente//////////////
 	def void proponerAmigo(String nombre,Integer anios,String mail, Administrador admin){
 		var amigo = new JugadorPropuesto(nombre,anios,mail)
-		admin.homeJugadoresPropuestos.agregar(amigo)
+		admin.homeJugadoresPropuestos.agregarOActualizar(amigo)
 	}
 	
 	

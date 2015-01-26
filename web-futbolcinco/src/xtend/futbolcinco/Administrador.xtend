@@ -61,7 +61,7 @@ class Administrador {
 	
 	def Partido organizarPartido(Integer dia, Integer hora) {
 		var part = new Partido(dia,hora,this)
-		homePartidos.partidosArmandose.agregar(part)
+		homePartidos.partidosArmandose.agregarOActualizar(part)
 		return part
 	}
 	
@@ -71,7 +71,7 @@ class Administrador {
  		if(homeJugadoresPropuestos.contiene(jugador)) {
  			 		var socio = new Socio(jugador.nombre, jugador.edad, jugador.casilla, this)
  			 		homeJugadoresPropuestos.sacar(jugador)
- 					homeSocios.agregar(socio)
+ 					homeSocios.agregarOActualizar(socio)
  					return socio
  			
  		}
@@ -82,7 +82,7 @@ class Administrador {
  		if(homeJugadoresPropuestos.contiene(jugador)) {
  			val fecha = Calendar.getInstance.get(Calendar.DAY_OF_MONTH) * 1000000 + 
  							( (Calendar.getInstance.get(Calendar.MONTH) +1) * 10000) + Calendar.getInstance.get(Calendar.YEAR)
- 			homeJugadoresDenegados.agregar(new JugadorDenegado(jugador,motivo, fecha))
+ 			homeJugadoresDenegados.agregarOActualizar(new JugadorDenegado(jugador,motivo, fecha))
  			homeJugadoresPropuestos.sacar(jugador)
  		}
  		else throw new PropuestoNoEncontradoException
@@ -109,6 +109,7 @@ class Administrador {
  	////////////////////divisionDePartidos////////////////////////
  	def Partido hacerDivision(Partido partido, ModoDivision modoDivision){
  		if(partido.getInscriptos.size!=10){
+ 			System.out.println("Cantidad Inscriptos: "+ partido.getInscriptos.size)
  			throw new PartidoIncompletoException
  		}
  		if(!homePartidos.partidosArmandose.contiene(partido)){
@@ -131,7 +132,7 @@ class Administrador {
  	def Partido confirmarEquipos(Partido partidoViejo, Partido dividido){
  		if(homePartidos.partidosArmandose.contiene(partidoViejo)){
  			homePartidos.partidosArmandose.sacar(partidoViejo)
- 			homePartidos.partidosListosParaJugar.agregar(dividido)
+ 			homePartidos.partidosListosParaJugar.agregarOActualizar(dividido)
  			dividido //todojunto
  		}else{
  			throw new PartidoCerradoException
@@ -146,7 +147,7 @@ class Administrador {
  			throw new PartidoIncompletoException	
  		}
  		homePartidos.partidosListosParaJugar.sacar(partido)
- 		homePartidos.partidosJugados.agregar(partido)
+ 		homePartidos.partidosJugados.agregarOActualizar(partido)
  		
  		
  	}

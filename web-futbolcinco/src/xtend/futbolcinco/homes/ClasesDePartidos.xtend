@@ -5,7 +5,7 @@ import java.util.List
 
 interface ClasesDePartidos {
 	
-	def void agregar(Partido elem)
+	def void agregarOActualizar(Partido elem)
 	
 	def void sacar(Partido elem)
 	
@@ -15,5 +15,6 @@ interface ClasesDePartidos {
 	def boolean contiene(Partido elem)
 	
 	def int size()
+
 	
 }

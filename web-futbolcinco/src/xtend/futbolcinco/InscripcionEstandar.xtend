@@ -1,7 +1,9 @@
 package futbolcinco
 
-import javax.persistence.Entity
+import futbolcinco.homes.ClasesDePartidosSQL
+import futbolcinco.homes.PartidosDAOMongo
 import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
 
 @Entity
 @DiscriminatorValue("EST")
@@ -21,9 +23,12 @@ class InscripcionEstandar extends ModoInscripcion {
 			
 		}
 		
-		partido.getInscriptos.add(new FichaInscripcion(interesado,this,null))
+		partido.getInscriptos.add(new FichaInscripcion(interesado,this,null,partido))
 		
 		partido.notificaInscripto(interesado)
+		
+		ClasesDePartidosSQL.instance().agregarOActualizar(partido)
+//		PartidosDAOMongo.instance().agregarOActualizar(partido)
 		
 		
 	}
