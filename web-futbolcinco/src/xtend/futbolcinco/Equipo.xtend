@@ -1,6 +1,7 @@
 package futbolcinco
 
 import java.util.List
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
@@ -21,6 +22,7 @@ class Equipo {
 	@OneToOne
 	@Property Partido partido
 	
+	@Column(name="numeroEquipo")
 	@Property int numeroEquipo
 	
 	

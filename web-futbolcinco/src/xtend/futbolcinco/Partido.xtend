@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
+import javax.persistence.OneToOne
 import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
@@ -47,15 +48,26 @@ class Partido {
 	@Property Set<Calificacion> calificaciones
 	/********************************************************************/
 
-//	@OneToMany(fetch = FetchType.LAZY)
-	@Transient
-	Set<FichaInscripcion> equipo1
-	
-//	@OneToMany(fetch = FetchType.LAZY)
-	@Transient
-	Set<FichaInscripcion> equipo2
+////	@OneToMany(fetch = FetchType.LAZY)
+//	@Transient
+//	Set<FichaInscripcion> equipo1
+//	
+////	@OneToMany(fetch = FetchType.LAZY)
+//	@Transient
+//	Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/
+	
+	/**********************************************************************/
+	@OneToOne(mappedBy = "partido")
+	@Where(clause = "numeroEquipo = 1")
+	@Property Equipo equipo1
+	
+	@OneToOne(mappedBy = "partido")
+	@Where(clause = "numeroEquipo = 2")
+	@Property Equipo equipo2
+	 
+	/************************************************************************* */
 	new() {
 		
 	}
