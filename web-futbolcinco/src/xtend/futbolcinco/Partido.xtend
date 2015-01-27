@@ -5,7 +5,6 @@ import java.util.HashSet
 import java.util.List
 import java.util.Set
 import javax.persistence.CascadeType
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
@@ -15,6 +14,7 @@ import javax.persistence.OneToMany
 import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
+import org.hibernate.annotations.Where
 
 @Entity 
 @Table (name="partidos")
@@ -47,10 +47,12 @@ class Partido {
 	@Property Set<Calificacion> calificaciones
 	/********************************************************************/
 
-	@OneToMany(fetch = FetchType.LAZY)
+//	@OneToMany(fetch = FetchType.LAZY)
+	@Transient
 	Set<FichaInscripcion> equipo1
 	
-	@OneToMany(fetch = FetchType.LAZY)
+//	@OneToMany(fetch = FetchType.LAZY)
+	@Transient
 	Set<FichaInscripcion> equipo2
 	
 	/************************************************************************/

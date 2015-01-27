@@ -37,6 +37,14 @@ class FichaInscripcion {
 	@Property double ponderacion
 	//@Property int handicap
 	
+	@Column(name = "numeroEquipo")
+	@Property int numeroEquipo
+	
+	new() { 
+		
+	}
+	
+	
 	new(Socio jugador, ModoInscripcion modo, Condicion condicion, Partido partido){
 		this.inscripto = jugador
 		this.modoInscripcion = modo
