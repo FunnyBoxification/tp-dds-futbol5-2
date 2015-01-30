@@ -87,7 +87,7 @@ class Socio {
 	
 	// Hibernate necesita un constructor vacio
 	new() {
-		
+		this.homePartidos = PartidosDelSistema.instance()
 	}
 	new (String nombre,Integer anios,String mail,Administrador admin){
 		this.nombre = nombre
@@ -112,7 +112,10 @@ class Socio {
 		if(partido.todosEstandares()) {
 			throw new PartidoCompletoException
 		}
-		if(!homePartidos.partidosArmandose.contiene(partido)){
+		if(PartidosDelSistema.instance().partidosArmandose == null) { 
+			System.out.println("el home de partidos armandose esta vacio")
+		}
+		if(PartidosDelSistema.instance().partidosArmandose.contiene(partido)){
 			throw new PartidoCerradoException
 		}
 		

@@ -4,6 +4,7 @@ import futbolcinco.ModoInscripcion
 import futbolcinco.Socio
 import futbolcinco.homes.AdministradoresDelSistema
 import futbolcinco.homes.ModoInscripcionHomeSQL
+import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
 
 class BootStrap {
@@ -38,6 +39,8 @@ class BootStrap {
 		SociosDelSistema.instance().agregarOActualizar(socio8)
 		SociosDelSistema.instance().agregarOActualizar(socio9)
 		SociosDelSistema.instance().agregarOActualizar(socio10)
+		
+		PartidosDelSistema.instance(false)
 		
 		def partidito = administrador.organizarPartido(10082014, 1830)
 		socioH.inscribirseA(partidito, modoEstandar)
