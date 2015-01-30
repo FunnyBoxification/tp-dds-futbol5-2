@@ -20,8 +20,8 @@ class PartidosDAOMongo extends AbstractHomeMongo<Partido> implements ClasesDePar
 		partidoDocument.put("dia",partido.dia)
 		partidoDocument.put("hora",partido.hora)
 		partidoDocument.put("admin",partido.admin)
-		partidoDocument.put("equipo1",new ArrayList(partido.equipo1))
-		partidoDocument.put("equipo2",new ArrayList(partido.equipo2))
+//		partidoDocument.put("equipo1",new ArrayList(partido.equipo1))
+//		partidoDocument.put("equipo2",new ArrayList(partido.equipo2))
 		//TODO:Ver como poner las listas
 		partidosCollection.insert(partidoDocument)
 		

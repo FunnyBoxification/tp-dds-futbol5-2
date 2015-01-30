@@ -7,7 +7,6 @@ import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToMany
-import javax.persistence.OneToOne
 
 @Entity
 class Equipo {
@@ -16,14 +15,15 @@ class Equipo {
 	@GeneratedValue
 	@Property Long id
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "equipo")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="equipo")
 	List<FichaInscripcion> integrantes
-	
-	@OneToOne
-	@Property Partido partido
 	
 	@Column(name="numeroEquipo")
 	@Property int numeroEquipo
+	
+	new() {
+		
+	}
 	
 	
 	def List<FichaInscripcion> getIntegrantes() {

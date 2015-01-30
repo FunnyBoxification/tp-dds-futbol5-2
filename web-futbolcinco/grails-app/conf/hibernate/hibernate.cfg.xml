@@ -32,6 +32,7 @@
 		<mapping class="futbolcinco.InscripcionEstandar"/>
 		<mapping class="futbolcinco.InscripcionSolidaria"/>
 		<mapping class="futbolcinco.InscripcionCondicional"/>
+		<mapping class="futbolcinco.Equipo" />
 		
 	</session-factory>
 	

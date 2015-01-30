@@ -9,9 +9,9 @@ import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
-import javax.persistence.OneToOne
 import javax.persistence.Table
 import javax.persistence.Transient
 import observers.ModificacionObserver
@@ -46,24 +46,15 @@ class Partido {
 	
 	@Transient //Por ahora
 	@Property Set<Calificacion> calificaciones
-	/********************************************************************/
-
-////	@OneToMany(fetch = FetchType.LAZY)
-//	@Transient
-//	Set<FichaInscripcion> equipo1
-//	
-////	@OneToMany(fetch = FetchType.LAZY)
-//	@Transient
-//	Set<FichaInscripcion> equipo2
 	
-	/************************************************************************/
 	
-	/**********************************************************************/
-	@OneToOne(mappedBy = "partido")
+	@ManyToOne(fetch = FetchType.LAZY) //(mappedBy = "partido")
+	@JoinColumn(name="equipo1_fk")
 	@Where(clause = "numeroEquipo = 1")
 	@Property Equipo equipo1
 	
-	@OneToOne(mappedBy = "partido")
+	@ManyToOne(fetch = FetchType.LAZY) //(mappedBy = "partido")
+	@JoinColumn(name="equipo2_fk")
 	@Where(clause = "numeroEquipo = 2")
 	@Property Equipo equipo2
 	 
@@ -81,24 +72,25 @@ class Partido {
 		desInscripcionObservers = new ArrayList<ModificacionObserver>
 		remplazoObservers = new ArrayList<ModificacionObserver>
 		calificaciones = new HashSet<Calificacion>
-		equipo1 = new HashSet<FichaInscripcion>
-		equipo2 = new HashSet<FichaInscripcion>
+		equipo1 = new Equipo
+		equipo2 = new Equipo
 	}
 	
-	def Set<FichaInscripcion> getEquipo1() {
-		equipo1
+	def Equipo getEquipo1() {
+		this._equipo1
 	}
 	
-	def void setEquipo1(Set<FichaInscripcion> equi) {
-		equipo1 = equi
+	def void setEquipo1(Equipo equi) {
+//		System.out.println("El equipo 1 del partido del " + dia + " : " + hora + "es : " + equi.toString)
+		this._equipo1 = equi
 	}
 	
-	def Set<FichaInscripcion> getEquipo2() {
-		equipo1
+	def Equipo getEquipo2() {
+		this._equipo2
 	}
 	
-	def void setEquipo2(Set<FichaInscripcion> equi) {
-		equipo1 = equi
+	def void setEquipo2(Equipo equi) {
+		this._equipo2 = equi
 	}
 	
 	def List<FichaInscripcion> getInscriptos() {
@@ -199,11 +191,11 @@ class Partido {
 	
 	
 	def void agregarAEquipo1(FichaInscripcion ficha){
-		this.equipo1.add(ficha)
+		this.equipo1.integrantes.add(ficha)
 		
 	}
 	def void agregarAEquipo2(FichaInscripcion ficha){
-		this.equipo2.add(ficha)
+		this.equipo2.integrantes.add(ficha)
 		
 	}
 }

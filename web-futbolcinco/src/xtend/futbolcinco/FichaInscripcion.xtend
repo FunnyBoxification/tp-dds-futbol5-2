@@ -4,8 +4,10 @@ import java.util.LinkedList
 import java.util.List
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.OneToOne
 import javax.persistence.Table
@@ -33,15 +35,12 @@ class FichaInscripcion {
 	@Transient //por ahora 
 	@Property List<Calificacion> calificaciones	
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "equipo_fk", nullable = true)
+	Equipo equipo
+	
 	@Column
 	@Property double ponderacion
-	//@Property int handicap
-	
-	/* @Column(name = "numeroEquipo")
-	@Property int numeroEquipo*/
-	
-	@OneToOne
-	@Property Equipo equipo
 	
 	new() { 
 		
@@ -69,5 +68,13 @@ class FichaInscripcion {
 	
 	def void setInscripto(Socio socio) {
 		inscripto = socio
+	}
+	
+	def void setEquipo(Equipo equip) {
+		equipo = equip
+	}
+	
+	def Equipo getEquipo() {
+		equipo
 	}
 }

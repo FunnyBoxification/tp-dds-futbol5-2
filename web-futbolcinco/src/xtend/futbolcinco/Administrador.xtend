@@ -143,7 +143,7 @@ class Administrador {
  		if(!homePartidos.partidosListosParaJugar.contiene(partido)){
  			throw new PartidoNoListoException	
  		} //debería tener una nueva exception
- 		if (partido.equipo1.size != 5 || partido.equipo2.size != 5){
+ 		if (partido.equipo1.integrantes.size != 5 || partido.equipo2.integrantes.size != 5){
  			throw new PartidoIncompletoException	
  		}
  		homePartidos.partidosListosParaJugar.sacar(partido)
