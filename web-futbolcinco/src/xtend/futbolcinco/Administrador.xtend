@@ -6,19 +6,18 @@ import Exceptions.PartidoNoListoException
 import Exceptions.PropuestoNoEncontradoException
 import Exceptions.SocioInexistenteException
 import command.Criterio
+import futbolcinco.homes.AbstractHomeSQL
 import futbolcinco.homes.JugadoresDenegadosDelSistema
 import futbolcinco.homes.JugadoresPropuestosDelSistema
 import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
 import java.util.Calendar
-import org.eclipse.xtend.lib.Property
-import strategy.ModoDivision
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
-import javax.persistence.Column
 import javax.persistence.Transient
-import futbolcinco.homes.AbstractHomeSQL
+import strategy.ModoDivision
 
 @Entity 
 class Administrador {
@@ -55,13 +54,16 @@ class Administrador {
 		this.casilla = mail
 		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
 		this.homeJugadoresDenegados = new JugadoresDenegadosDelSistema
-		this.homePartidos = PartidosDelSistema.instance(false)
+		this.homePartidos = PartidosDelSistema.instance()
 		this.homeSocios = SociosDelSistema.instance
 	}
 	
 	def Partido organizarPartido(Integer dia, Integer hora) {
 		var part = new Partido(dia,hora,this)
-		homePartidos.partidosArmandose.agregarOActualizar(part)
+		//homePartidos.partidosArmandose.agregarOActualizar(part)
+		part.estado = ConstantesEnum.PARTIDO_ARMANDOSE;
+		//TODO: Cambiar el home de partidos ya que no tendria que haber un home por estados de partidos
+		homePartidos.agregarOActualizar(part)
 		return part
 	}
 	
@@ -98,7 +100,7 @@ class Administrador {
  	}
  	/////////// Orden //////////
  	def Partido ordenarJugadoresPorCriterio(Partido partido, Criterio criterio) {
- 		if(homePartidos.partidosArmandose.contiene(partido)) {
+ 		if(partido.estado == ConstantesEnum.PARTIDO_ARMANDOSE) {
  			var falsoPartido = partido
  			falsoPartido.inscriptos.forEach [inscripto | criterio.aplicarCriterio(inscripto)]
  			falsoPartido.inscriptos = falsoPartido.inscriptos.sortBy[ ponderacion ]
@@ -112,7 +114,8 @@ class Administrador {
  			System.out.println("Cantidad Inscriptos: "+ partido.getInscriptos.size)
  			throw new PartidoIncompletoException
  		}
- 		if(!homePartidos.partidosArmandose.contiene(partido)){
+// 		if(!homePartidos.partidosArmandose.contiene(partido)){
+		if(partido.estado != ConstantesEnum.PARTIDO_ARMANDOSE) {
  			throw new PartidoCerradoException
  		}
  			var falsoPartido = partido
@@ -130,9 +133,14 @@ class Administrador {
  	
  	///////confirmarEquipos/////////////
  	def Partido confirmarEquipos(Partido partidoViejo, Partido dividido){
- 		if(homePartidos.partidosArmandose.contiene(partidoViejo)){
- 			homePartidos.partidosArmandose.sacar(partidoViejo)
- 			homePartidos.partidosListosParaJugar.agregarOActualizar(dividido)
+// 		if(homePartidos.partidosArmandose.contiene(partidoViejo)){
+// 			homePartidos.partidosArmandose.sacar(partidoViejo)
+// 			homePartidos.partidosListosParaJugar.agregarOActualizar(dividido)
+// 			dividido //todojunto
+
+		if(partidoViejo.estado == ConstantesEnum.PARTIDO_ARMANDOSE) {
+			dividido.estado = ConstantesEnum.PARTIDO_LISTO
+			homePartidos.agregarOActualizar(dividido)
  			dividido //todojunto
  		}else{
  			throw new PartidoCerradoException
@@ -140,14 +148,17 @@ class Administrador {
  	}
  	
  	def void jugarPartido(Partido partido){
- 		if(!homePartidos.partidosListosParaJugar.contiene(partido)){
+// 		if(!homePartidos.partidosListosParaJugar.contiene(partido)){
+		if(partido.estado != ConstantesEnum.PARTIDO_LISTO) {
  			throw new PartidoNoListoException	
  		} //debería tener una nueva exception
- 		if (partido.equipo1.integrantes.size != 5 || partido.equipo2.integrantes.size != 5){
+ 		if(partido.equipo1.integrantes.size != 5 || partido.equipo2.integrantes.size != 5) {
  			throw new PartidoIncompletoException	
  		}
- 		homePartidos.partidosListosParaJugar.sacar(partido)
- 		homePartidos.partidosJugados.agregarOActualizar(partido)
+// 		homePartidos.partidosListosParaJugar.sacar(partido)
+		partido.estado = ConstantesEnum.PARTIDO_JUGADO
+		//TODO: CAMBIAR
+ 		homePartidos.agregarOActualizar(partido)
  		
  		
  	}

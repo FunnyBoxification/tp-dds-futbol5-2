@@ -29,6 +29,8 @@ class Partido {
 	
 	@Property Integer hora
 	
+	@Property int estado
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	List<FichaInscripcion> inscriptos
 	
@@ -74,6 +76,7 @@ class Partido {
 		calificaciones = new HashSet<Calificacion>
 		equipo1 = new Equipo
 		equipo2 = new Equipo
+		estado = ConstantesEnum.PARTIDO_ARMANDOSE
 	}
 	
 	def Equipo getEquipo1() {

@@ -87,7 +87,7 @@ class Socio {
 	
 	// Hibernate necesita un constructor vacio
 	new() {
-		this.homePartidos = PartidosDelSistema.instance()
+//		this.homePartidos = PartidosDelSistema.instance()
 	}
 	new (String nombre,Integer anios,String mail,Administrador admin){
 		this.nombre = nombre
@@ -112,10 +112,13 @@ class Socio {
 		if(partido.todosEstandares()) {
 			throw new PartidoCompletoException
 		}
-		if(PartidosDelSistema.instance().partidosArmandose == null) { 
-			System.out.println("el home de partidos armandose esta vacio")
-		}
-		if(PartidosDelSistema.instance().partidosArmandose.contiene(partido)){
+//		System.out.println(PartidosDelSistema.instance().toString)
+//		System.out.println(PartidosDelSistema.instance().partidosArmandose.toString)
+//		if(PartidosDelSistema.instance().partidosArmandose == null) { 
+//			System.out.println("el home de partidos armandose esta vacio")
+//		}
+//		if(PartidosDelSistema.instance().partidosArmandose.contiene(partido)){
+		if(partido.estado != ConstantesEnum.PARTIDO_ARMANDOSE ) {
 			throw new PartidoCerradoException
 		}
 		
@@ -133,7 +136,7 @@ class Socio {
 		if(!partido.getInscriptos.exists[ficha | ficha.inscripto==this ]){
 			throw new NoInscriptoException 
 		}
-		if(!homePartidos.partidosArmandose.contiene(partido)){
+		if(partido.estado != ConstantesEnum.PARTIDO_ARMANDOSE){
 			throw new PartidoCerradoException
 		}
 		partido.desinscribirA(this)	
@@ -144,7 +147,7 @@ class Socio {
 		if(!partido.getInscriptos.exists[ficha | ficha.inscripto==this ]){
 			throw new NoInscriptoException 
 			}
-		if(!homePartidos.partidosArmandose.contiene(partido)){
+		if(partido.estado != ConstantesEnum.PARTIDO_ARMANDOSE){
 			throw new PartidoCerradoException
 		}
 		var ficha = new FichaInscripcion(remplazo,modoInscripcion,null,partido)
@@ -171,7 +174,7 @@ class Socio {
 	////////////////////calificaciones/////////////////	
 	def void calificar(Partido partido, Socio socio, Integer nota, String opinion){
 		
-		if(!homePartidos.partidosJugados.contiene(partido)){
+		if(partido.estado != ConstantesEnum.PARTIDO_JUGADO){
 			throw new PartidoNoJugadoException
 		}else{
 		if(this == socio){

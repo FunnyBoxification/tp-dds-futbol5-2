@@ -11,6 +11,8 @@ class BootStrap {
 
     def init = { servletContext ->
 		
+		def homeP = PartidosDelSistema.instance()
+		
 		Administrador administrador = new Administrador("admin@admin.com")
 		AdministradoresDelSistema.instance().agregarOActualizar(administrador)	
 		
@@ -40,7 +42,6 @@ class BootStrap {
 		SociosDelSistema.instance().agregarOActualizar(socio9)
 		SociosDelSistema.instance().agregarOActualizar(socio10)
 		
-		PartidosDelSistema.instance(false)
 		
 		def partidito = administrador.organizarPartido(10082014, 1830)
 		socioH.inscribirseA(partidito, modoEstandar)

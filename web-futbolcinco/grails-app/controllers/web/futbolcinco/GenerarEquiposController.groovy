@@ -12,7 +12,6 @@ import command.UltimasCalificaciones
 
 import futbolcinco.Administrador
 import futbolcinco.FichaInscripcion
-import futbolcinco.InscripcionEstandar
 import futbolcinco.Partido
 import futbolcinco.Socio
 import futbolcinco.homes.AdministradoresDelSistema
@@ -29,7 +28,7 @@ class GenerarEquiposController {
 	AdministradoresDelSistema adminsDAO = AdministradoresDelSistema.instance()
 	//TODO: Agregar los DAOS con MongoDB
 	// false => SQL , TRUE => MONGODB
-	PartidosDelSistema partidosDAO = PartidosDelSistema.instance(false)
+	PartidosDelSistema partidosDAO = PartidosDelSistema.instance()
 	
     def index() { 
 		redirect(action:"generarEquiposPag")
@@ -99,7 +98,7 @@ class GenerarEquiposController {
 		if(admin.homePartidos == null) {
 			System.out.println("home partidos null")
 		}
-		partidosDAO.getPartidosArmandose().elements().get(0)
+		partidosDAO.buscarPartido(1)
 		//admin.homePartidos.getPartidosArmandose().elements().get(0)
 	} 
 	
