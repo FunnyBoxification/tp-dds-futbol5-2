@@ -61,7 +61,7 @@ class Administrador {
 	def Partido organizarPartido(Integer dia, Integer hora) {
 		var part = new Partido(dia,hora,this)
 		//homePartidos.partidosArmandose.agregarOActualizar(part)
-		part.estado = ConstantesEnum.PARTIDO_ARMANDOSE;
+//		part.estado = ConstantesEnum.PARTIDO_ARMANDOSE;
 		//TODO: Cambiar el home de partidos ya que no tendria que haber un home por estados de partidos
 		homePartidos.agregarOActualizar(part)
 		return part

@@ -41,6 +41,7 @@ abstract class AbstractHomeSQL <T> implements AbstractHome<T>{
 			session.getTransaction.commit
 		} 
 		catch (HibernateException e) {
+			println("Se rollbackeo el insert : " + e.message)
 			session.getTransaction.rollback
 		} 
 		finally {

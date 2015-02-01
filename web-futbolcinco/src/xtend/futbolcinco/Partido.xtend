@@ -74,8 +74,8 @@ class Partido {
 		desInscripcionObservers = new ArrayList<ModificacionObserver>
 		remplazoObservers = new ArrayList<ModificacionObserver>
 		calificaciones = new HashSet<Calificacion>
-		equipo1 = new Equipo
-		equipo2 = new Equipo
+//		equipo1 = new Equipo
+//		equipo2 = new Equipo
 		estado = ConstantesEnum.PARTIDO_ARMANDOSE
 	}
 	

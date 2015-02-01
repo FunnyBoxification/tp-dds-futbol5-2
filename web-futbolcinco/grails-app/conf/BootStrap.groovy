@@ -19,6 +19,8 @@ class BootStrap {
 		ModoInscripcion modoEstandar = new InscripcionEstandar()
 		ModoInscripcionHomeSQL.instance().agregarOActualizar(modoEstandar)
 		
+		def partidito = administrador.organizarPartido(10082014, 1830)
+		
 		def socioH = new Socio("martin",18,"marty@piola.com",administrador)
 		def amigo = new Socio("pepe",18,"marty@piola.com",administrador)
 		def socio3 = new Socio("pablo",21,"bobo@piola.com",administrador)
@@ -42,8 +44,6 @@ class BootStrap {
 		SociosDelSistema.instance().agregarOActualizar(socio9)
 		SociosDelSistema.instance().agregarOActualizar(socio10)
 		
-		
-		def partidito = administrador.organizarPartido(10082014, 1830)
 		socioH.inscribirseA(partidito, modoEstandar)
 		amigo.inscribirseA(partidito,modoEstandar)
 		socio3.inscribirseA(partidito,modoEstandar)
