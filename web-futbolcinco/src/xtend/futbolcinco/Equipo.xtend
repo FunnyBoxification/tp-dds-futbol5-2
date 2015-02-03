@@ -1,6 +1,7 @@
 package futbolcinco
 
 import java.util.List
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -15,8 +16,8 @@ class Equipo {
 	@GeneratedValue
 	@Property Long id
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="equipo")
-	List<FichaInscripcion> integrantes
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="equipo", cascade = CascadeType.ALL)
+	public List<FichaInscripcion> _integrantes
 	
 	@Column(name="numeroEquipo")
 	@Property int numeroEquipo
@@ -27,10 +28,10 @@ class Equipo {
 	
 	
 	def List<FichaInscripcion> getIntegrantes() {
-		integrantes
+		_integrantes
 	}
 	
 	def void setIntegrantes(List<FichaInscripcion> inte) {
-		this.integrantes = inte
+		this._integrantes = inte
 	}
 }

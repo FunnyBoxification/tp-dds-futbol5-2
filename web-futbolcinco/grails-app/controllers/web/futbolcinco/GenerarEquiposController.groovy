@@ -65,17 +65,17 @@ class GenerarEquiposController {
 		Partido p = conseguirPartidoEnHome()
 		p = admin.ordenarJugadoresPorCriterio(p, conseguirCriterioOrden(params.get("criterioOrden")))
 		def Partido newP = admin.hacerDivision(p, conseguirModoDivision(params.get("criterioSeleccion")))
-		def equipo1 = conseguirListaSocios(newP.equipo1)
-		def equipo2 = conseguirListaSocios(newP.equipo2)
+		/*def equipo1 = conseguirListaSocios(newP.equipo1)
+		def equipo2 = conseguirListaSocios(newP.equipo2)*/
 		def LinkedList equipos = new LinkedList<LinkedList>()
-		equipos.add(equipo1)
-		equipos.add(equipo2)
+		equipos.add(this.conseguirListaSocios(newP._equipo1._integrantes))
+		equipos.add(this.conseguirListaSocios(newP._equipo2._integrantes))
 		render(template: 'grillasEquipos', model : [equipos: equipos])
 	}
 	
 	/* ----- Metodos Privados -----*/
 	
-	private LinkedList<Socio> conseguirListaSocios(HashSet<FichaInscripcion> fichasInsc){
+	private LinkedList<Socio> conseguirListaSocios(List<FichaInscripcion> fichasInsc){
 		def equipo = new LinkedList<Socio>()
 		for (var in fichasInsc) {
 			equipo.add(var._inscripto)

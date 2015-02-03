@@ -110,6 +110,8 @@ class Administrador {
  	
  	////////////////////divisionDePartidos////////////////////////
  	def Partido hacerDivision(Partido partido, ModoDivision modoDivision){
+ 		//Persisto el partido por si se encuentre en estado detached
+ 		PartidosDelSistema.instance().agregarOActualizar(partido)
  		if(partido.getInscriptos.size!=10){
  			System.out.println("Cantidad Inscriptos: "+ partido.getInscriptos.size)
  			throw new PartidoIncompletoException

@@ -1,5 +1,6 @@
 package futbolcinco
 
+import futbolcinco.homes.PartidosDelSistema
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
@@ -50,12 +51,12 @@ class Partido {
 	@Property Set<Calificacion> calificaciones
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY) //(mappedBy = "partido")
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //(mappedBy = "partido")
 	@JoinColumn(name="equipo1_fk")
 	@Where(clause = "numeroEquipo = 1")
 	@Property Equipo equipo1
 	
-	@ManyToOne(fetch = FetchType.LAZY) //(mappedBy = "partido")
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //(mappedBy = "partido")
 	@JoinColumn(name="equipo2_fk")
 	@Where(clause = "numeroEquipo = 2")
 	@Property Equipo equipo2
@@ -74,8 +75,10 @@ class Partido {
 		desInscripcionObservers = new ArrayList<ModificacionObserver>
 		remplazoObservers = new ArrayList<ModificacionObserver>
 		calificaciones = new HashSet<Calificacion>
-//		equipo1 = new Equipo
-//		equipo2 = new Equipo
+		equipo1 = new Equipo
+		equipo1.numeroEquipo = 1;
+		equipo2 = new Equipo
+		equipo2.numeroEquipo = 2;
 		estado = ConstantesEnum.PARTIDO_ARMANDOSE
 	}
 	
@@ -194,11 +197,15 @@ class Partido {
 	
 	
 	def void agregarAEquipo1(FichaInscripcion ficha){
-		this.equipo1.integrantes.add(ficha)
+		PartidosDelSistema.instance().agregarOActualizar(this)
+		PartidosDelSistema.instance().agregarInscriptoAEquipo1(this, ficha)
+		//this._equipo1.integrantes.add(ficha)
 		
 	}
 	def void agregarAEquipo2(FichaInscripcion ficha){
-		this.equipo2.integrantes.add(ficha)
+		PartidosDelSistema.instance().agregarOActualizar(this)
+		PartidosDelSistema.instance().agregarInscriptoAEquipo2(this, ficha)
+		//this._equipo2.integrantes.add(ficha)
 		
 	}
 }
