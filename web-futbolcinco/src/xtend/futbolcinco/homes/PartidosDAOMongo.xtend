@@ -4,7 +4,7 @@ import com.mongodb.BasicDBObject
 import futbolcinco.Partido
 import java.util.ArrayList
 
-class PartidosDAOMongo extends AbstractHomeMongo<Partido> implements ClasesDePartidos {
+class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 	static PartidosDAOMongo instance
 	
 	def static instance() {

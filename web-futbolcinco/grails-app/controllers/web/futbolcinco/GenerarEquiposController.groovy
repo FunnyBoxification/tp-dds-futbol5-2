@@ -68,8 +68,8 @@ class GenerarEquiposController {
 		/*def equipo1 = conseguirListaSocios(newP.equipo1)
 		def equipo2 = conseguirListaSocios(newP.equipo2)*/
 		def LinkedList equipos = new LinkedList<LinkedList>()
-		equipos.add(this.conseguirListaSocios(newP._equipo1._integrantes))
-		equipos.add(this.conseguirListaSocios(newP._equipo2._integrantes))
+		equipos.add(partidosDAO.getListaSociosDTOEquipo1(newP))
+		equipos.add(partidosDAO.getListaSociosDTOEquipo2(newP))
 		render(template: 'grillasEquipos', model : [equipos: equipos])
 	}
 	
@@ -92,37 +92,8 @@ class GenerarEquiposController {
 	}
 	
 	private Partido conseguirPartidoEnHome(){
-		if(admin == null) {
-			System.out.println("admin null")
-		}
-		if(admin.homePartidos == null) {
-			System.out.println("home partidos null")
-		}
 		partidosDAO.buscarPartido(1)
-		//admin.homePartidos.getPartidosArmandose().elements().get(0)
 	} 
 	
-	/*private initEnviroment(){
-	//	def partidito = admin.organizarPartido(10082014, 1830)
-		def modoEstandar = new InscripcionEstandar()
-		def i = 0 
-    	while(i<10){
-			def Socio s = new Socio("a" + i,22,"mail@" + i +".com.ar",admin)
-			i=i+1
-			s.handicap = i 
-    		s.inscribirseA(partidito,modoEstandar)
-			
-    	}*/
-		
-//		mapaModosDivision = new HashMap<String, ModoDivision>()
-//		mapaModosDivision.put("Par/Impar", new DivisionParImpar())
-//		mapaModosDivision.put("1,4,5,8,9", new DivisionEspecifica())
-//		
-//		mapaCriteriosOrden = new HashMap<String, Criterio>()
-//		mapaCriteriosOrden.put("Handicap", new CriterioPorHandicap() )
-//		mapaCriteriosOrden.put("Promedio calificaciones ultimo partido", new CalificacionesUltimoPartido())
-//		mapaCriteriosOrden.put("Criterio Mixto", new CriterioMix())
-//		mapaCriteriosOrden.put("Promedio calificaciones ultimos n partidos", new UltimasCalificaciones())
-//	}
 	
 }

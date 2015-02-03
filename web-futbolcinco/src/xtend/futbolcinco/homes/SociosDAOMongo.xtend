@@ -5,7 +5,7 @@ import futbolcinco.Administrador
 import futbolcinco.Socio
 import java.util.ArrayList
 
-class SociosDAOMongo extends AbstractHomeMongo<Socio> {
+abstract class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 	
 	new() {
 		super()

@@ -43,4 +43,8 @@ class AdministradoresDAOMongo extends AbstractHomeMongo<Administrador> {
 		socio != null
 	}
 	
+	override size() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }

@@ -71,7 +71,7 @@ abstract class AbstractHomeSQL <T> implements AbstractHome<T>{
 	//Search by example
 	override boolean contiene(T elem)
 	
-	def size(){
+	override size(){
 		lista.size
 	}
 }

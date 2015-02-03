@@ -7,5 +7,6 @@ interface AbstractHome<T> {
 	def void sacar(T elem)
 	def List<T> elements() 
 	def boolean contiene(T elem)
+	def int size()
 	
 }

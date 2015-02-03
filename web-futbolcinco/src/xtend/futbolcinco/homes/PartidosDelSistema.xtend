@@ -1,15 +1,14 @@
 package futbolcinco.homes
 
+import dtos.SocioDTO
 import futbolcinco.FichaInscripcion
 import futbolcinco.Partido
+import java.util.ArrayList
+import java.util.List
 import org.hibernate.HibernateException
 import org.hibernate.criterion.Restrictions
 
-//TODO: Cuando se use mmongo hay que usar el otro home no el ClasesDePartidos
 class PartidosDelSistema extends AbstractHomeSQL<Partido> {
-//	@Property ClasesDePartidos partidosJugados
-//	@Property ClasesDePartidos partidosListosParaJugar 
-//	@Property ClasesDePartidos partidosArmandose
 	
 	private static PartidosDelSistema instance
 	
@@ -47,39 +46,82 @@ class PartidosDelSistema extends AbstractHomeSQL<Partido> {
 	
 	def agregarInscriptoAEquipo1(Partido partido, FichaInscripcion ficha) { 
 		val session = sessionFactory.openSession
-		try {
+//		try {
 			session.beginTransaction
 			partido.equipo1.integrantes.add(ficha)
-			ficha.equipo = partido.equipo1
-			session.saveOrUpdate(ficha)
+//			ficha.equipo = partido.equipo1
+//			session.saveOrUpdate(ficha)
 			session.saveOrUpdate(partido)
 			session.getTransaction.commit
-		} 
-		catch (HibernateException e) {
-			println("Se rollbackeo agregar al equipo 1 : " + e.message)
-			session.getTransaction.rollback
-		} 
-		finally {
+//		} 
+//		catch (HibernateException e) {
+//			println("Se rollbackeo agregar al equipo 1 : " + e.message)
+//			session.getTransaction.rollback
+//		} 
+//		finally {
 			session.close
-		}
+//		}
 	}
 	
 	def agregarInscriptoAEquipo2(Partido partido, FichaInscripcion ficha) {
 		val session = sessionFactory.openSession
-		try {
+//		try {
 			session.beginTransaction
 			partido.equipo2.integrantes.add(ficha)
-			ficha.equipo = partido.equipo2
+//			ficha.equipo = partido.equipo2
+//			session.saveOrUpdate(ficha)
 			session.saveOrUpdate(partido)
 			session.getTransaction.commit
-		} 
-		catch (HibernateException e) {
-			println("Se rollbackeo agregar al equipo 2 : " + e.message)
+//		} 
+//		catch (HibernateException e) {
+//			println("Se rollbackeo agregar al equipo 2 : " + e.message)
+//			session.getTransaction.rollback
+//		} 
+//		finally {
+			session.close
+//		}
+	}
+	
+	def List<SocioDTO> getListaSociosDTOEquipo1(Partido partido) {
+		val session = sessionFactory.openSession
+		var listaDTOs = new ArrayList<SocioDTO>
+		try {
+			session.beginTransaction
+			val fichas = partido.equipo1.integrantes
+			for( FichaInscripcion ficha : fichas) { 
+				listaDTOs.add(new SocioDTO(ficha.inscripto))
+			}
+			session.getTransaction.commit
+		}
+		catch(HibernateException e) {
+			println("Se rollbackeo obtener DTOS equipo 1 : " + e.message)
 			session.getTransaction.rollback
-		} 
+		}
 		finally {
 			session.close
 		}
+		return listaDTOs
+	}
+	
+	def List<SocioDTO> getListaSociosDTOEquipo2(Partido partido) {
+		val session = sessionFactory.openSession
+		var listaDTOs = new ArrayList<SocioDTO>
+		try {
+			session.beginTransaction
+			val fichas = partido.equipo2.integrantes
+			for( FichaInscripcion ficha : fichas) { 
+				listaDTOs.add(new SocioDTO(ficha.inscripto))
+			}
+			session.getTransaction.commit
+		}
+		catch(HibernateException e) {
+			println("Se rollbackeo obtener DTOS equipo 2 : " + e.message)
+			session.getTransaction.rollback
+		}
+		finally {
+			session.close
+		}
+		return listaDTOs
 	}
 	
 	def buscarPartido(Long id) { 
@@ -88,8 +130,6 @@ class PartidosDelSistema extends AbstractHomeSQL<Partido> {
 		val result = criteria.uniqueResult  as Partido;
 		session.close
 		return result
-		/*
-		val criteria = [ Socio socio | socio.nombre.equals(id)]
-		return this.getByCriterio(criteria).get(0)*/
+
 	}
 }

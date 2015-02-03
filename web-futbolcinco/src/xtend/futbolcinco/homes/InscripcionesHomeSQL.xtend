@@ -5,6 +5,16 @@ import org.hibernate.criterion.Restrictions
 
 class InscripcionesHomeSQL extends AbstractHomeSQL<FichaInscripcion> {
 	
+	private static InscripcionesHomeSQL instance
+	
+	def static instance() {
+		if(instance == null) { 
+			instance = new InscripcionesHomeSQL
+			return instance
+		}
+		else return instance
+	}
+	
 	override elements() {
 		val session = sessionFactory.openSession
 		val criteria = session.createCriteria(FichaInscripcion)
