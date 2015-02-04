@@ -5,10 +5,6 @@
 <meta name="layout" content="main"/>
 <title>Generar Equipos</title>
 <script type="text/javascript">
-function confirmarEquipos(){
-	alert("intento de confirmar equipos")
-}
-
 function habilitarCheckBox(){
 		document.getElementById('check').style.display="block"
 }
@@ -23,13 +19,12 @@ function solicitarEquipos(){
 		data: {criterioSeleccion: $('#criterioSeleccion').val(),
 				criterioOrden: $('#criterioOrden').val()},
 		success: function(data){
-				alert("La operacion se realizo con exito.")
+				alert("Equipos generados.")
 				$('#resultadosEquipos').html(data)
-				document.getElementById('boton_confirmarEquipos').style.display="block"
 			},
 		error: function(){
 				alert("Ha ocurrido un error. Intentalo nuevamente")
-			}
+		}
 		
 	})	
 }
@@ -95,8 +90,6 @@ function solicitarEquipos(){
 	  	</div>
 	
 	  	<div id="resultadosEquipos"></div>
-	  		
-		<button id="boton_confirmarEquipos" type="button" class="btn btn-success btn-lg" onclick="javascript:confirmarEquipos()">Confirmar Equipos </button>
 		
 	</div>
 </body>

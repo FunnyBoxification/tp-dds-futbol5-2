@@ -11,9 +11,8 @@ import command.CriterioPorHandicap
 import command.UltimasCalificaciones
 
 import futbolcinco.Administrador
-import futbolcinco.FichaInscripcion
+import futbolcinco.ConstantesEnum
 import futbolcinco.Partido
-import futbolcinco.Socio
 import futbolcinco.homes.AdministradoresDelSistema
 import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
@@ -45,10 +44,21 @@ class GenerarEquiposController {
 		//admin.setHomeJugadoresDenegados(JugadoresPropuestosDelSistema.instance)
 		admin.setHomePartidos(PartidosDelSistema.instance())
 		Partido p = conseguirPartidoEnHome()
+		if(p.estado == ConstantesEnum.PARTIDO_JUGADO) {
+			redirect(action:"equiposGenerados")
+		}
 		[partido:p]
 	}
 	
 	def generarEquipos(){
+	}
+	
+	def equiposGenerados() { 
+		Partido p = conseguirPartidoEnHome()
+		def LinkedList equipos = new LinkedList<LinkedList>()
+		equipos.add(partidosDAO.getListaSociosDTOEquipo1(p))
+		equipos.add(partidosDAO.getListaSociosDTOEquipo2(p))
+		[equipos: equipos]
 	}
 	
 	/* FALTA HACER QUE ORDENE LOS JUGADORES ANTES DE DIVIDIRLOS */
@@ -73,15 +83,13 @@ class GenerarEquiposController {
 		render(template: 'grillasEquipos', model : [equipos: equipos])
 	}
 	
+	def confirmarEquipos() {
+		Partido p = conseguirPartidoEnHome()
+		admin.confirmarEquipos(p,p)
+	}
+	
 	/* ----- Metodos Privados -----*/
 	
-	private LinkedList<Socio> conseguirListaSocios(List<FichaInscripcion> fichasInsc){
-		def equipo = new LinkedList<Socio>()
-		for (var in fichasInsc) {
-			equipo.add(var._inscripto)
-		}
-		equipo
-	}
 	
 	private ModoDivision conseguirModoDivision(String modo){
 		mapaModosDivision.get(modo)

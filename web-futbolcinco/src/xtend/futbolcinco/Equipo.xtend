@@ -4,10 +4,11 @@ import java.util.List
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToMany
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 
 @Entity
 class Equipo {
@@ -16,7 +17,8 @@ class Equipo {
 	@GeneratedValue
 	@Property Long id
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="equipo", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="equipo", cascade = CascadeType.ALL)
 	public List<FichaInscripcion> _integrantes
 	
 	@Column(name="numeroEquipo")

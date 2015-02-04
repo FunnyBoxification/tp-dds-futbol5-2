@@ -51,12 +51,12 @@ class Partido {
 	@Property Set<Calificacion> calificaciones
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //(mappedBy = "partido")
+	@ManyToOne(cascade=CascadeType.ALL) //(mappedBy = "partido")
 	@JoinColumn(name="equipo1_fk")
 	@Where(clause = "numeroEquipo = 1")
 	@Property Equipo equipo1
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //(mappedBy = "partido")
+	@ManyToOne(cascade=CascadeType.ALL) //(mappedBy = "partido")
 	@JoinColumn(name="equipo2_fk")
 	@Where(clause = "numeroEquipo = 2")
 	@Property Equipo equipo2
@@ -199,13 +199,11 @@ class Partido {
 	def void agregarAEquipo1(FichaInscripcion ficha){
 		PartidosDelSistema.instance().agregarOActualizar(this)
 		PartidosDelSistema.instance().agregarInscriptoAEquipo1(this, ficha)
-		//this._equipo1.integrantes.add(ficha)
 		
 	}
 	def void agregarAEquipo2(FichaInscripcion ficha){
 		PartidosDelSistema.instance().agregarOActualizar(this)
 		PartidosDelSistema.instance().agregarInscriptoAEquipo2(this, ficha)
-		//this._equipo2.integrantes.add(ficha)
 		
 	}
 }

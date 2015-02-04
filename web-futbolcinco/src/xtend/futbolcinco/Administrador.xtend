@@ -110,6 +110,10 @@ class Administrador {
  	
  	////////////////////divisionDePartidos////////////////////////
  	def Partido hacerDivision(Partido partido, ModoDivision modoDivision){
+ 		if(partido.estado != ConstantesEnum.PARTIDO_ARMANDOSE) {
+ 			throw new PartidoCerradoException
+ 		}
+ 		partido.estado = ConstantesEnum.PARTIDO_JUGADO
  		//Persisto el partido por si se encuentre en estado detached
  		PartidosDelSistema.instance().agregarOActualizar(partido)
  		if(partido.getInscriptos.size!=10){
@@ -117,9 +121,6 @@ class Administrador {
  			throw new PartidoIncompletoException
  		}
 // 		if(!homePartidos.partidosArmandose.contiene(partido)){
-		if(partido.estado != ConstantesEnum.PARTIDO_ARMANDOSE) {
- 			throw new PartidoCerradoException
- 		}
  			var falsoPartido = partido
 	 			modoDivision.definirDivision(falsoPartido)
  			falsoPartido
@@ -135,11 +136,6 @@ class Administrador {
  	
  	///////confirmarEquipos/////////////
  	def Partido confirmarEquipos(Partido partidoViejo, Partido dividido){
-// 		if(homePartidos.partidosArmandose.contiene(partidoViejo)){
-// 			homePartidos.partidosArmandose.sacar(partidoViejo)
-// 			homePartidos.partidosListosParaJugar.agregarOActualizar(dividido)
-// 			dividido //todojunto
-
 		if(partidoViejo.estado == ConstantesEnum.PARTIDO_ARMANDOSE) {
 			dividido.estado = ConstantesEnum.PARTIDO_LISTO
 			homePartidos.agregarOActualizar(dividido)

@@ -1,7 +1,6 @@
 package futbolcinco
 
-import futbolcinco.homes.ClasesDePartidosSQL
-import futbolcinco.homes.PartidosDAOMongo
+import futbolcinco.homes.PartidosDelSistema
 import javax.persistence.DiscriminatorValue
 import javax.persistence.Entity
 
@@ -27,7 +26,7 @@ class InscripcionEstandar extends ModoInscripcion {
 		
 		partido.notificaInscripto(interesado)
 		
-		ClasesDePartidosSQL.instance().agregarOActualizar(partido)
+		PartidosDelSistema.instance().agregarOActualizar(partido)
 //		PartidosDAOMongo.instance().agregarOActualizar(partido)
 		
 		
