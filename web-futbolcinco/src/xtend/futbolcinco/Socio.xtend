@@ -14,54 +14,28 @@ import java.util.HashSet
 import java.util.LinkedList
 import java.util.List
 import java.util.Set
-import javax.persistence.CascadeType
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.JoinTable
-import javax.persistence.ManyToMany
-import javax.persistence.OneToMany
-import javax.persistence.Table
-import javax.persistence.Transient
+import org.bson.types.ObjectId
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
 
 @Entity
-@Table (name="Socios") 
 class Socio {
+
 	@Id
-	@GeneratedValue
-	@Property Long id
+	@Property ObjectId id
 	
-	@Column
 	@Property String nombre
 	
-	@Column
 	@Property Integer edad
 	
-	@Column
 	@Property String casilla
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL) //TODO:meterlo al getter no funcionan los @Property en collections
 	@Property Set<Partido> inscripciones
 	
-	//No va a funcar supositoriamente
-	@ManyToMany(fetch = FetchType.EAGER) //TODO:Chusmear: http://stackoverflow.com/questions/1656113/hibernate-many-to-many-association-with-the-same-entity
-	@JoinTable( name = "amistades", 
-		joinColumns=@JoinColumn(name="id_socio"), //, referencedColumnName="id"),
-		inverseJoinColumns= @JoinColumn(name="id_amistad")) //, referencedColumnName="id"))
 	@Property Set<Socio> amigos
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable( name= "amistades", 
-		joinColumns=@JoinColumn(name="id_amistad"), //, referencedColumnName="id")
-		inverseJoinColumns=@JoinColumn(name="id_socio")
-	)
 	Set<Socio> amigoDe
 	
-	//TODO:La infraccion debe conocer al socio para poder hacer el mapeo ManyToOne, hay que corregir eso y setear el socio donde corresponda
-	@OneToMany(fetch = FetchType.LAZY)
 	@Property List<Infraccion> infracciones
 	
 	//////////////////////////////////////////////////////////////////////////
@@ -69,19 +43,15 @@ class Socio {
 	 * 	Estaria bueno que alguno me diga como piensan mapear esta negrada
 	 */
 	@Property LinkedList<Calificacion> misCalificaciones
-		
+	
 	@Property HashSet<Calificacion> calificacionesHechas
 	
 	//////////////////////////////////////////////////////////////////////////
 	
-	@Column
 	@Property Integer handicap
 	
-	//TODO: Ya existia la lista de partidos!! El que lo hizo que lo cambie pls, borren y donde se use cambienla por partidos
 	@Property LinkedList<Partido> misPartidos
 	
-	
-	@Transient
 	@Property PartidosDelSistema homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
 	
 	
@@ -214,11 +184,14 @@ class Socio {
 
 	def getPromedio(){
 		 var a = 0.0
-		 if(misCalificaciones.isEmpty())
-		 	return 0.0
-		 for(Calificacion calificacion : misCalificaciones)	 {
-		 	a += calificacion.puntaje
+		 if(misCalificaciones != null) {
+			 if(misCalificaciones.isEmpty()) 
+			 	return 0.0
+			 for(Calificacion calificacion : misCalificaciones)	 {
+			 	a += calificacion.puntaje
+			 }
+			 return a/misCalificaciones.size()
 		 }
-		 return a/misCalificaciones.size()
+		 else return a;
 	}
 }

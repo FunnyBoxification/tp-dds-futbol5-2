@@ -13,6 +13,12 @@ hibernate {
     singleSession = true // configure OSIV singleSession mode
 }
 
+mongodb {
+	host = 'localhost'
+	port = 27017
+	databaseName = 'entrega9'
+  }
+
 // environment specific settings
 environments {
     development {
