@@ -1,15 +1,14 @@
 package futbolcinco.homes
 
-import com.mongodb.DB
-import com.mongodb.Mongo
+import com.mongodb.MongoClient
+import org.bson.types.ObjectId
+import org.mongodb.morphia.Morphia
+import org.mongodb.morphia.dao.BasicDAO
 
-abstract class AbstractHomeMongo<T> implements AbstractHome<T> {
+abstract class AbstractHomeMongo<T>  extends  BasicDAO<T, ObjectId> implements AbstractHome<T> {
 	
-	protected DB db
-	
-	new() {
-		val mongo = new Mongo("localhost", 27017)
-		db = mongo.getDB("local")
+	new(Morphia morphia, MongoClient mongo, String dbName) {
+		super(mongo,morphia,dbName)
 	}
 	
 }

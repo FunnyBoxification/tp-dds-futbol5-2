@@ -17,6 +17,8 @@ import java.util.Set
 import org.bson.types.ObjectId
 import org.mongodb.morphia.annotations.Entity
 import org.mongodb.morphia.annotations.Id
+import org.mongodb.morphia.annotations.Reference
+import org.mongodb.morphia.annotations.Transient
 
 @Entity
 class Socio {
@@ -30,28 +32,33 @@ class Socio {
 	
 	@Property String casilla
 	
+	@Reference
 	@Property Set<Partido> inscripciones
 	
+	@Reference
 	@Property Set<Socio> amigos
 	
-	Set<Socio> amigoDe
-	
+	@Transient
 	@Property List<Infraccion> infracciones
 	
 	//////////////////////////////////////////////////////////////////////////
 	/*
 	 * 	Estaria bueno que alguno me diga como piensan mapear esta negrada
 	 */
+	@Transient
 	@Property LinkedList<Calificacion> misCalificaciones
 	
+	@Transient
 	@Property HashSet<Calificacion> calificacionesHechas
 	
 	//////////////////////////////////////////////////////////////////////////
 	
 	@Property Integer handicap
 	
+	
 	@Property LinkedList<Partido> misPartidos
 	
+	@Transient
 	@Property PartidosDelSistema homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
 	
 	
