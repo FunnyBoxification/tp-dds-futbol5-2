@@ -12,21 +12,18 @@ import futbolcinco.homes.JugadoresPropuestosDelSistema
 import futbolcinco.homes.PartidosDelSistema
 import futbolcinco.homes.SociosDelSistema
 import java.util.Calendar
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Transient
+import org.bson.types.ObjectId
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
+import org.mongodb.morphia.annotations.Transient
 import strategy.ModoDivision
 
-@Entity 
+@Entity
 class Administrador {
 	
 	@Id
-	@GeneratedValue
-	@Property Long id
+	@Property ObjectId id
 	
-	@Column
 	@Property String casilla
 	
 	/******************************************************************************************
@@ -39,8 +36,8 @@ class Administrador {
 	
 	@Transient
 	@Property AbstractHomeSQL<JugadorDenegado> homeJugadoresDenegados
-
-	@Transient	
+	
+	@Transient
 	@Property AbstractHomeSQL<JugadorPropuesto> homeJugadoresPropuestos
 	
 	@Transient

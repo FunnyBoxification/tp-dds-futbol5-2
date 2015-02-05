@@ -4,7 +4,7 @@ import com.mongodb.MongoClient
 import futbolcinco.Socio
 import org.mongodb.morphia.Morphia
 
-abstract class SociosDAOMongo extends AbstractHomeMongo<Socio> {
+class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 	
 	new(Morphia morphia, MongoClient mongo, String dbName) {
 		super(morphia, mongo, dbName)
@@ -16,6 +16,7 @@ abstract class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 	
 	override sacar(Socio socio) {
 		this.deleteById(socio.id)
+		//Si no funca probar this.delete(socio)
 	}
 	
 	override elements() {
@@ -26,6 +27,10 @@ abstract class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 	override contiene(Socio elem) {
 		val socio = this.get(elem.id)
 		socio != null
+	}
+	
+	override size() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }
