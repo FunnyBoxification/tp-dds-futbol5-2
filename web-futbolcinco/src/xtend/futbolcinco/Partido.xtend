@@ -5,26 +5,18 @@ import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
 import java.util.Set
-import javax.persistence.CascadeType
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.OneToMany
-import javax.persistence.Table
-import javax.persistence.Transient
 import observers.ModificacionObserver
-import org.hibernate.annotations.Where
+import org.bson.types.ObjectId
+import org.mongodb.morphia.annotations.Embedded
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
+import org.mongodb.morphia.annotations.Transient
 
-@Entity 
-@Table (name="partidos")
-//@SecondaryTable(name="partidos_inscripciones") //Para los equipos
+@Entity
 class Partido {
+	
 	@Id
-	@GeneratedValue
-	@Property Long id
+	@Property ObjectId id
 	
 	@Property Integer dia
 	
@@ -32,10 +24,8 @@ class Partido {
 	
 	@Property int estado
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	List<FichaInscripcion> inscriptos
 	
-	@ManyToOne
 	@Property Administrador admin
 	
 	@Transient
@@ -47,18 +37,13 @@ class Partido {
 	@Transient
 	@Property List<ModificacionObserver> remplazoObservers
 	
-	@Transient //Por ahora
+	@Transient
 	@Property Set<Calificacion> calificaciones
 	
-	
-	@ManyToOne(cascade=CascadeType.ALL) //(mappedBy = "partido")
-	@JoinColumn(name="equipo1_fk")
-	@Where(clause = "numeroEquipo = 1")
+	@Embedded
 	@Property Equipo equipo1
 	
-	@ManyToOne(cascade=CascadeType.ALL) //(mappedBy = "partido")
-	@JoinColumn(name="equipo2_fk")
-	@Where(clause = "numeroEquipo = 2")
+	@Embedded
 	@Property Equipo equipo2
 	 
 	/************************************************************************* */

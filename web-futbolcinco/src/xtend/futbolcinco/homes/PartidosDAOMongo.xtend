@@ -1,62 +1,43 @@
 package futbolcinco.homes
 
 import com.mongodb.BasicDBObject
+import com.mongodb.MongoClient
 import futbolcinco.Partido
 import java.util.ArrayList
+import org.mongodb.morphia.Morphia
 
 class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
-	static PartidosDAOMongo instance
 	
-	def static instance() {
-		if(instance == null) {
-			return new PartidosDAOMongo
-		}
-		else return instance
+	new(Morphia morphia, MongoClient mongo, String dbName) {
+		super(morphia, mongo, dbName)
 	}
 	
+	
+//	static PartidosDAOMongo instance
+//	
+//	def static instance() {
+//		if(instance == null) {
+//			return new PartidosDAOMongo
+//		}
+//		else return instance
+//	}
+	
 	override agregarOActualizar(Partido partido) {
-		val partidosCollection = db.getCollection("partidos")
-		var partidoDocument = new BasicDBObject()
-		partidoDocument.put("dia",partido.dia)
-		partidoDocument.put("hora",partido.hora)
-		partidoDocument.put("admin",partido.admin)
-//		partidoDocument.put("equipo1",new ArrayList(partido.equipo1))
-//		partidoDocument.put("equipo2",new ArrayList(partido.equipo2))
-		//TODO:Ver como poner las listas
-		partidosCollection.insert(partidoDocument)
+		this.save(partido)
 		
 	}
 	
 	override contiene(Partido partido) {
-		val partidosCollection = db.getCollection("partidos")
-		var partidoDocument = new BasicDBObject()
-		partidoDocument.put("dia",partido.dia)
-		partidoDocument.put("hora",partido.hora)
-		partidoDocument.put("admin",partido.admin)
-		var partidoD =  partidosCollection.findOne(partidoDocument)
-		partidoD != null
+		val part = this.get(partido.id)
+		part != null
 	}
 	
 	override elements() {
-		val partidosCollection = db.getCollection("partidos")
-		var cursor = partidosCollection.find()
-		var lista = new ArrayList<Partido>
-		while(cursor.hasNext()) {
-			val partidoDoc = cursor.next()
-			//TODO:Agregar fields
-			lista.add(new Partido())
-		}
-		lista
-		
+		this.find().asList()
 	}
 	
 	override sacar(Partido partido) {
-		val collectionPartidos = db.getCollection("socios")
-		var partidoDocument = new BasicDBObject()
-		partidoDocument.put("nombre",partido.dia)
-		partidoDocument.put("edad",partido.hora)
-		partidoDocument.put("casilla",partido.admin)
-		collectionPartidos.findAndRemove(partidoDocument)
+		this.deleteById(partido.id)
 	}
 
 	override size() {
