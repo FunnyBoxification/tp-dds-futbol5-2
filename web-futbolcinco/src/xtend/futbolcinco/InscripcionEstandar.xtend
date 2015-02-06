@@ -1,11 +1,14 @@
 package futbolcinco
 
 import futbolcinco.homes.PartidosDelSistema
-import javax.persistence.DiscriminatorValue
-import javax.persistence.Entity
+import org.bson.types.ObjectId
+import org.mongodb.morphia.annotations.Embedded
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
+import org.mongodb.morphia.annotations.Transient
+
 
 @Entity
-@DiscriminatorValue("EST")
 class InscripcionEstandar extends ModoInscripcion {
 	
 	

@@ -2,44 +2,33 @@ package futbolcinco
 
 import java.util.LinkedList
 import java.util.List
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.OneToOne
-import javax.persistence.Table
-import javax.persistence.Transient
+import org.bson.types.ObjectId
+import org.mongodb.morphia.annotations.Embedded
+import org.mongodb.morphia.annotations.Entity
+import org.mongodb.morphia.annotations.Id
+import org.mongodb.morphia.annotations.Transient
 
 @Entity
-@Table(name = "inscripciones")
 class FichaInscripcion {
 	@Id
-	@GeneratedValue
-	@Property Long id
+
+	@Property ObjectId id
 	
-	@ManyToOne
 	Socio inscripto
-	
-	@OneToOne //Es una negrada lo se
+
 	@Property ModoInscripcion modoInscripcion
 	
-	@ManyToOne 
 	@Property Partido partido
 	
 	@Transient
 	@Property Condicion condicion
 	
-	@Transient //por ahora 
+	@Transient
 	@Property List<Calificacion> calificaciones	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "equipo_fk", nullable = true)
+	@Embedded
 	Equipo equipo
 	
-	@Column
 	@Property double ponderacion
 	
 	new() { 

@@ -1,9 +1,8 @@
 package futbolcinco
 
 import Exceptions.PartidoCompletoException
-import javax.persistence.DiscriminatorValue
 
-@DiscriminatorValue("SOL")
+
 class InscripcionSolidaria extends ModoInscripcion {
 	
 	
