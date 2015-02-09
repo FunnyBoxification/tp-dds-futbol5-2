@@ -33,7 +33,7 @@ function volver(){
 <label for="exampleInputEmail1">Grilla de Infracciones:</label>
 <br /><br />
 <label for="exampleInputEmail1">Cantidad de partidos que jugo:</label>
-<input class="form-control" id="disabledInput" name="jugador.cantPartidosJugados" value="${jugador?.misPartidos.size}"  disabled>
+<input class="form-control" id="disabledInput" name="jugador.cantPartidosJugados" value="${jugador?.misPartidos?.size}"  disabled>
 <br /><br /><br />
 
  <button type="button" class="btn btn-default btn-lg" onclick="javascript:volver()">VOLVER</button>

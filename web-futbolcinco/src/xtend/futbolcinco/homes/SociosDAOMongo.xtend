@@ -25,19 +25,19 @@ class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 	}
 	
 	def List<Socio> buscarPorNombre(String nombre) {
-		ds.find(Socio).filter("nombre =",nombre).asList
+		ds.find(Socio).filter("_nombre =",nombre).asList
 	}
 	
 	def List<Socio> buscarPorEdad(Integer edad) {
-		ds.find(Socio).filter("edad <=",edad).asList
+		ds.find(Socio).filter("_edad <=",edad).asList
 	}
 	
 	def List<Socio> buscarPorHandicapDesde(Integer handicap) {
-		ds.find(Socio).filter("handicap >=", handicap).asList
+		ds.find(Socio).filter("_handicap >=", handicap).asList
 	}
 	
 	def List<Socio> buscarPorHandicapHasta(Integer handicap) {
-		ds.find(Socio).filter("handicap <=", handicap).asList
+		ds.find(Socio).filter("_handicap <=", handicap).asList
 	}
 	
 	def Socio buscarPorId(ObjectId objId) {

@@ -1,5 +1,6 @@
 package web.futbolcinco
 
+import org.bson.types.ObjectId
 import org.mongodb.morphia.Morphia
 
 import com.mongodb.MongoClient
@@ -11,7 +12,7 @@ class BusquedaJugadorController {
 	
 	def morphia = new Morphia()
 	def mongoC = new MongoClient()
-	SociosDAOMongo sociosDAO = new SociosDAOMongo(morphia, mongoC, "entrega 9")
+	SociosDAOMongo sociosDAO = new SociosDAOMongo(morphia, mongoC, "entrega9")
 	//TODO: Agregar los DAOS con MongoDB
 	PartidosDAOMongo partidosDAO = new PartidosDAOMongo(morphia,mongoC,"entrega9")
 	
@@ -70,7 +71,7 @@ class BusquedaJugadorController {
 	}
 	
 	def datosJugador(params){
-		def j = sociosDAO.buscarPorId(params.id)
+		def j = sociosDAO.buscarPorId(new ObjectId(params.id))
 		[jugador: j]
 	}
 	/*************************************************************************************/

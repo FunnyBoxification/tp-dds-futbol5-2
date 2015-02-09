@@ -18,8 +18,8 @@ class BootStrap {
 		Administrador administrador = new Administrador("admin@admin.com")
 		AdministradoresDAOMongo.instance().agregarOActualizar(administrador)	
 		
-		ModoInscripcion modoEstandar = new InscripcionEstandar()
-		ModoInscripcionHomeSQL.instance().agregarOActualizar(modoEstandar)
+//		ModoInscripcion modoEstandar = new InscripcionEstandar()
+//		ModoInscripcionHomeSQL.instance().agregarOActualizar(modoEstandar)
 		
 		def partidito = administrador.organizarPartido(10082014, 1830)
 		
@@ -46,17 +46,20 @@ class BootStrap {
 		sociosHome.agregarOActualizar(socio9)
 		sociosHome.agregarOActualizar(socio10)
 		
-		socioH.inscribirseA(partidito, modoEstandar)
-		amigo.inscribirseA(partidito,modoEstandar)
-		socio3.inscribirseA(partidito,modoEstandar)
-		socio4.inscribirseA(partidito,modoEstandar)
-		socio5.inscribirseA(partidito,modoEstandar)
-		socio6.inscribirseA(partidito,modoEstandar)
-		socio7.inscribirseA(partidito,modoEstandar)
-		socio8.inscribirseA(partidito,modoEstandar)
-		socio9.inscribirseA(partidito,modoEstandar)
-		socio10.inscribirseA(partidito,modoEstandar)
+//		socioH.inscribirseA(partidito, modoEstandar)
+//		amigo.inscribirseA(partidito,modoEstandar)
+//		socio3.inscribirseA(partidito,modoEstandar)
+//		socio4.inscribirseA(partidito,modoEstandar)
+//		socio5.inscribirseA(partidito,modoEstandar)
+//		socio6.inscribirseA(partidito,modoEstandar)
+//		socio7.inscribirseA(partidito,modoEstandar)
+//		socio8.inscribirseA(partidito,modoEstandar)
+//		socio9.inscribirseA(partidito,modoEstandar)
+//		socio10.inscribirseA(partidito,modoEstandar)
     }
     def destroy = {
+		for( Socio socio : SociosDAOMongo.instance().elements) {
+			SociosDAOMongo.instance().deleteById(socio.id)
+		}
     }
 }

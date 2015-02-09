@@ -23,11 +23,11 @@ class GenerarEquiposController {
 	def static Map mapaModosDivision
 	def static Map mapaCriteriosOrden
 	
-	SociosDelSistema sociosDAO = SociosDelSistema.instance()
-	AdministradoresDelSistema adminsDAO = AdministradoresDelSistema.instance()
+	SociosDelSistema sociosDAO// = SociosDelSistema.instance()
+	AdministradoresDelSistema adminsDAO// = AdministradoresDelSistema.instance()
 	//TODO: Agregar los DAOS con MongoDB
 	// false => SQL , TRUE => MONGODB
-	PartidosDelSistema partidosDAO = PartidosDelSistema.instance()
+	PartidosDelSistema partidosDAO// = PartidosDelSistema.instance()
 	
     def index() { 
 		redirect(action:"generarEquiposPag")
