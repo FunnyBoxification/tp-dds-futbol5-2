@@ -2,7 +2,6 @@ package futbolcinco
 
 import Exceptions.PartidoCompletoException
 
-
 class InscripcionSolidaria extends ModoInscripcion {
 	
 	

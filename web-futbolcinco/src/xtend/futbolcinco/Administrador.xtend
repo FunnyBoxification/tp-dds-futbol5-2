@@ -50,8 +50,8 @@ class Administrador {
 	}
 	new(String mail){
 		this.casilla = mail
-		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
-		this.homeJugadoresDenegados = new JugadoresDenegadosDelSistema
+//		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
+//		this.homeJugadoresDenegados = new JugadoresDenegadosDelSistema
 		this.homePartidos = PartidosDAOMongo.instance()
 		this.homeSocios = SociosDAOMongo.instance
 	}

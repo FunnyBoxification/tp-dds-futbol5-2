@@ -1,7 +1,7 @@
 package strategy
 
 import futbolcinco.Partido
-import futbolcinco.homes.PartidosDelSistema
+import futbolcinco.homes.PartidosDAOMongo
 
 abstract class ModoDivision {
 	def void definirDivision(Partido partido)
@@ -21,7 +21,7 @@ abstract class ModoDivision {
 			}
 			
 		}
-		PartidosDelSistema.instance().agregarOActualizar(partido)
+		PartidosDAOMongo.instance().agregarOActualizar(partido)
 		
 	}
 

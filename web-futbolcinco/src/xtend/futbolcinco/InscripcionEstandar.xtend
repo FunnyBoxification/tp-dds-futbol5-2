@@ -1,12 +1,8 @@
 package futbolcinco
 
-import futbolcinco.homes.PartidosDelSistema
-import org.bson.types.ObjectId
-import org.mongodb.morphia.annotations.Embedded
+import futbolcinco.homes.PartidosDAOMongo
 import org.mongodb.morphia.annotations.Entity
-import org.mongodb.morphia.annotations.Id
-import org.mongodb.morphia.annotations.Transient
-
+import futbolcinco.homes.InscripcionesHomeMongo
 
 @Entity
 class InscripcionEstandar extends ModoInscripcion {
@@ -25,12 +21,14 @@ class InscripcionEstandar extends ModoInscripcion {
 			
 		}
 		
-		partido.getInscriptos.add(new FichaInscripcion(interesado,this,null,partido))
+		var ficha = new FichaInscripcion(interesado,this,null,partido)
+		InscripcionesHomeMongo.instance().agregarOActualizar(ficha)
+		partido.getInscriptos.add(ficha)
 		
 		partido.notificaInscripto(interesado)
 		
-		PartidosDelSistema.instance().agregarOActualizar(partido)
-//		PartidosDAOMongo.instance().agregarOActualizar(partido)
+//		PartidosDelSistema.instance().agregarOActualizar(partido)
+		PartidosDAOMongo.instance().agregarOActualizar(partido)
 		
 		
 	}

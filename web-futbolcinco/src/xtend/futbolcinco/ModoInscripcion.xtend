@@ -7,7 +7,6 @@ import org.mongodb.morphia.annotations.Id
 import org.mongodb.morphia.annotations.Transient
 
 @Entity
-
 abstract class ModoInscripcion {
 	
 	@Id

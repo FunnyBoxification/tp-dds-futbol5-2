@@ -4,7 +4,18 @@ import futbolcinco.FichaInscripcion
 import com.mongodb.MongoClient
 import org.mongodb.morphia.Morphia
 
-class InscripcionesHomeSQL extends AbstractHomeMongo<FichaInscripcion> {
+class InscripcionesHomeMongo extends AbstractHomeMongo<FichaInscripcion> {
+	
+	static InscripcionesHomeMongo instance
+	
+	static def InscripcionesHomeMongo instance() {
+		if(instance != null)
+			return instance
+		else {
+			instance = new InscripcionesHomeMongo(new Morphia, new MongoClient, "entrega9")
+			instance
+		}
+	}
 	
 	new(Morphia morphia, MongoClient mongo, String dbName) {
 		super(morphia, mongo, dbName)

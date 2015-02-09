@@ -1,7 +1,11 @@
 package futbolcinco.homes
 
 import com.mongodb.MongoClient
+import futbolcinco.FichaInscripcion
 import futbolcinco.Partido
+import futbolcinco.Socio
+import java.util.ArrayList
+import java.util.List
 import org.mongodb.morphia.Morphia
 
 class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
@@ -53,5 +57,26 @@ class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 	override size() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+	
+	def Partido buscarPartido(Long id) {
+		this.elements.get(0)
+	}
+	
+	def List<Socio> getListaSociosEquipo1(Partido partido) {
+		var lista = new ArrayList<Socio>
+		for(FichaInscripcion ficha : partido.equipo1.integrantes) {
+			lista.add(ficha.inscripto)
+		}
+		lista
+	}
+	
+	def List<Socio> getListaSociosEquipo2(Partido partido) {
+		var lista = new ArrayList<Socio>
+		for(FichaInscripcion ficha : partido.equipo2.integrantes) {
+			lista.add(ficha.inscripto)
+		}
+		lista
+	}
+	
 	
 }

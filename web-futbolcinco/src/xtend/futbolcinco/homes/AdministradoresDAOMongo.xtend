@@ -26,6 +26,9 @@ class AdministradoresDAOMongo extends AbstractHomeMongo<Administrador> {
 		this.save(elem)
 	}
 	
+	def Administrador getByMail(String mail) {
+		ds.find(Administrador).filter("_casilla =",mail).asList.get(0)
+	}
 	override sacar(Administrador elem) {
 		this.deleteById(elem.id)
 	}

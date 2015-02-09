@@ -62,8 +62,10 @@ class Partido {
 		calificaciones = new HashSet<Calificacion>
 		equipo1 = new Equipo
 		equipo1.numeroEquipo = 1;
+		equipo1.integrantes = new ArrayList<FichaInscripcion>
 		equipo2 = new Equipo
 		equipo2.numeroEquipo = 2;
+		equipo2.integrantes = new ArrayList<FichaInscripcion>
 		estado = ConstantesEnum.PARTIDO_ARMANDOSE
 	}
 	
@@ -188,6 +190,10 @@ class Partido {
 		
 	}
 	def void agregarAEquipo2(FichaInscripcion ficha){
+		if(this.equipo2 == null)
+			println("equipo 2 null")
+		else if(this.equipo2.integrantes == null)
+			println("integrantes equipo 2 null")
 		this.equipo2.integrantes.add(ficha)
 		PartidosDAOMongo.instance().agregarOActualizar(this)
 //		PartidosDAOMongo.instance().agregarInscriptoAEquipo2(this, ficha)
