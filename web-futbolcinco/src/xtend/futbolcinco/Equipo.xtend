@@ -1,27 +1,13 @@
 package futbolcinco
 
 import java.util.List
-import javax.persistence.CascadeType
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.OneToMany
-import org.hibernate.annotations.LazyCollection
-import org.hibernate.annotations.LazyCollectionOption
+import org.mongodb.morphia.annotations.Embedded
 
-@Entity
+@Embedded
 class Equipo {
-	
-	@Id
-	@GeneratedValue
-	@Property Long id
-	
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy="equipo", cascade = CascadeType.ALL)
+
 	public List<FichaInscripcion> _integrantes
 	
-	@Column(name="numeroEquipo")
 	@Property int numeroEquipo
 	
 	new() {

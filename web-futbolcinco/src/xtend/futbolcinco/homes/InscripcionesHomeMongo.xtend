@@ -15,7 +15,7 @@ class InscripcionesHomeSQL extends AbstractHomeMongo<FichaInscripcion> {
 	}
 	
 	override sacar(FichaInscripcion ficha) {
-		this.deleteById(ficha.id)
+//		this.deleteById(ficha.id)
 	}
 	
 	override elements() {
@@ -24,8 +24,8 @@ class InscripcionesHomeSQL extends AbstractHomeMongo<FichaInscripcion> {
 	}
 	
 	override contiene(FichaInscripcion elem) {
-		val ficha = this.get(elem.id)
-		ficha != null
+//		val ficha = this.get(elem.id)
+		elem != null
 	}
 	
 	override size() {

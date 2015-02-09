@@ -1,17 +1,19 @@
 package web.futbolcinco
 
-import futbolcinco.Administrador
-import futbolcinco.Socio
-import futbolcinco.homes.JugadoresDenegadosDelSistema
-import futbolcinco.homes.PartidosDelSistema
-import futbolcinco.homes.SociosDelSistema
-import grails.converters.JSON
+import org.mongodb.morphia.Morphia
+
+import com.mongodb.MongoClient
+
+import futbolcinco.homes.PartidosDAOMongo
+import futbolcinco.homes.SociosDAOMongo
 
 class BusquedaJugadorController {
 	
-	SociosDelSistema sociosDAO = SociosDelSistema.instance()
+	def morphia = new Morphia()
+	def mongoC = new MongoClient()
+	SociosDAOMongo sociosDAO = new SociosDAOMongo(morphia, mongoC, "entrega 9")
 	//TODO: Agregar los DAOS con MongoDB
-	PartidosDelSistema partidosDAO = PartidosDelSistema.instance()
+	PartidosDAOMongo partidosDAO = new PartidosDAOMongo(morphia,mongoC,"entrega9")
 	
 	//TODO: Agregar validaciones desde un js con spans con display none que se muestran si se escribe algo mal.
 

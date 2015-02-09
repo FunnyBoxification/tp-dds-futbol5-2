@@ -3,22 +3,23 @@ package futbolcinco
 import java.util.LinkedList
 import java.util.List
 import org.bson.types.ObjectId
-import org.mongodb.morphia.annotations.Embedded
 import org.mongodb.morphia.annotations.Entity
 import org.mongodb.morphia.annotations.Id
+import org.mongodb.morphia.annotations.Reference
 import org.mongodb.morphia.annotations.Transient
 
 @Entity
 class FichaInscripcion {
+	
 	@Id
-
 	@Property ObjectId id
 	
+	@Reference
 	Socio inscripto
 
 	@Property ModoInscripcion modoInscripcion
 	
-	@Property Partido partido
+//	@Property Partido partido
 	
 	@Transient
 	@Property Condicion condicion
@@ -26,8 +27,8 @@ class FichaInscripcion {
 	@Transient
 	@Property List<Calificacion> calificaciones	
 	
-	@Embedded
-	Equipo equipo
+//	@Embedded
+//	Equipo equipo
 	
 	@Property double ponderacion
 	
@@ -42,7 +43,7 @@ class FichaInscripcion {
 		this.condicion = condicion
 		this.calificaciones = new LinkedList<Calificacion>
 		this.ponderacion = 5.5
-		this.partido = partido
+//		this.partido = partido
 	}
 	new(Socio jugador, ModoInscripcion modo){
 		this.inscripto = jugador

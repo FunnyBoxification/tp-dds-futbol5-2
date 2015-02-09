@@ -6,11 +6,12 @@ import Exceptions.PartidoNoListoException
 import Exceptions.PropuestoNoEncontradoException
 import Exceptions.SocioInexistenteException
 import command.Criterio
-import futbolcinco.homes.AbstractHomeSQL
+import futbolcinco.homes.AbstractHome
 import futbolcinco.homes.JugadoresDenegadosDelSistema
 import futbolcinco.homes.JugadoresPropuestosDelSistema
+import futbolcinco.homes.PartidosDAOMongo
 import futbolcinco.homes.PartidosDelSistema
-import futbolcinco.homes.SociosDelSistema
+import futbolcinco.homes.SociosDAOMongo
 import java.util.Calendar
 import org.bson.types.ObjectId
 import org.mongodb.morphia.annotations.Entity
@@ -32,16 +33,16 @@ class Administrador {
 	 */
 	
 	@Transient
-	@Property PartidosDelSistema homePartidos
+	@Property AbstractHome<Partido> homePartidos
 	
 	@Transient
-	@Property AbstractHomeSQL<JugadorDenegado> homeJugadoresDenegados
+	@Property AbstractHome<JugadorDenegado> homeJugadoresDenegados
 	
 	@Transient
-	@Property AbstractHomeSQL<JugadorPropuesto> homeJugadoresPropuestos
+	@Property AbstractHome<JugadorPropuesto> homeJugadoresPropuestos
 	
 	@Transient
-	@Property AbstractHomeSQL<Socio> homeSocios
+	@Property AbstractHome<Socio> homeSocios
 	
 	/*********************************************************************************************** */
 	new() {
@@ -51,8 +52,8 @@ class Administrador {
 		this.casilla = mail
 		this.homeJugadoresPropuestos = new JugadoresPropuestosDelSistema
 		this.homeJugadoresDenegados = new JugadoresDenegadosDelSistema
-		this.homePartidos = PartidosDelSistema.instance()
-		this.homeSocios = SociosDelSistema.instance
+		this.homePartidos = PartidosDAOMongo.instance()
+		this.homeSocios = SociosDAOMongo.instance
 	}
 	
 	def Partido organizarPartido(Integer dia, Integer hora) {
@@ -112,7 +113,8 @@ class Administrador {
  		}
  		partido.estado = ConstantesEnum.PARTIDO_JUGADO
  		//Persisto el partido por si se encuentre en estado detached
- 		PartidosDelSistema.instance().agregarOActualizar(partido)
+// 		PartidosDAOMongo.instance().agregarOActualizar(partido)
+ 		homePartidos.agregarOActualizar(partido)
  		if(partido.getInscriptos.size!=10){
  			System.out.println("Cantidad Inscriptos: "+ partido.getInscriptos.size)
  			throw new PartidoIncompletoException

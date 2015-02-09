@@ -1,10 +1,11 @@
 package dtos
 
 import futbolcinco.Socio
+import org.bson.types.ObjectId
 
 class SocioDTO {
 	
-	@Property Long id
+	@Property ObjectId id
 	@Property String nombre
 	@Property Integer edad
 	@Property Integer handicap

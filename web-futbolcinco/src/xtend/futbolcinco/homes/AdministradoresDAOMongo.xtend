@@ -6,6 +6,18 @@ import org.mongodb.morphia.Morphia
 
 class AdministradoresDAOMongo extends AbstractHomeMongo<Administrador> {
 	
+	private static AdministradoresDAOMongo instance
+	
+	def static instance() {
+		if(instance != null) {
+			instance
+		}
+		else {
+			instance = new AdministradoresDAOMongo(new Morphia, new MongoClient, "entrega9")
+			return instance
+		}
+	}
+	
 	new(Morphia morphia, MongoClient mongo, String dbName) {
 		super(morphia, mongo, dbName)
 	}

@@ -2,19 +2,21 @@ import futbolcinco.Administrador
 import futbolcinco.InscripcionEstandar
 import futbolcinco.ModoInscripcion
 import futbolcinco.Socio
-import futbolcinco.homes.AdministradoresDelSistema
+import futbolcinco.homes.AdministradoresDAOMongo
 import futbolcinco.homes.ModoInscripcionHomeSQL
-import futbolcinco.homes.PartidosDelSistema
-import futbolcinco.homes.SociosDelSistema
+import futbolcinco.homes.PartidosDAOMongo
+import futbolcinco.homes.SociosDAOMongo
 
 class BootStrap {
 
     def init = { servletContext ->
 		
-		def homeP = PartidosDelSistema.instance()
+//		def homeP = PartidosDelSistema.instance()
 		
+		def homePartidos = PartidosDAOMongo.instance()
+		def sociosHome = SociosDAOMongo.instance()
 		Administrador administrador = new Administrador("admin@admin.com")
-		AdministradoresDelSistema.instance().agregarOActualizar(administrador)	
+		AdministradoresDAOMongo.instance().agregarOActualizar(administrador)	
 		
 		ModoInscripcion modoEstandar = new InscripcionEstandar()
 		ModoInscripcionHomeSQL.instance().agregarOActualizar(modoEstandar)
@@ -33,16 +35,16 @@ class BootStrap {
 		def socio10 = new Socio("martin1234",18,"marty@piola.com",administrador)
 		socioH.handicap = 9
 		socioH.amigos.add(amigo)
-		SociosDelSistema.instance().agregarOActualizar(amigo)
-		SociosDelSistema.instance().agregarOActualizar(socioH)
-		SociosDelSistema.instance().agregarOActualizar(socio3)
-		SociosDelSistema.instance().agregarOActualizar(socio4)
-		SociosDelSistema.instance().agregarOActualizar(socio5)
-		SociosDelSistema.instance().agregarOActualizar(socio6)
-		SociosDelSistema.instance().agregarOActualizar(socio7)
-		SociosDelSistema.instance().agregarOActualizar(socio8)
-		SociosDelSistema.instance().agregarOActualizar(socio9)
-		SociosDelSistema.instance().agregarOActualizar(socio10)
+		sociosHome.agregarOActualizar(amigo)
+		sociosHome.agregarOActualizar(socioH)
+		sociosHome.agregarOActualizar(socio3)
+		sociosHome.agregarOActualizar(socio4)
+		sociosHome.agregarOActualizar(socio5)
+		sociosHome.agregarOActualizar(socio6)
+		sociosHome.agregarOActualizar(socio7)
+		sociosHome.agregarOActualizar(socio8)
+		sociosHome.agregarOActualizar(socio9)
+		sociosHome.agregarOActualizar(socio10)
 		
 		socioH.inscribirseA(partidito, modoEstandar)
 		amigo.inscribirseA(partidito,modoEstandar)

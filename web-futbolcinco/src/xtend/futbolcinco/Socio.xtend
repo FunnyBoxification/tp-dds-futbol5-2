@@ -9,7 +9,7 @@ import Exceptions.PartidoCerradoException
 import Exceptions.PartidoCompletoException
 import Exceptions.PartidoNoJugadoException
 import Exceptions.PuntuacionIncorrectaException
-import futbolcinco.homes.PartidosDelSistema
+import futbolcinco.homes.AbstractHome
 import java.util.HashSet
 import java.util.LinkedList
 import java.util.List
@@ -59,7 +59,7 @@ class Socio {
 	@Property LinkedList<Partido> misPartidos
 	
 	@Transient
-	@Property PartidosDelSistema homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
+	@Property AbstractHome<Partido> homePartidos //NO ESTOY SEGURO DE ESTO, CONSULTAR. PUEDE TENER ADMIN O OTRA COSA
 	
 	
 	// Hibernate necesita un constructor vacio

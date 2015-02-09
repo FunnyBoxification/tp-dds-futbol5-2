@@ -1,6 +1,6 @@
 package futbolcinco
 
-import futbolcinco.homes.PartidosDelSistema
+import futbolcinco.homes.PartidosDAOMongo
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
@@ -182,13 +182,15 @@ class Partido {
 	
 	
 	def void agregarAEquipo1(FichaInscripcion ficha){
-		PartidosDelSistema.instance().agregarOActualizar(this)
-		PartidosDelSistema.instance().agregarInscriptoAEquipo1(this, ficha)
+		this.equipo1.integrantes.add(ficha)
+		PartidosDAOMongo.instance().agregarOActualizar(this)
+//		PartidosDAOMongo.instance().agregarInscriptoAEquipo1(this, ficha)
 		
 	}
 	def void agregarAEquipo2(FichaInscripcion ficha){
-		PartidosDelSistema.instance().agregarOActualizar(this)
-		PartidosDelSistema.instance().agregarInscriptoAEquipo2(this, ficha)
+		this.equipo2.integrantes.add(ficha)
+		PartidosDAOMongo.instance().agregarOActualizar(this)
+//		PartidosDAOMongo.instance().agregarInscriptoAEquipo2(this, ficha)
 		
 	}
 }
