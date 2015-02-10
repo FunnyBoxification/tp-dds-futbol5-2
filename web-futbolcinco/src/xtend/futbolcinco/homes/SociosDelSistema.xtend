@@ -1,9 +1,10 @@
 package futbolcinco.homes
 
 import futbolcinco.Socio
+import java.util.ArrayList
 import java.util.LinkedList
-import org.hibernate.criterion.Restrictions
 import java.util.List
+import org.hibernate.criterion.Restrictions
 
 class SociosDelSistema extends AbstractHomeSQL<Socio> {
 	
@@ -24,9 +25,6 @@ class SociosDelSistema extends AbstractHomeSQL<Socio> {
 		val result = criteria.uniqueResult  as Socio;
 		session.close
 		return result
-		/*
-		val criteria = [ Socio socio | socio.nombre.equals(id)]
-		return this.getByCriterio(criteria).get(0)*/
 	}
 	
 	def List<Socio> buscarPorNombre(String nombre) {
@@ -35,10 +33,6 @@ class SociosDelSistema extends AbstractHomeSQL<Socio> {
 		val result = criteria.list()
 		session.close
 		return result
-		/* 
-		val criteria = [ Socio socio | socio.nombre.startsWith(nombre)]
-		return this.getByCriterio(criteria)
-		*/
 	}
 	
 	def List<Socio> buscarPorEdad(Integer edad) {
@@ -80,12 +74,26 @@ class SociosDelSistema extends AbstractHomeSQL<Socio> {
 		*/
 	}
 	
-	def LinkedList<Socio> buscarPorPromedioLastMatchDesde(Double promedio) {
-//		hacer
+	def List<Socio> buscarPorPromedioLastMatchDesde(Double promedio) {
+		if(promedio == 0.0) { 
+			val session = sessionFactory.openSession
+			val criteria = session.createCriteria(Socio)
+			val result = criteria.list() 
+			session.close
+			return result
+		}
+		else return new ArrayList<Socio>
 	}
 	
-	def LinkedList<Socio> buscarPorPromedioLastMatchHasta(Double promedio) {
-//		hacer
+	def List<Socio> buscarPorPromedioLastMatchHasta(Double promedio) {
+		if(promedio > 0.0) { 
+			val session = sessionFactory.openSession
+			val criteria = session.createCriteria(Socio)
+			val result = criteria.list() 
+			session.close
+			return result
+		}
+		else return new ArrayList<Socio>
 	}
 	
 	def List<Socio> buscarSinInfracciones() {
@@ -95,13 +103,14 @@ class SociosDelSistema extends AbstractHomeSQL<Socio> {
 		val result = criteria.list() 
 		session.close
 		return result
-		/*
-		this.getByCriterio([ Socio socio | socio.infracciones.isEmpty])
-		*/
 	}
 	
 	def List<Socio> buscarConInfracciones() {
-		//this.getByCriterio( [ Socio socio | !socio.infracciones.isEmpty])
+		val session = sessionFactory.openSession
+		val criteria = session.createCriteria(Socio).add(Restrictions.isNotEmpty("_infracciones")) //CHEQUEAR
+		val result = criteria.list() 
+		session.close
+		return result
 	}
 	
 	override elements() {
