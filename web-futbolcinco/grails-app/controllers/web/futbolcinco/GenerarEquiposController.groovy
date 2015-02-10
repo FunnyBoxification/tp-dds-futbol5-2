@@ -80,8 +80,8 @@ class GenerarEquiposController {
 		/*def equipo1 = conseguirListaSocios(newP.equipo1)
 		def equipo2 = conseguirListaSocios(newP.equipo2)*/
 		def LinkedList equipos = new LinkedList<LinkedList>()
-		equipos.add(newP.equipo1.integrantes)
-		equipos.add(newP.equipo2.integrantes)
+		equipos.add(partidosDAO.getListaSociosEquipo1(newP))
+		equipos.add(partidosDAO. getListaSociosEquipo2(newP))
 //		equipos.add(partidosDAO.getListaSociosDTOEquipo1(newP))
 //		equipos.add(partidosDAO.getListaSociosDTOEquipo2(newP))
 		render(template: 'grillasEquipos', model : [equipos: equipos])

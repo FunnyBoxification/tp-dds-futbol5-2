@@ -49,7 +49,7 @@ class PartidosDelSistema extends AbstractHomeSQL<Partido> {
 //		try {
 			session.beginTransaction
 			partido.equipo1.integrantes.add(ficha)
-			ficha.equipo = partido.equipo1
+//			ficha.equipo = partido.equipo1
 			session.saveOrUpdate(ficha)
 			session.saveOrUpdate(partido)
 			session.getTransaction.commit
@@ -68,7 +68,7 @@ class PartidosDelSistema extends AbstractHomeSQL<Partido> {
 //		try {
 			session.beginTransaction
 			partido.equipo2.integrantes.add(ficha)
-			ficha.equipo = partido.equipo2
+//			ficha.equipo = partido.equipo2
 			session.saveOrUpdate(ficha)
 			session.saveOrUpdate(partido)
 			session.getTransaction.commit

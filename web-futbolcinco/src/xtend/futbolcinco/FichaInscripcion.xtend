@@ -19,7 +19,6 @@ class FichaInscripcion {
 
 	@Property ModoInscripcion modoInscripcion
 	
-//	@Property Partido partido
 	
 	@Transient
 	@Property Condicion condicion
@@ -27,8 +26,6 @@ class FichaInscripcion {
 	@Transient
 	@Property List<Calificacion> calificaciones	
 	
-//	@Embedded
-//	Equipo equipo
 	
 	@Property double ponderacion
 	
@@ -60,11 +57,4 @@ class FichaInscripcion {
 		inscripto = socio
 	}
 	
-	def void setEquipo(Equipo equip) {
-		equipo = equip
-	}
-	
-	def Equipo getEquipo() {
-		equipo
-	}
 }

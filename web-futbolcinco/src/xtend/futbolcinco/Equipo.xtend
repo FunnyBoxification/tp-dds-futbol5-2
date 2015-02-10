@@ -2,11 +2,13 @@ package futbolcinco
 
 import java.util.List
 import org.mongodb.morphia.annotations.Embedded
+import org.mongodb.morphia.annotations.Reference
 
 @Embedded
 class Equipo {
-
-	public List<FichaInscripcion> _integrantes
+	
+	@Reference
+	List<FichaInscripcion> _integrantes
 	
 	@Property int numeroEquipo
 	
@@ -16,7 +18,7 @@ class Equipo {
 	
 	
 	def List<FichaInscripcion> getIntegrantes() {
-		_integrantes
+		this._integrantes
 	}
 	
 	def void setIntegrantes(List<FichaInscripcion> inte) {
