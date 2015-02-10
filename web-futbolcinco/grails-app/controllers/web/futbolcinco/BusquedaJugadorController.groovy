@@ -129,11 +129,13 @@ class BusquedaJugadorController {
 	}
 	
 	def buscarporPromDesde() {
-		render(template:"errorSpan",model:[errorMessage:"Funcionalidad no implementada"])
+		def socios = sociosDAO.buscarPorPromedioLastMatchDesde(new Double(params.paramBusqueda))
+		render(template:"grilla",model:[socios:socios])
 	}
 	
 	def buscarporPromHasta() {
-		render(template:"errorSpan",model:[errorMessage:"Funcionalidad no implementada"])
+		def socios = sociosDAO.buscarPorPromedioLastMatchHasta(new Double(params.paramBusqueda))
+		render(template:"grilla",model:[socios:socios])
 	}
 	
 	/********************************************************************************************/

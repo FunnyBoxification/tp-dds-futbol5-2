@@ -57,9 +57,8 @@ class BootStrap {
 		socio9.inscribirseA(partidito,modoEstandar)
 		socio10.inscribirseA(partidito,modoEstandar)
     }
+	
     def destroy = {
-		for( Socio socio : SociosDAOMongo.instance().elements) {
-			SociosDAOMongo.instance().deleteById(socio.id)
-		}
+		PartidosDAOMongo.instance().getDatastore().mongo.dropDatabase("entrega9")
     }
 }
