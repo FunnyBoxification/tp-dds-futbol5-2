@@ -67,13 +67,15 @@ class GenerarEquiposController {
 	def solicitarEquipos(){
 		mapaModosDivision = new HashMap<String, ModoDivision>()
 		mapaModosDivision.put("Par/Impar", new DivisionParImpar())
+		def criterioPorCalificacion = new CriterioPorHandicap()
 		mapaModosDivision.put("1,4,5,8,9", new DivisionEspecifica())
 
 		mapaCriteriosOrden = new HashMap<String, Criterio>()
+		def criterio = new CriterioPorHandicap()
 		mapaCriteriosOrden.put("Handicap", new CriterioPorHandicap() )
-		mapaCriteriosOrden.put("Promedio calificaciones ultimo partido", new CalificacionesUltimoPartido())
-		mapaCriteriosOrden.put("Criterio Mixto", new CriterioMix())
-		mapaCriteriosOrden.put("Promedio calificaciones ultimos n partidos", new UltimasCalificaciones())
+		mapaCriteriosOrden.put("Promedio calificaciones ultimo partido",criterioPorCalificacion)
+		mapaCriteriosOrden.put("Criterio Mixto", criterio)
+		mapaCriteriosOrden.put("Promedio calificaciones ultimos n partidos", criterio)
 		Partido p = conseguirPartidoEnHome()
 		p = admin.ordenarJugadoresPorCriterio(p, conseguirCriterioOrden(params.get("criterioOrden")))
 		def Partido newP = admin.hacerDivision(p, conseguirModoDivision(params.get("criterioSeleccion")))

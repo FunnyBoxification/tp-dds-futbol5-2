@@ -60,35 +60,14 @@ class SociosDAOMongo extends AbstractHomeMongo<Socio> {
 		return new ArrayList<Socio>
 	}
 	
-	
-	
-	override agregarOActualizar(Socio elem) {
-//		if(elem.id != null) {
-//			var updateQuery = datastore.createQuery(Socio).field("_id").equal(elem.id)
-//			var updateOperation = 
-//			this.update(updateQuery,)
-//			
-//		}
-		this.save(elem)
-	}
-	
 	override sacar(Socio socio) {
 		this.deleteById(socio.id)
 		//Si no funca probar this.delete(socio)
 	}
 	
-	override elements() {
-		this.find().asList()
-		
-	}
-	
 	override contiene(Socio elem) {
 		val socio = this.get(elem.id)
 		socio != null
-	}
-	
-	override size() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }

@@ -11,4 +11,17 @@ abstract class AbstractHomeMongo<T>  extends  BasicDAO<T, ObjectId> implements A
 		super(mongo,morphia,dbName)
 	}
 	
+	override agregarOActualizar(T entity) {
+		this.save(entity)
+		
+	}
+	
+	override elements() {
+		this.find().asList()
+	}
+	
+	override size() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }

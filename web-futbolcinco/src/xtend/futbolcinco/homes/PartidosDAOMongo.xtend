@@ -27,36 +27,17 @@ class PartidosDAOMongo extends AbstractHomeMongo<Partido> {
 	}
 	
 	
-//	static PartidosDAOMongo instance
-//	
-//	def static instance() {
-//		if(instance == null) {
-//			return new PartidosDAOMongo
-//		}
-//		else return instance
-//	}
-	
-	override agregarOActualizar(Partido partido) {
-		this.save(partido)
-		
-	}
 	
 	override contiene(Partido partido) {
 		val part = this.get(partido.id)
 		part != null
 	}
 	
-	override elements() {
-		this.find().asList()
-	}
 	
 	override sacar(Partido partido) {
 		this.deleteById(partido.id)
 	}
 
-	override size() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
 	
 	def Partido buscarPartido(Long id) {
 		this.elements.get(0)
